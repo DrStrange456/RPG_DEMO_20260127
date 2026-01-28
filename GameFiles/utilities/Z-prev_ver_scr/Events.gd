@@ -1,0 +1,11 @@
+extends Node
+
+signal market_ready
+signal market_not_ready
+
+signal hotbar_contents_changed
+signal update_viewonly_hotbar
+signal update_pauseui_inventory
+
+signal GenStore_OnEscape_KeepOpen
+signal GenStore_OnEscape_OkayToClose

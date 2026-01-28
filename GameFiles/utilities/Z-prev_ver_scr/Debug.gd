@@ -1,0 +1,4 @@
+extends Node
+
+#var crop_list_array = [Vector2(616, -8), Vector2(632, -8), Vector2(648, -8), Vector2(616, 8), Vector2(632, 8), Vector2(648, 8), Vector2(616, 24), Vector2(632, 24), Vector2(648, 24), Vector2(616, 40), Vector2(632, 40), Vector2(648, 40), Vector2(680, -8), Vector2(696, -8), Vector2(712, -8), Vector2(680, 8), Vector2(696, 8), Vector2(712, 8), Vector2(680, 24), Vector2(696, 24), Vector2(712, 24), Vector2(680, 40), Vector2(696, 40), Vector2(712, 40), Vector2(744, -8), Vector2(760, -8), Vector2(776, -8), Vector2(744, 8), Vector2(760, 8), Vector2(776, 8), Vector2(744, 24), Vector2(760, 24), Vector2(776, 24), Vector2(744, 40), Vector2(760, 40), Vector2(776, 40), Vector2(808, -8), Vector2(824, -8), Vector2(840, -8), Vector2(808, 8), Vector2(824, 8), Vector2(840, 8), Vector2(808, 24), Vector2(824, 24), Vector2(840, 24), Vector2(808, 40), Vector2(824, 40), Vector2(840, 40)]
+var crop_list_array = []
