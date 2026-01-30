@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dloe2ci7jrbn" path="res://assets/characters/main_player/hair/female/half_up/white.png" id="5_y60d1"]
 [ext_resource type="PackedScene" uid="uid://u4ea6xpd0wig" path="res://scenes/ui/tool_ui.tscn" id="6_0xo3i"]
 [ext_resource type="PackedScene" uid="uid://cnckwi3d7eibr" path="res://scenes/ui/fishing_game.tscn" id="7_h2fcv"]
-[ext_resource type="AudioStream" uid="uid://u3uagkxuak2a" path="res://audio/sfx/choppingtree_small.ogg" id="7_k4aqx"]
+[ext_resource type="AudioStream" uid="uid://u3uagkxuak2a" path="res://audio/sfx/Chop_Wood1.ogg" id="7_k4aqx"]
 [ext_resource type="AudioStream" uid="uid://crwepnu6rlsar" path="res://audio/sfx/sword_whoosh.wav" id="8_kq73p"]
 [ext_resource type="AudioStream" uid="uid://d1tk0h6j45xy6" path="res://audio/sfx/hoe.wav" id="8_o1a05"]
 [ext_resource type="AudioStream" uid="uid://f034o3sa1n31" path="res://audio/sfx/sandstep1.wav" id="10_y61a8"]
