@@ -1,10 +1,12 @@
 [gd_scene format=3 uid="uid://dcjs7xgtn11qn"]
 
 [ext_resource type="Shader" uid="uid://bspgr42xh4th" path="res://shaders/water_caustic_shader.gdshader" id="1_s5vx0"]
+[ext_resource type="Shader" uid="uid://rnhk1ofi1f4s" path="res://scenes/levels/dev_level/jess_codes.gdshader" id="2_ymgy4"]
+[ext_resource type="Texture2D" uid="uid://c0ju5ahg7fqui" path="res://icon.svg" id="3_0lefw"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_3a1df"]
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ymgy4"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ubrtw"]
 width = 2048
 height = 2048
 noise = SubResource("FastNoiseLite_3a1df")
@@ -12,7 +14,7 @@ seamless = true
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_0lefw"]
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ubrtw"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ovagd"]
 width = 2048
 height = 2048
 noise = SubResource("FastNoiseLite_0lefw")
@@ -20,20 +22,98 @@ seamless = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ovagd"]
 shader = ExtResource("1_s5vx0")
-shader_parameter/noise = SubResource("NoiseTexture2D_ymgy4")
-shader_parameter/noise2 = SubResource("NoiseTexture2D_ubrtw")
+shader_parameter/noise = SubResource("NoiseTexture2D_ubrtw")
+shader_parameter/noise2 = SubResource("NoiseTexture2D_ovagd")
 shader_parameter/scroll = Vector2(0.05, 0.05)
-shader_parameter/scroll2 = Vector2(-0.2, -0.2)
+shader_parameter/scroll2 = Vector2(-0.05, -0.05)
 shader_parameter/distortion_strength = -0.3789999705025
 shader_parameter/tone_color = Color(0, 0.08627451, 1, 0.12941177)
 shader_parameter/top_color = Color(0.9882353, 0.9882353, 0.9882353, 0.09019608)
 shader_parameter/light_start = 0.42800002033
 shader_parameter/light_end = 0.83600003971
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_txcyn"]
+shader = ExtResource("2_ymgy4")
+shader_parameter/aspectRatio = 1.0
+shader_parameter/pixelization = 2048.0
+shader_parameter/waterDepthGradient = ExtResource("3_0lefw")
+shader_parameter/causticColor = Vector4(2, 3, 1, 1)
+shader_parameter/causticHighlightColor = Vector4(5, 6, 3, 1)
+shader_parameter/causticTexture = ExtResource("3_0lefw")
+shader_parameter/causticHighlightTexture = ExtResource("3_0lefw")
+shader_parameter/causticNoiseTexture = ExtResource("3_0lefw")
+shader_parameter/causticFadeNoiseTexture = ExtResource("3_0lefw")
+shader_parameter/causticScale = 12.0
+shader_parameter/causticSpeed = 0.005
+shader_parameter/causticMovementAmount = 0.2
+shader_parameter/causticFaderMultiplier = 1.5
+shader_parameter/specularColor = Vector4(1, 1, 1, 1)
+shader_parameter/specularNoiseTexture = ExtResource("3_0lefw")
+shader_parameter/specularMovementLeftNoiseTexture = ExtResource("3_0lefw")
+shader_parameter/specularMovementRightNoiseTexture = ExtResource("3_0lefw")
+shader_parameter/specularThreshold = 0.4
+shader_parameter/specularSpeed = 0.0
+shader_parameter/specularScale = 15.0
+shader_parameter/foamColor = Vector4(1, 1, 1, 1)
+shader_parameter/foamTexture = ExtResource("3_0lefw")
+shader_parameter/foamIntensity = 0.2
+shader_parameter/foamScale = 15.0
+shader_parameter/outlineColor = Vector4(0.7, 0.9, 1, 1)
+shader_parameter/generalTransparency = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h3ffg"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n3fen"]
+shader = ExtResource("2_ymgy4")
+shader_parameter/aspectRatio = 1.0
+shader_parameter/pixelization = 2048.0
+shader_parameter/waterDepthGradient = ExtResource("3_0lefw")
+shader_parameter/causticColor = Vector4(2, 3, 1, 1)
+shader_parameter/causticHighlightColor = Vector4(5, 6, 3, 1)
+shader_parameter/causticTexture = ExtResource("3_0lefw")
+shader_parameter/causticHighlightTexture = ExtResource("3_0lefw")
+shader_parameter/causticNoiseTexture = ExtResource("3_0lefw")
+shader_parameter/causticFadeNoiseTexture = ExtResource("3_0lefw")
+shader_parameter/causticScale = 12.0
+shader_parameter/causticSpeed = 0.005
+shader_parameter/causticMovementAmount = 0.15
+shader_parameter/causticFaderMultiplier = 1.45
+shader_parameter/specularColor = Vector4(1, 1, 1, 1)
+shader_parameter/specularNoiseTexture = ExtResource("3_0lefw")
+shader_parameter/specularMovementLeftNoiseTexture = ExtResource("3_0lefw")
+shader_parameter/specularMovementRightNoiseTexture = ExtResource("3_0lefw")
+shader_parameter/specularThreshold = 0.35
+shader_parameter/specularSpeed = 0.025
+shader_parameter/specularScale = 15.0
+shader_parameter/foamColor = Vector4(1, 1, 1, 1)
+shader_parameter/foamTexture = ExtResource("3_0lefw")
+shader_parameter/foamIntensity = 0.2
+shader_parameter/foamScale = 15.0
+shader_parameter/outlineColor = Vector4(0.675, 0.86, 1, 1)
+shader_parameter/generalTransparency = 1.0
+
 [node name="test" type="Node2D" unique_id=1244419450]
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=19571425]
+[node name="water_gentle" type="ColorRect" parent="." unique_id=19571425]
 material = SubResource("ShaderMaterial_ovagd")
 offset_right = 525.0
 offset_bottom = 349.0
 color = Color(0.14901961, 0.1254902, 0.41960785, 1)
+
+[node name="water_pretty" type="ColorRect" parent="." unique_id=2076261765]
+visible = false
+material = SubResource("ShaderMaterial_txcyn")
+offset_right = 525.0
+offset_bottom = 349.0
+color = Color(0.14901961, 0.1254902, 0.41960785, 1)
+
+[node name="water_jess_codes" type="ColorRect" parent="." unique_id=1606611424]
+visible = false
+material = SubResource("ShaderMaterial_h3ffg")
+offset_right = 864.0
+offset_bottom = 527.0
+
+[node name="water_jess_codes2" type="Sprite2D" parent="." unique_id=168969320]
+visible = false
+material = SubResource("ShaderMaterial_n3fen")
+texture = ExtResource("3_0lefw")

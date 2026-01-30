@@ -27,6 +27,7 @@ Enum="*res://utilities/Singletons/enum.gd"
 
 [debug]
 
+gdscript/warnings/integer_division=0
 gdscript/warnings/confusable_identifier=0
 
 [display]
