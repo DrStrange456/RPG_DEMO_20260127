@@ -15,13 +15,14 @@ var health := 3:
 
 
 func _ready() -> void:
-	$FlashSprite2D.frame = [0,1].pick_random()
+	#$FlashSprite2D.frame = [0,5].pick_random()
+	$FlashSprite2D.frame = 5
 
 
 func hit(tool: Enum.Tool):
 	if tool == Enum.Tool.AXE:
 		$FlashSprite2D.flash()
-		get_apple()
+		#get_apple()
 		health -= 1
 
 

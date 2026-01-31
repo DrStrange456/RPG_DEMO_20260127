@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bwi0u3rp1xep5" path="res://scenes/vfx/flash_sprite_2d.tscn" id="1_joro2"]
 [ext_resource type="Shader" uid="uid://b6nm5dtkeitqy" path="res://shaders/flash.tres" id="2_cdqkv"]
 [ext_resource type="Texture2D" uid="uid://c6nfpm2eq1dc8" path="res://assets/tilesets/Tree_Medium_tilesetpng.png" id="3_5t2wk"]
+[ext_resource type="Texture2D" uid="uid://cnnxpnwxwqi6o" path="res://assets/plants/stump.png" id="5_5t2wk"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ka4nk"]
 radius = 8.0
@@ -15,7 +16,7 @@ shader = ExtResource("2_cdqkv")
 shader_parameter/Color = Color(1, 1, 1, 1)
 shader_parameter/Progress = 0.0
 
-[node name="tree_consumable" type="StaticBody2D" unique_id=1475954838]
+[node name="tree_consumable" type="StaticBody2D" unique_id=1475954838 groups=["Objects"]]
 script = ExtResource("1_cdqkv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=566237507]
@@ -28,3 +29,8 @@ position = Vector2(3, -26)
 texture = ExtResource("3_5t2wk")
 hframes = 6
 frame = 5
+
+[node name="Stump" type="Sprite2D" parent="." unique_id=1410410772]
+visible = false
+position = Vector2(0, 10.5)
+texture = ExtResource("5_5t2wk")
