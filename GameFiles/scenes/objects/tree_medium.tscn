@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://ba3j4iu30rya2"]
+
+[ext_resource type="Script" uid="uid://dob67cnuqgt3p" path="res://scenes/objects/tree_medium.gd" id="1_cdqkv"]
+[ext_resource type="PackedScene" uid="uid://bwi0u3rp1xep5" path="res://scenes/vfx/flash_sprite_2d.tscn" id="1_joro2"]
+[ext_resource type="Shader" uid="uid://b6nm5dtkeitqy" path="res://shaders/flash.tres" id="2_cdqkv"]
+[ext_resource type="Texture2D" uid="uid://c6nfpm2eq1dc8" path="res://assets/tilesets/Tree_Medium_tilesetpng.png" id="3_5t2wk"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ka4nk"]
+radius = 8.0
+height = 22.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ied88"]
+resource_local_to_scene = true
+shader = ExtResource("2_cdqkv")
+shader_parameter/Color = Color(1, 1, 1, 1)
+shader_parameter/Progress = 0.0
+
+[node name="tree_consumable" type="StaticBody2D" unique_id=1475954838]
+script = ExtResource("1_cdqkv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=566237507]
+position = Vector2(0, 4)
+shape = SubResource("CapsuleShape2D_ka4nk")
+
+[node name="FlashSprite2D" parent="." unique_id=1260877666 instance=ExtResource("1_joro2")]
+material = SubResource("ShaderMaterial_ied88")
+position = Vector2(3, -26)
+texture = ExtResource("3_5t2wk")
+hframes = 6
+frame = 5

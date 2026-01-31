@@ -9,10 +9,11 @@
 [ext_resource type="Shader" uid="uid://bs2q2cj20ygg2" path="res://shaders/circle_transition.gdshader" id="4_5567x"]
 [ext_resource type="Texture2D" uid="uid://tv5kwwk4frhm" path="res://assets/tilesets/soil_water.png" id="4_bmxux"]
 [ext_resource type="Shader" uid="uid://bspgr42xh4th" path="res://shaders/water_caustic_shader.gdshader" id="4_if8cl"]
-[ext_resource type="PackedScene" uid="uid://bjuiwygspkh17" path="res://scenes/ui/resource_ui.tscn" id="5_psclu"]
+[ext_resource type="PackedScene" path="res://scenes/ui/resource_ui.tscn" id="5_psclu"]
 [ext_resource type="Texture2D" uid="uid://da1u0rhfjt8a3" path="res://assets/weather/drops.png" id="6_if8cl"]
 [ext_resource type="Texture2D" uid="uid://bkeqcflkolrsa" path="res://assets/plants/icons/delete.png" id="7_bmxux"]
-[ext_resource type="PackedScene" uid="uid://d2530w2lrixv4" path="res://scenes/objects/tree.tscn" id="9_psclu"]
+[ext_resource type="PackedScene" path="res://scenes/objects/tree.tscn" id="9_psclu"]
+[ext_resource type="PackedScene" uid="uid://ba3j4iu30rya2" path="res://scenes/objects/tree_medium.tscn" id="13_f2ds3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_f0qyu"]
 resource_name = "tillable"
@@ -246,6 +247,9 @@ position = Vector2(1039, 207)
 
 [node name="Tree" parent="Objects" unique_id=1185376358 instance=ExtResource("9_psclu")]
 position = Vector2(887, 205)
+
+[node name="tree_consumable" parent="Objects" unique_id=1475954838 instance=ExtResource("13_f2ds3")]
+position = Vector2(889, 136)
 
 [node name="Timers" type="Node2D" parent="." unique_id=1966341237]
 
