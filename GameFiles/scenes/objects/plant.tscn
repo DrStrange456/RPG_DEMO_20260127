@@ -1,7 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://cwarq5p1non1k"]
+[gd_scene format=3 uid="uid://cwarq5p1non1k"]
 
-[ext_resource type="Script" path="res://scenes/objects/plant.gd" id="1_fvfks"]
-[ext_resource type="PackedScene" path="res://scenes/vfx/flash_sprite_2d.tscn" id="2_7bmar"]
+[ext_resource type="Script" uid="uid://c1ssd4dufpvep" path="res://scenes/objects/plant.gd" id="1_fvfks"]
+[ext_resource type="PackedScene" uid="uid://bwi0u3rp1xep5" path="res://scenes/vfx/flash_sprite_2d.tscn" id="2_7bmar"]
 [ext_resource type="Shader" uid="uid://b6nm5dtkeitqy" path="res://shaders/flash.tres" id="3_0a33w"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fvfks"]
@@ -10,29 +10,29 @@ height = 6.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fvfks"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_yb5fs"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7bmar"]
 resource_local_to_scene = true
 shader = ExtResource("3_0a33w")
 shader_parameter/Color = Color(1, 1, 1, 1)
 shader_parameter/Progress = 0.0
 
-[node name="Plant" type="StaticBody2D" groups=["Plants"]]
+[node name="Plant" type="StaticBody2D" unique_id=131340359 groups=["Plants"]]
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_fvfks")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=51041967]
 shape = SubResource("CapsuleShape2D_fvfks")
 
-[node name="CollisionArea" type="Area2D" parent="."]
+[node name="CollisionArea" type="Area2D" parent="." unique_id=49505874]
 collision_layer = 0
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionArea" unique_id=835992472]
 shape = SubResource("CircleShape2D_fvfks")
 
-[node name="FlashSprite2D" parent="." instance=ExtResource("2_7bmar")]
-material = SubResource("ShaderMaterial_yb5fs")
+[node name="FlashSprite2D" parent="." unique_id=733671508 instance=ExtResource("2_7bmar")]
+material = SubResource("ShaderMaterial_7bmar")
 position = Vector2(0, -9)
 hframes = 4
 

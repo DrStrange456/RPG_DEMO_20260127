@@ -10,6 +10,7 @@ func setup(grid_coord: Vector2i, parent: Node2D, new_res: PlantResource, plant_d
 	coord = grid_coord
 	res = new_res
 	$FlashSprite2D.texture = res.texture
+	$FlashSprite2D.hframes = res.h_frames
 	death.connect(plant_death_func)
 	res.connect("changed", update)
 

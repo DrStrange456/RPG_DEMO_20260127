@@ -44,8 +44,9 @@ func get_apple():
 
 
 func reset():
-	if health > 0:
-		for apple in $Apples.get_children():
-			apple.queue_free()
-		create_apples(randi_range(0,3))
-		health = 3
+	#if health > 0:
+		#for apple in $Apples.get_children():
+			#apple.queue_free()
+		#create_apples(randi_range(0,3))
+		#health = 3
+	pass

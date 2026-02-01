@@ -82,7 +82,7 @@ func _on_main_player_tool_use(tool: int, pos: Vector2) -> void:
 
 
 func _on_main_player_day_change() -> void:
-	pass # Replace with function body.
+	day_restart()
 
 
 func _on_main_player_build(current_machine: int) -> void:
@@ -108,9 +108,9 @@ func _play_ambient_music():
 var raining: bool:
 	set(value):
 		raining = value
-		$Layers/RainFloorParticles.emitting = value
+		#$Layers/RainFloorParticles.emitting = value
 		$Overlay/RainDropsParticles.emitting = value
-		$Music/Rain.playing = value
+		#$Music/Rain.playing = value
 
 
 func _on_blob_timer_timeout() -> void:
