@@ -2,6 +2,9 @@ extends Control
 
 var resource_texture_scene = preload("res://scenes/ui/resource_texture.tscn")
 const TEXTURES = {
+	Enum.Item.STRAWBERRY: preload("res://assets/plants/icons/strawberry.png"),
+	Enum.Item.CARROT: preload("res://assets/plants/icons/carrot.png"),
+	Enum.Item.BLUEBERRY: preload("res://assets/plants/icons/blueberry.png"),
 	Enum.Item.WOOD: preload("res://assets/plants/icons/wood.png"),
 	Enum.Item.APPLE: preload("res://assets/plants/icons/apple.png"),
 	Enum.Item.FISH: preload("res://assets/plants/icons/goldfish.png"),

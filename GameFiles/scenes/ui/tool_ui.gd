@@ -8,10 +8,9 @@ const TOOL_TEXTURES = {
 	Enum.Tool.FISH: preload("res://assets/plants/icons/fish.png"),
 	Enum.Tool.SEED: preload("res://assets/plants/icons/wheat.png"),}
 const SEED_TEXTURES = {
-	Enum.Seed.CORN: preload("res://assets/plants/icons/corn.png"),
-	Enum.Seed.PUMPKIN: preload("res://assets/plants/icons/pumpkin.png"),
-	Enum.Seed.TOMATO: preload("res://assets/plants/icons/tomato.png"),
-	Enum.Seed.WHEAT: preload("res://assets/plants/icons/wheat.png")}
+	Enum.Seed.STRAWBERRY: preload("res://assets/plants/icons/strawberry.png"),
+	Enum.Seed.CARROT: preload("res://assets/plants/icons/carrot.png"),
+	Enum.Seed.BLUEBERRY: preload("res://assets/plants/icons/blueberry.png")}
 var tool_texture_scene = preload("res://scenes/ui/tool_ui_texture.tscn")
 
 func _ready() -> void:

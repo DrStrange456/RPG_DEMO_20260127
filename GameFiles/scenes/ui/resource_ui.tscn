@@ -1,9 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://bjuiwygspkh17"]
+[gd_scene format=3 uid="uid://h7l2tm4dxb3l"]
 
 [ext_resource type="Script" uid="uid://cwfxodxdvk5q7" path="res://scenes/ui/resource_ui.gd" id="1_iahqc"]
-[ext_resource type="Theme" path="res://scenes/ui/game_theme.tres" id="1_vmyg7"]
+[ext_resource type="Theme" uid="uid://db1gtfohdvv6o" path="res://scenes/ui/game_theme.tres" id="1_vmyg7"]
 
-[node name="ResourceUI" type="Control" groups=["ResourceUI"]]
+[node name="ResourceUI" type="Control" unique_id=396827699 groups=["ResourceUI"]]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -13,7 +13,7 @@ grow_vertical = 2
 theme = ExtResource("1_vmyg7")
 script = ExtResource("1_iahqc")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=86978573]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -25,7 +25,7 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/separation = 10
 
-[node name="HideTimer" type="Timer" parent="."]
+[node name="HideTimer" type="Timer" parent="." unique_id=1896332134]
 wait_time = 3.0
 one_shot = true
 

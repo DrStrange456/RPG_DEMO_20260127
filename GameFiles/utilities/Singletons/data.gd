@@ -1,39 +1,64 @@
 extends Node
 
 const TILE_SIZE = 16
+#const PLANT_DATA = {
+	#Enum.Seed.TOMATO: {
+		#'texture': "res://assets/plants/tomato.png",
+		#'icon_texture': "res://assets/plants/icons/tomato.png",
+		#'name':'Tomato',
+		#'h_frames': 3,
+		#'grow_speed': 0.6,
+		#'death_max': 3,
+		#'reward': Enum.Item.TOMATO},
+	#Enum.Seed.CORN: {
+		#'texture': "res://assets/plants/corn.png",
+		#'icon_texture': "res://assets/plants/icons/corn.png",
+		#'name':'Corn',
+		#'h_frames': 3,
+		#'grow_speed': 1.0,
+		#'death_max': 2,
+		#'reward': Enum.Item.CORN},
+	#Enum.Seed.PUMPKIN: {
+		#'texture': "res://assets/plants/pumpkin.png",
+		#'icon_texture': "res://assets/plants/icons/pumpkin.png",
+		#'name':'Pumpkin',
+		#'h_frames': 3,
+		#'grow_speed': 0.3,
+		#'death_max': 3,
+		#'reward': Enum.Item.PUMPKIN},
+	#Enum.Seed.WHEAT: {
+		#'texture': "res://assets/plants/wheat.png",
+		#'icon_texture': "res://assets/plants/icons/wheat.png",
+		#'name':'Wheat',
+		#'h_frames': 3,
+		#'grow_speed': 1.0,
+		#'death_max': 3,
+		#'reward': Enum.Item.WHEAT}}
 const PLANT_DATA = {
-	Enum.Seed.TOMATO: {
-		'texture': "res://assets/plants/tomato.png",
-		'icon_texture': "res://assets/plants/icons/tomato.png",
-		'name':'Tomato',
-		'h_frames': 3,
+	Enum.Seed.STRAWBERRY: {
+		'texture': "res://assets/plants/strawberry.png",
+		'icon_texture': "res://assets/plants/icons/strawberry.png",
+		'name':'Strawberry',
+		'h_frames': 6,
 		'grow_speed': 0.6,
-		'death_max': 3,
-		'reward': Enum.Item.TOMATO},
-	Enum.Seed.CORN: {
-		'texture': "res://assets/plants/corn.png",
-		'icon_texture': "res://assets/plants/icons/corn.png",
-		'name':'Corn',
-		'h_frames': 3,
+		'death_max': 4,
+		'reward': Enum.Item.STRAWBERRY},
+	Enum.Seed.CARROT: {
+		'texture': "res://assets/plants/carrot.png",
+		'icon_texture': "res://assets/plants/icons/carrot.png",
+		'name':'Carrotss',
+		'h_frames': 6,
 		'grow_speed': 1.0,
-		'death_max': 2,
-		'reward': Enum.Item.CORN},
-	Enum.Seed.PUMPKIN: {
-		'texture': "res://assets/plants/pumpkin.png",
-		'icon_texture': "res://assets/plants/icons/pumpkin.png",
-		'name':'Pumpkin',
-		'h_frames': 3,
+		'death_max': 4,
+		'reward': Enum.Item.CARROT},
+	Enum.Seed.BLUEBERRY: {
+		'texture': "res://assets/plants/blueberry.png",
+		'icon_texture': "res://assets/plants/icons/blueberry.png",
+		'name':'Blueberry',
+		'h_frames': 6,
 		'grow_speed': 0.3,
-		'death_max': 3,
-		'reward': Enum.Item.PUMPKIN},
-	Enum.Seed.WHEAT: {
-		'texture': "res://assets/plants/wheat.png",
-		'icon_texture': "res://assets/plants/icons/wheat.png",
-		'name':'Wheat',
-		'h_frames': 3,
-		'grow_speed': 1.0,
-		'death_max': 3,
-		'reward': Enum.Item.WHEAT}}
+		'death_max': 4,
+		'reward': Enum.Item.BLUEBERRY}}
 
 var PLAYER_SKINS = {
 	Enum.Style.F_BODY: "res://assets/characters/main_player/body/female.png",
@@ -47,6 +72,9 @@ var PLAYER_SKINS = {
 	Enum.Style.F_SHOES: "res://assets/characters/main_player/shoes/female/",
 	Enum.Style.M_SHOES: "res://assets/characters/main_player/shoes/male/"}
 var items = {
+	Enum.Item.STRAWBERRY: 5,
+	Enum.Item.CARROT: 5,
+	Enum.Item.BLUEBERRY: 5,
 	Enum.Item.WOOD: 9,
 	Enum.Item.APPLE: 8,
 	Enum.Item.FISH: 6,

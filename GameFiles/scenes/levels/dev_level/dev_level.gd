@@ -61,10 +61,9 @@ func _on_main_player_tool_use(tool: int, pos: Vector2) -> void:
 		Enum.Tool.SEED:
 			if has_soil and grid_coord not in used_cells:
 				var selected_item = {
-					Enum.Seed.TOMATO: Enum.Item.TOMATO,
-					Enum.Seed.WHEAT: Enum.Item.WHEAT,
-					Enum.Seed.CORN: Enum.Item.CORN,
-					Enum.Seed.PUMPKIN: Enum.Item.PUMPKIN,
+					Enum.Seed.STRAWBERRY: Enum.Item.STRAWBERRY,
+					Enum.Seed.CARROT: Enum.Item.CARROT,
+					Enum.Seed.BLUEBERRY: Enum.Item.BLUEBERRY,
 				}[player.current_seed]
 				
 				if Data.items[selected_item] > 0:
