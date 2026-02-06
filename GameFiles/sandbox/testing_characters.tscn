@@ -5,13 +5,70 @@
 
 [node name="testing_characters" type="Node2D" unique_id=1569135841]
 
-[node name="Icon" type="Sprite2D" parent="." unique_id=1641654519]
-position = Vector2(500, 390)
+[node name="Area2D" type="StaticBody2D" parent="." unique_id=319011729]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D" unique_id=1055261972]
+polygon = PackedVector2Array(436, 298, 1160, 295, 1162, 724, 451, 722, 458, 300, 436, 300, 432, 737, 1192, 738, 1186, 273, 449, 268)
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1507208931]
+offset_left = -59.0
+offset_top = -76.0
+offset_right = 1998.0
+offset_bottom = 1135.0
+color = Color(0.3553136, 0.35531354, 0.35531357, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=1706247680]
+offset_left = 429.0
+offset_top = 259.0
+offset_right = 1213.0
+offset_bottom = 299.0
+color = Color(0.27058825, 0.7137255, 1, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="." unique_id=864169573]
+offset_left = 433.0
+offset_top = 711.0
+offset_right = 1217.0
+offset_bottom = 751.0
+color = Color(0.27058825, 0.7137255, 1, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="." unique_id=1022689915]
+offset_left = 1151.0
+offset_top = 267.0
+offset_right = 1223.0
+offset_bottom = 745.0
+color = Color(0.27058825, 0.7137255, 1, 1)
+
+[node name="ColorRect5" type="ColorRect" parent="." unique_id=1279753671]
+offset_left = 391.0
+offset_top = 265.0
+offset_right = 463.0
+offset_bottom = 743.0
+color = Color(0.27058825, 0.7137255, 1, 1)
+
+[node name="object_destructable" type="Sprite2D" parent="." unique_id=1231403914]
+position = Vector2(870, 498.99997)
+scale = Vector2(0.15820262, 0.15820293)
 texture = ExtResource("1_fjiuv")
 
-[node name="Icon2" type="Sprite2D" parent="." unique_id=1231403914]
-position = Vector2(1072, 633)
+[node name="Icon3" type="Sprite2D" parent="." unique_id=406952050]
+position = Vector2(614.00006, 390)
+scale = Vector2(0.23828176, 0.30078128)
+texture = ExtResource("1_fjiuv")
+
+[node name="Icon4" type="Sprite2D" parent="." unique_id=1713551475]
+position = Vector2(666.00006, 594)
+scale = Vector2(0.23828176, 0.30078128)
+texture = ExtResource("1_fjiuv")
+
+[node name="Icon5" type="Sprite2D" parent="." unique_id=318628961]
+position = Vector2(1016, 395.00003)
+scale = Vector2(0.23828176, 0.30078128)
+texture = ExtResource("1_fjiuv")
+
+[node name="Icon6" type="Sprite2D" parent="." unique_id=461203811]
+position = Vector2(851.00006, 634)
+scale = Vector2(0.23828176, 0.30078128)
 texture = ExtResource("1_fjiuv")
 
 [node name="Engineer" parent="." unique_id=212571641 instance=ExtResource("2_lge6d")]
-position = Vector2(802, 499)
+position = Vector2(781, 358)
