@@ -9,6 +9,70 @@
 [ext_resource type="Texture2D" uid="uid://brug7pq6ps600" path="res://assets/characters/engineer_stranded_on_alien_planet_forced_to_rebuil/rotations/north.png" id="5_tixqs"]
 [ext_resource type="Texture2D" uid="uid://itknjsnnerwg" path="res://assets/characters/engineer_stranded_on_alien_planet_forced_to_rebuil/rotations/north-west.png" id="8_irvmx"]
 [ext_resource type="Texture2D" uid="uid://u26oaixs0nyb" path="res://assets/characters/engineer_stranded_on_alien_planet_forced_to_rebuil/rotations/north-east.png" id="9_o3qxp"]
+[ext_resource type="Texture2D" uid="uid://3ta42nmidw30" path="res://assets/characters/engineer_stranded_on_alien_planet_forced_to_rebuil/animations/walking-8-frames/south/frame_000.png" id="10_jw8v6"]
+[ext_resource type="Texture2D" uid="uid://suffo2nmt8bm" path="res://assets/characters/engineer_stranded_on_alien_planet_forced_to_rebuil/animations/walking-8-frames/south/frame_001.png" id="11_ljnhp"]
+[ext_resource type="Texture2D" uid="uid://dykk1dsa0u3bx" path="res://assets/characters/engineer_stranded_on_alien_planet_forced_to_rebuil/animations/walking-8-frames/south/frame_002.png" id="12_76c4k"]
+[ext_resource type="Texture2D" uid="uid://dor8jpwurkal6" path="res://assets/characters/engineer_stranded_on_alien_planet_forced_to_rebuil/animations/walking-8-frames/south/frame_003.png" id="13_7ul8i"]
+[ext_resource type="Texture2D" uid="uid://iq26mhmwfpee" path="res://assets/characters/engineer_stranded_on_alien_planet_forced_to_rebuil/animations/walking-8-frames/south/frame_004.png" id="14_q6jod"]
+[ext_resource type="Texture2D" uid="uid://cvvr0mwklt2l7" path="res://assets/characters/engineer_stranded_on_alien_planet_forced_to_rebuil/animations/walking-8-frames/south/frame_005.png" id="15_m0ykj"]
+[ext_resource type="Texture2D" uid="uid://cys6l5yhvrido" path="res://assets/characters/engineer_stranded_on_alien_planet_forced_to_rebuil/animations/walking-8-frames/south/frame_006.png" id="16_c27uc"]
+[ext_resource type="Texture2D" uid="uid://pohqris0p77" path="res://assets/characters/engineer_stranded_on_alien_planet_forced_to_rebuil/animations/walking-8-frames/south/frame_007.png" id="17_vu1ul"]
+[ext_resource type="Texture2D" uid="uid://rixig5x30xrk" path="res://assets/characters/engineer_stranded_on_alien_planet_forced_to_rebuil/animations/walking-8-frames/south-west/frame_000.png" id="18_ron0c"]
+[ext_resource type="Texture2D" uid="uid://d10a8n3igun7e" path="res://assets/characters/engineer_stranded_on_alien_planet_forced_to_rebuil/animations/walking-8-frames/south-west/frame_001.png" id="19_l6tt1"]
+[ext_resource type="Texture2D" uid="uid://bb2668dafstts" path="res://assets/characters/engineer_stranded_on_alien_planet_forced_to_rebuil/animations/walking-8-frames/south-west/frame_002.png" id="20_q3d0k"]
+[ext_resource type="Texture2D" uid="uid://b7a3j8vik46ct" path="res://assets/characters/engineer_stranded_on_alien_planet_forced_to_rebuil/animations/walking-8-frames/south-west/frame_003.png" id="21_do8vc"]
+[ext_resource type="Texture2D" uid="uid://hrrgg481xn7g" path="res://assets/characters/engineer_stranded_on_alien_planet_forced_to_rebuil/animations/walking-8-frames/south-west/frame_004.png" id="22_8l7r0"]
+[ext_resource type="Texture2D" uid="uid://dmhdm007e1cu6" path="res://assets/characters/engineer_stranded_on_alien_planet_forced_to_rebuil/animations/walking-8-frames/south-west/frame_005.png" id="23_x8g6k"]
+[ext_resource type="Texture2D" uid="uid://b1qnk1v3g1tbf" path="res://assets/characters/engineer_stranded_on_alien_planet_forced_to_rebuil/animations/walking-8-frames/south-west/frame_006.png" id="24_iiq51"]
+[ext_resource type="Texture2D" uid="uid://qks67g4ehpsu" path="res://assets/characters/engineer_stranded_on_alien_planet_forced_to_rebuil/animations/walking-8-frames/south-west/frame_007.png" id="25_icdqr"]
+[ext_resource type="Texture2D" uid="uid://crc7f2la1l5qk" path="res://assets/characters/engineer_stranded_on_alien_planet_forced_to_rebuil/animations/walking-8-frames/south-east/frame_000.png" id="26_xf3ly"]
+[ext_resource type="Texture2D" uid="uid://ctnvvsmcedj2e" path="res://assets/characters/engineer_stranded_on_alien_planet_forced_to_rebuil/animations/walking-8-frames/south-east/frame_001.png" id="27_lkw14"]
+[ext_resource type="Texture2D" uid="uid://s6q7rey5saci" path="res://assets/characters/engineer_stranded_on_alien_planet_forced_to_rebuil/animations/walking-8-frames/south-east/frame_002.png" id="28_gj828"]
+[ext_resource type="Texture2D" uid="uid://dj3hbsiym0b5v" path="res://assets/characters/engineer_stranded_on_alien_planet_forced_to_rebuil/animations/walking-8-frames/south-east/frame_003.png" id="29_cohwm"]
+[ext_resource type="Texture2D" uid="uid://cvp8x3e4n4wvo" path="res://assets/characters/engineer_stranded_on_alien_planet_forced_to_rebuil/animations/walking-8-frames/south-east/frame_004.png" id="30_dhifh"]
+[ext_resource type="Texture2D" uid="uid://dsrxcusm10ayc" path="res://assets/characters/engineer_stranded_on_alien_planet_forced_to_rebuil/animations/walking-8-frames/south-east/frame_005.png" id="31_a3di6"]
+[ext_resource type="Texture2D" uid="uid://ccl6bpp37p35r" path="res://assets/characters/engineer_stranded_on_alien_planet_forced_to_rebuil/animations/walking-8-frames/south-east/frame_006.png" id="32_nvrbo"]
+[ext_resource type="Texture2D" uid="uid://visrsh1g8rl3" path="res://assets/characters/engineer_stranded_on_alien_planet_forced_to_rebuil/animations/walking-8-frames/south-east/frame_007.png" id="33_e2auk"]
+[ext_resource type="Texture2D" uid="uid://cwdelv2jw6qq7" path="res://assets/characters/engineer_stranded_on_alien_planet_forced_to_rebuil/animations/walking-8-frames/west/frame_000.png" id="34_52vpc"]
+[ext_resource type="Texture2D" uid="uid://ybicwu054hyh" path="res://assets/characters/engineer_stranded_on_alien_planet_forced_to_rebuil/animations/walking-8-frames/west/frame_001.png" id="35_7dx0i"]
+[ext_resource type="Texture2D" uid="uid://coqhx37ptebkd" path="res://assets/characters/engineer_stranded_on_alien_planet_forced_to_rebuil/animations/walking-8-frames/west/frame_002.png" id="36_sal00"]
+[ext_resource type="Texture2D" uid="uid://mqmisxeci0b" path="res://assets/characters/engineer_stranded_on_alien_planet_forced_to_rebuil/animations/walking-8-frames/west/frame_003.png" id="37_5ehuh"]
+[ext_resource type="Texture2D" uid="uid://f0q5wihmywh2" path="res://assets/characters/engineer_stranded_on_alien_planet_forced_to_rebuil/animations/walking-8-frames/west/frame_004.png" id="38_rqcu8"]
+[ext_resource type="Texture2D" uid="uid://cewrigw5hccs3" path="res://assets/characters/engineer_stranded_on_alien_planet_forced_to_rebuil/animations/walking-8-frames/west/frame_005.png" id="39_d33yf"]
+[ext_resource type="Texture2D" uid="uid://bku6toims4k54" path="res://assets/characters/engineer_stranded_on_alien_planet_forced_to_rebuil/animations/walking-8-frames/west/frame_006.png" id="40_cvugt"]
+[ext_resource type="Texture2D" uid="uid://dpm444q7q77vi" path="res://assets/characters/engineer_stranded_on_alien_planet_forced_to_rebuil/animations/walking-8-frames/west/frame_007.png" id="41_ktkjx"]
+[ext_resource type="Texture2D" uid="uid://bch563aae6p43" path="res://assets/characters/engineer_stranded_on_alien_planet_forced_to_rebuil/animations/walking-8-frames/east/frame_000.png" id="42_rdx3w"]
+[ext_resource type="Texture2D" uid="uid://cqqc8k8hs2gq" path="res://assets/characters/engineer_stranded_on_alien_planet_forced_to_rebuil/animations/walking-8-frames/east/frame_001.png" id="43_ncjfl"]
+[ext_resource type="Texture2D" uid="uid://bm8wfpguiivsk" path="res://assets/characters/engineer_stranded_on_alien_planet_forced_to_rebuil/animations/walking-8-frames/east/frame_002.png" id="44_ktnfb"]
+[ext_resource type="Texture2D" uid="uid://b0b4ky4ctjct6" path="res://assets/characters/engineer_stranded_on_alien_planet_forced_to_rebuil/animations/walking-8-frames/east/frame_003.png" id="45_2p5kh"]
+[ext_resource type="Texture2D" uid="uid://cfn1aomfpgf5y" path="res://assets/characters/engineer_stranded_on_alien_planet_forced_to_rebuil/animations/walking-8-frames/east/frame_004.png" id="46_funr0"]
+[ext_resource type="Texture2D" uid="uid://l5glll3u5ob4" path="res://assets/characters/engineer_stranded_on_alien_planet_forced_to_rebuil/animations/walking-8-frames/east/frame_005.png" id="47_wk5g6"]
+[ext_resource type="Texture2D" uid="uid://b7jemtiunsc4w" path="res://assets/characters/engineer_stranded_on_alien_planet_forced_to_rebuil/animations/walking-8-frames/east/frame_006.png" id="48_15u5m"]
+[ext_resource type="Texture2D" uid="uid://ciilv2pllslxx" path="res://assets/characters/engineer_stranded_on_alien_planet_forced_to_rebuil/animations/walking-8-frames/east/frame_007.png" id="49_6as5b"]
+[ext_resource type="Texture2D" uid="uid://chh2utn2vg7cv" path="res://assets/characters/engineer_stranded_on_alien_planet_forced_to_rebuil/animations/walking-8-frames/north/frame_000.png" id="50_k8v4h"]
+[ext_resource type="Texture2D" uid="uid://b1qcg0x47nypv" path="res://assets/characters/engineer_stranded_on_alien_planet_forced_to_rebuil/animations/walking-8-frames/north/frame_001.png" id="51_74bt1"]
+[ext_resource type="Texture2D" uid="uid://c0ahe6houyctn" path="res://assets/characters/engineer_stranded_on_alien_planet_forced_to_rebuil/animations/walking-8-frames/north/frame_002.png" id="52_d233c"]
+[ext_resource type="Texture2D" uid="uid://bb70ey30c7qte" path="res://assets/characters/engineer_stranded_on_alien_planet_forced_to_rebuil/animations/walking-8-frames/north/frame_003.png" id="53_pp8m1"]
+[ext_resource type="Texture2D" uid="uid://co8f5v43rdukx" path="res://assets/characters/engineer_stranded_on_alien_planet_forced_to_rebuil/animations/walking-8-frames/north/frame_004.png" id="54_8ei3t"]
+[ext_resource type="Texture2D" uid="uid://cnp238l8v40as" path="res://assets/characters/engineer_stranded_on_alien_planet_forced_to_rebuil/animations/walking-8-frames/north/frame_005.png" id="55_gmu20"]
+[ext_resource type="Texture2D" uid="uid://cxmb5dpfcf2qn" path="res://assets/characters/engineer_stranded_on_alien_planet_forced_to_rebuil/animations/walking-8-frames/north/frame_006.png" id="56_7i1v1"]
+[ext_resource type="Texture2D" uid="uid://cprg25yo51fv0" path="res://assets/characters/engineer_stranded_on_alien_planet_forced_to_rebuil/animations/walking-8-frames/north/frame_007.png" id="57_lhi2i"]
+[ext_resource type="Texture2D" uid="uid://cxlsd4tfrexa5" path="res://assets/characters/engineer_stranded_on_alien_planet_forced_to_rebuil/animations/walking-8-frames/north-west/frame_000.png" id="58_xut3t"]
+[ext_resource type="Texture2D" uid="uid://benbdodurvi66" path="res://assets/characters/engineer_stranded_on_alien_planet_forced_to_rebuil/animations/walking-8-frames/north-west/frame_001.png" id="59_d1ohb"]
+[ext_resource type="Texture2D" uid="uid://c5w40d2tc5pco" path="res://assets/characters/engineer_stranded_on_alien_planet_forced_to_rebuil/animations/walking-8-frames/north-west/frame_002.png" id="60_jglhj"]
+[ext_resource type="Texture2D" uid="uid://ptht8nfkh1f7" path="res://assets/characters/engineer_stranded_on_alien_planet_forced_to_rebuil/animations/walking-8-frames/north-west/frame_003.png" id="61_f5xra"]
+[ext_resource type="Texture2D" uid="uid://5w1cnd84y42" path="res://assets/characters/engineer_stranded_on_alien_planet_forced_to_rebuil/animations/walking-8-frames/north-west/frame_004.png" id="62_cahno"]
+[ext_resource type="Texture2D" uid="uid://28v33sosufap" path="res://assets/characters/engineer_stranded_on_alien_planet_forced_to_rebuil/animations/walking-8-frames/north-west/frame_005.png" id="63_k7l21"]
+[ext_resource type="Texture2D" uid="uid://ci2kifjet6pgd" path="res://assets/characters/engineer_stranded_on_alien_planet_forced_to_rebuil/animations/walking-8-frames/north-west/frame_006.png" id="64_up85l"]
+[ext_resource type="Texture2D" uid="uid://cg6keeg5brnyi" path="res://assets/characters/engineer_stranded_on_alien_planet_forced_to_rebuil/animations/walking-8-frames/north-west/frame_007.png" id="65_fsvoj"]
+[ext_resource type="Texture2D" uid="uid://cf785dgurd1ka" path="res://assets/characters/engineer_stranded_on_alien_planet_forced_to_rebuil/animations/walking-8-frames/north-east/frame_000.png" id="66_fmrha"]
+[ext_resource type="Texture2D" uid="uid://c0y2tvobkam6h" path="res://assets/characters/engineer_stranded_on_alien_planet_forced_to_rebuil/animations/walking-8-frames/north-east/frame_001.png" id="67_pctds"]
+[ext_resource type="Texture2D" uid="uid://cx02fnrfok6ej" path="res://assets/characters/engineer_stranded_on_alien_planet_forced_to_rebuil/animations/walking-8-frames/north-east/frame_002.png" id="68_gmsio"]
+[ext_resource type="Texture2D" uid="uid://d2gemdm8op7s0" path="res://assets/characters/engineer_stranded_on_alien_planet_forced_to_rebuil/animations/walking-8-frames/north-east/frame_003.png" id="69_4rsqf"]
+[ext_resource type="Texture2D" uid="uid://d03xn5cufsjhk" path="res://assets/characters/engineer_stranded_on_alien_planet_forced_to_rebuil/animations/walking-8-frames/north-east/frame_004.png" id="70_d24dm"]
+[ext_resource type="Texture2D" uid="uid://qsbappegymrg" path="res://assets/characters/engineer_stranded_on_alien_planet_forced_to_rebuil/animations/walking-8-frames/north-east/frame_005.png" id="71_gl5hy"]
+[ext_resource type="Texture2D" uid="uid://d1nt5w1n6rp4k" path="res://assets/characters/engineer_stranded_on_alien_planet_forced_to_rebuil/animations/walking-8-frames/north-east/frame_006.png" id="72_c1qp8"]
+[ext_resource type="Texture2D" uid="uid://cgj8a0xk0785p" path="res://assets/characters/engineer_stranded_on_alien_planet_forced_to_rebuil/animations/walking-8-frames/north-east/frame_007.png" id="73_y0bsj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_llawm"]
 radius = 5.0
@@ -56,9 +120,60 @@ blend_point_7/node = SubResource("AnimationNodeAnimation_jwuju")
 blend_point_7/pos = Vector2(1, -1)
 blend_mode = 1
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jw8v6"]
+animation = &"walk_up"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ljnhp"]
+animation = &"walk_down"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_76c4k"]
+animation = &"walk_left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7ul8i"]
+animation = &"walk_right"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_q6jod"]
+animation = &"walk_up_left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_m0ykj"]
+animation = &"walk_up_right"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_c27uc"]
+animation = &"walk_down_left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vu1ul"]
+animation = &"walk_down_right"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_ron0c"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_jw8v6")
+blend_point_0/pos = Vector2(0, 1)
+blend_point_1/node = SubResource("AnimationNodeAnimation_ljnhp")
+blend_point_1/pos = Vector2(0, -1)
+blend_point_2/node = SubResource("AnimationNodeAnimation_76c4k")
+blend_point_2/pos = Vector2(-1, 0)
+blend_point_3/node = SubResource("AnimationNodeAnimation_7ul8i")
+blend_point_3/pos = Vector2(1, 0)
+blend_point_4/node = SubResource("AnimationNodeAnimation_q6jod")
+blend_point_4/pos = Vector2(-1, 1)
+blend_point_5/node = SubResource("AnimationNodeAnimation_m0ykj")
+blend_point_5/pos = Vector2(1, 1)
+blend_point_6/node = SubResource("AnimationNodeAnimation_c27uc")
+blend_point_6/pos = Vector2(-1, -1)
+blend_point_7/node = SubResource("AnimationNodeAnimation_vu1ul")
+blend_point_7/pos = Vector2(1, -1)
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_l6tt1"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_q3d0k"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_do8vc"]
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_8tbyq"]
 states/idle/node = SubResource("AnimationNodeBlendSpace2D_o3qxp")
 states/idle/position = Vector2(435.6, 100)
+states/walk/node = SubResource("AnimationNodeBlendSpace2D_ron0c")
+states/walk/position = Vector2(588.39996, 99.36)
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_l6tt1"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_q3d0k"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_do8vc")]
 
 [sub_resource type="Animation" id="Animation_q6cd8"]
 length = 0.001
@@ -77,6 +192,8 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_kgae7"]
 resource_name = "idle_down"
+length = 0.8
+step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -195,6 +312,150 @@ tracks/0/keys = {
 "values": [ExtResource("9_o3qxp")]
 }
 
+[sub_resource type="Animation" id="Animation_he7du"]
+resource_name = "walk_down"
+length = 0.8
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("10_jw8v6"), ExtResource("11_ljnhp"), ExtResource("12_76c4k"), ExtResource("13_7ul8i"), ExtResource("14_q6jod"), ExtResource("15_m0ykj"), ExtResource("16_c27uc"), ExtResource("17_vu1ul")]
+}
+
+[sub_resource type="Animation" id="Animation_28stc"]
+resource_name = "walk_down_left"
+length = 0.8
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("18_ron0c"), ExtResource("19_l6tt1"), ExtResource("20_q3d0k"), ExtResource("21_do8vc"), ExtResource("22_8l7r0"), ExtResource("23_x8g6k"), ExtResource("24_iiq51"), ExtResource("25_icdqr")]
+}
+
+[sub_resource type="Animation" id="Animation_ylq3x"]
+resource_name = "walk_down_right"
+length = 0.8
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("26_xf3ly"), ExtResource("27_lkw14"), ExtResource("28_gj828"), ExtResource("29_cohwm"), ExtResource("30_dhifh"), ExtResource("31_a3di6"), ExtResource("32_nvrbo"), ExtResource("33_e2auk")]
+}
+
+[sub_resource type="Animation" id="Animation_xxn8x"]
+resource_name = "walk_left"
+length = 0.8
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("34_52vpc"), ExtResource("35_7dx0i"), ExtResource("36_sal00"), ExtResource("37_5ehuh"), ExtResource("38_rqcu8"), ExtResource("39_d33yf"), ExtResource("40_cvugt"), ExtResource("41_ktkjx")]
+}
+
+[sub_resource type="Animation" id="Animation_mc87u"]
+resource_name = "walk_right"
+length = 0.8
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("42_rdx3w"), ExtResource("43_ncjfl"), ExtResource("44_ktnfb"), ExtResource("45_2p5kh"), ExtResource("46_funr0"), ExtResource("47_wk5g6"), ExtResource("48_15u5m"), ExtResource("49_6as5b")]
+}
+
+[sub_resource type="Animation" id="Animation_br3dt"]
+resource_name = "walk_up"
+length = 0.8
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("50_k8v4h"), ExtResource("51_74bt1"), ExtResource("52_d233c"), ExtResource("53_pp8m1"), ExtResource("54_8ei3t"), ExtResource("55_gmu20"), ExtResource("56_7i1v1"), ExtResource("57_lhi2i")]
+}
+
+[sub_resource type="Animation" id="Animation_u41j7"]
+resource_name = "walk_up_left"
+length = 0.8
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("58_xut3t"), ExtResource("59_d1ohb"), ExtResource("60_jglhj"), ExtResource("61_f5xra"), ExtResource("62_cahno"), ExtResource("63_k7l21"), ExtResource("64_up85l"), ExtResource("65_fsvoj")]
+}
+
+[sub_resource type="Animation" id="Animation_x1n42"]
+resource_name = "walk_up_right"
+length = 0.8
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("66_fmrha"), ExtResource("67_pctds"), ExtResource("68_gmsio"), ExtResource("69_4rsqf"), ExtResource("70_d24dm"), ExtResource("71_gl5hy"), ExtResource("72_c1qp8"), ExtResource("73_y0bsj")]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8m0o4"]
 _data = {
 &"RESET": SubResource("Animation_q6cd8"),
@@ -205,7 +466,15 @@ _data = {
 &"idle_right": SubResource("Animation_lja4f"),
 &"idle_up": SubResource("Animation_l4n70"),
 &"idle_up_left": SubResource("Animation_0m3qp"),
-&"idle_up_right": SubResource("Animation_4d6n6")
+&"idle_up_right": SubResource("Animation_4d6n6"),
+&"walk_down": SubResource("Animation_he7du"),
+&"walk_down_left": SubResource("Animation_28stc"),
+&"walk_down_right": SubResource("Animation_ylq3x"),
+&"walk_left": SubResource("Animation_xxn8x"),
+&"walk_right": SubResource("Animation_mc87u"),
+&"walk_up": SubResource("Animation_br3dt"),
+&"walk_up_left": SubResource("Animation_u41j7"),
+&"walk_up_right": SubResource("Animation_x1n42")
 }
 
 [node name="Engineer" type="CharacterBody2D" unique_id=212571641]
@@ -218,10 +487,30 @@ shape = SubResource("CircleShape2D_llawm")
 position = Vector2(-1, -15)
 texture = ExtResource("2_sednv")
 
+[node name="Camera2D" type="Camera2D" parent="." unique_id=2000615926]
+zoom = Vector2(3, 3)
+
+[node name="txtDebug1" type="Label" parent="Camera2D" unique_id=1352188973]
+offset_left = 229.0
+offset_top = -178.0
+offset_right = 312.0
+offset_bottom = -155.0
+theme_override_font_sizes/font_size = 8
+text = "debug text"
+
+[node name="txtDebug2" type="Label" parent="Camera2D" unique_id=143269764]
+offset_left = 230.0
+offset_top = -163.0
+offset_right = 313.0
+offset_bottom = -140.0
+theme_override_font_sizes/font_size = 8
+text = "debug text"
+
 [node name="AnimationTree" type="AnimationTree" parent="." unique_id=1968792348]
 tree_root = SubResource("AnimationNodeStateMachine_8tbyq")
 anim_player = NodePath("../AnimationPlayer")
 parameters/idle/blend_position = Vector2(0.0036199093, -0.40151513)
+parameters/walk/blend_position = Vector2(-0.0018099546, 0.97727275)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1274767151]
 deterministic = true

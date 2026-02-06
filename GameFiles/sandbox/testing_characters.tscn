@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://dc0rj3egnt5k2"]
+
+[ext_resource type="Texture2D" uid="uid://c0ju5ahg7fqui" path="res://icon.svg" id="1_fjiuv"]
+[ext_resource type="PackedScene" uid="uid://dq6m31hg50a8i" path="res://characters/engineer/engineer.tscn" id="2_lge6d"]
+
+[node name="testing_characters" type="Node2D" unique_id=1569135841]
+
+[node name="Icon" type="Sprite2D" parent="." unique_id=1641654519]
+position = Vector2(500, 390)
+texture = ExtResource("1_fjiuv")
+
+[node name="Icon2" type="Sprite2D" parent="." unique_id=1231403914]
+position = Vector2(1072, 633)
+texture = ExtResource("1_fjiuv")
+
+[node name="Engineer" parent="." unique_id=212571641 instance=ExtResource("2_lge6d")]
+position = Vector2(802, 499)
