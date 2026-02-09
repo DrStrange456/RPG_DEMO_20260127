@@ -1,5 +1,7 @@
 extends StaticBody2D
 
+@onready var axe: AudioStreamPlayer2D = $Sounds/Axe
+
 const apple_texture = preload("res://assets/plants/apple.png")
 var health := 3:
 	set(value):
@@ -12,6 +14,8 @@ var health := 3:
 			$CollisionShape2D.shape = shape
 			$CollisionShape2D.position.y = 8
 			#Data.change_item(Enum.Item.WOOD, randi_range(2,4))
+		else:
+			axe.play()
 
 
 func _ready() -> void:

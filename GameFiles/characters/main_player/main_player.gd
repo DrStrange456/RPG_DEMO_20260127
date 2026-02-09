@@ -145,7 +145,7 @@ func move_action(_delta):
 func tool_use_emit():
 	## Add method call to the animation player to call this
 	tool_use.emit(current_tool,position + last_direction * 16 + Vector2(0,4))
-	tool_sounds[current_tool].play()
+	#tool_sounds[current_tool].play()
 
 
 func _weapon_visible(val: bool)-> void:

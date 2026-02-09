@@ -1,60 +1,67 @@
-[gd_scene load_steps=8 format=3 uid="uid://d2530w2lrixv4"]
+[gd_scene format=3 uid="uid://d2530w2lrixv4"]
 
 [ext_resource type="Script" uid="uid://2167g15xjrfb" path="res://scenes/objects/tree.gd" id="1_5qchx"]
 [ext_resource type="Texture2D" uid="uid://h3cn4vjs3sud" path="res://assets/plants/tree.png" id="1_r6wkp"]
-[ext_resource type="PackedScene" path="res://scenes/vfx/flash_sprite_2d.tscn" id="2_7yu6v"]
+[ext_resource type="PackedScene" uid="uid://bwi0u3rp1xep5" path="res://scenes/vfx/flash_sprite_2d.tscn" id="2_7yu6v"]
 [ext_resource type="Texture2D" uid="uid://cnnxpnwxwqi6o" path="res://assets/plants/stump.png" id="2_mbbxw"]
 [ext_resource type="Shader" uid="uid://b6nm5dtkeitqy" path="res://shaders/flash.tres" id="3_mbbxw"]
+[ext_resource type="AudioStream" uid="uid://u3uagkxuak2a" path="res://audio/sfx/Chop_Wood1.ogg" id="6_lg7fn"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5qchx"]
 radius = 8.0
 height = 22.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_lg7fn"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_03oh1"]
 resource_local_to_scene = true
 shader = ExtResource("3_mbbxw")
 shader_parameter/Color = Color(1, 1, 1, 1)
 shader_parameter/Progress = 0.0
 
-[node name="Tree" type="StaticBody2D" groups=["Objects"]]
+[node name="Tree" type="StaticBody2D" unique_id=1187358421 groups=["Objects"]]
 collision_mask = 0
 script = ExtResource("1_5qchx")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=160659836]
 position = Vector2(0, 4)
 shape = SubResource("CapsuleShape2D_5qchx")
 
-[node name="Stump" type="Sprite2D" parent="."]
+[node name="Stump" type="Sprite2D" parent="." unique_id=1843111695]
 visible = false
 position = Vector2(0, 10.5)
 texture = ExtResource("2_mbbxw")
 
-[node name="FlashSprite2D" parent="." instance=ExtResource("2_7yu6v")]
-material = SubResource("ShaderMaterial_lg7fn")
+[node name="FlashSprite2D" parent="." unique_id=1574206161 instance=ExtResource("2_7yu6v")]
+material = SubResource("ShaderMaterial_03oh1")
 texture = ExtResource("1_r6wkp")
 hframes = 2
 
-[node name="AppleSpawnPositions" type="Node2D" parent="."]
+[node name="AppleSpawnPositions" type="Node2D" parent="." unique_id=1266955752]
 
-[node name="Marker2D" type="Marker2D" parent="AppleSpawnPositions"]
+[node name="Marker2D" type="Marker2D" parent="AppleSpawnPositions" unique_id=173374934]
 position = Vector2(7, 5)
 
-[node name="Marker2D2" type="Marker2D" parent="AppleSpawnPositions"]
+[node name="Marker2D2" type="Marker2D" parent="AppleSpawnPositions" unique_id=1211166309]
 position = Vector2(8, -4)
 
-[node name="Marker2D3" type="Marker2D" parent="AppleSpawnPositions"]
+[node name="Marker2D3" type="Marker2D" parent="AppleSpawnPositions" unique_id=870070674]
 position = Vector2(-10, -4)
 
-[node name="Marker2D4" type="Marker2D" parent="AppleSpawnPositions"]
+[node name="Marker2D4" type="Marker2D" parent="AppleSpawnPositions" unique_id=1099063092]
 position = Vector2(-9, 4)
 
-[node name="Marker2D5" type="Marker2D" parent="AppleSpawnPositions"]
+[node name="Marker2D5" type="Marker2D" parent="AppleSpawnPositions" unique_id=2025375664]
 position = Vector2(-4, -1)
 
-[node name="Marker2D6" type="Marker2D" parent="AppleSpawnPositions"]
+[node name="Marker2D6" type="Marker2D" parent="AppleSpawnPositions" unique_id=1161186268]
 position = Vector2(-4, -8)
 
-[node name="Marker2D7" type="Marker2D" parent="AppleSpawnPositions"]
+[node name="Marker2D7" type="Marker2D" parent="AppleSpawnPositions" unique_id=1581748386]
 position = Vector2(4, -11)
 
-[node name="Apples" type="Node2D" parent="."]
+[node name="Apples" type="Node2D" parent="." unique_id=59034384]
+
+[node name="Sounds" type="Node2D" parent="." unique_id=606013931]
+
+[node name="Axe" type="AudioStreamPlayer2D" parent="Sounds" unique_id=523061441]
+stream = ExtResource("6_lg7fn")
+volume_db = -13.109

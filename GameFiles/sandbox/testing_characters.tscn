@@ -1,44 +1,46 @@
 [gd_scene format=3 uid="uid://dc0rj3egnt5k2"]
 
 [ext_resource type="Texture2D" uid="uid://c0ju5ahg7fqui" path="res://icon.svg" id="1_fjiuv"]
-[ext_resource type="PackedScene" uid="uid://dq6m31hg50a8i" path="res://characters/engineer/engineer.tscn" id="2_lge6d"]
+[ext_resource type="PackedScene" uid="uid://c2y4xe0rwk0va" path="res://characters/main_player/main_player.tscn" id="2_lge6d"]
 
 [node name="testing_characters" type="Node2D" unique_id=1569135841]
 
-[node name="Area2D" type="StaticBody2D" parent="." unique_id=319011729]
+[node name="BG" type="Node2D" parent="." unique_id=14052702]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D" unique_id=1055261972]
+[node name="Area2D" type="StaticBody2D" parent="BG" unique_id=319011729]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BG/Area2D" unique_id=1055261972]
 polygon = PackedVector2Array(436, 298, 1160, 295, 1162, 724, 451, 722, 458, 300, 436, 300, 432, 737, 1192, 738, 1186, 273, 449, 268)
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=1507208931]
+[node name="ColorRect" type="ColorRect" parent="BG" unique_id=1507208931]
 offset_left = -59.0
 offset_top = -76.0
 offset_right = 1998.0
 offset_bottom = 1135.0
 color = Color(0.3553136, 0.35531354, 0.35531357, 1)
 
-[node name="ColorRect2" type="ColorRect" parent="." unique_id=1706247680]
+[node name="ColorRect2" type="ColorRect" parent="BG" unique_id=1706247680]
 offset_left = 429.0
 offset_top = 259.0
 offset_right = 1213.0
 offset_bottom = 299.0
 color = Color(0.27058825, 0.7137255, 1, 1)
 
-[node name="ColorRect3" type="ColorRect" parent="." unique_id=864169573]
+[node name="ColorRect3" type="ColorRect" parent="BG" unique_id=864169573]
 offset_left = 433.0
 offset_top = 711.0
 offset_right = 1217.0
 offset_bottom = 751.0
 color = Color(0.27058825, 0.7137255, 1, 1)
 
-[node name="ColorRect4" type="ColorRect" parent="." unique_id=1022689915]
+[node name="ColorRect4" type="ColorRect" parent="BG" unique_id=1022689915]
 offset_left = 1151.0
 offset_top = 267.0
 offset_right = 1223.0
 offset_bottom = 745.0
 color = Color(0.27058825, 0.7137255, 1, 1)
 
-[node name="ColorRect5" type="ColorRect" parent="." unique_id=1279753671]
+[node name="ColorRect5" type="ColorRect" parent="BG" unique_id=1279753671]
 offset_left = 391.0
 offset_top = 265.0
 offset_right = 463.0
@@ -70,5 +72,5 @@ position = Vector2(851.00006, 634)
 scale = Vector2(0.23828176, 0.30078128)
 texture = ExtResource("1_fjiuv")
 
-[node name="Engineer" parent="." unique_id=212571641 instance=ExtResource("2_lge6d")]
-position = Vector2(781, 358)
+[node name="MainPlayer" parent="." unique_id=746150671 instance=ExtResource("2_lge6d")]
+position = Vector2(749, 514)
