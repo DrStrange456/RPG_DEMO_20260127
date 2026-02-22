@@ -24,6 +24,7 @@ config/icon="res://icon.svg"
 
 Data="*res://utilities/Singletons/data.gd"
 Enum="*res://utilities/Singletons/enum.gd"
+GlobalItemDB="*uid://d4k8f16k7igss"
 
 [debug]
 

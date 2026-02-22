@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://1mnp55ytb17r"]
+
+[ext_resource type="Texture2D" uid="uid://c6krbq62uv80c" path="res://Assets/Items/crystal_sword.png" id="1_reniq"]
+[ext_resource type="Script" uid="uid://cyv6boj7muoq0" path="res://Scenes/StandaloneInventory/Inventory/item.gd" id="2_tbkwy"]
+
+[resource]
+script = ExtResource("2_tbkwy")
+name = "Crystal Sword"
+description = "Really Strong Sword"
+icon = ExtResource("1_reniq")
+cost = 750
+item_type = "Weapon"
+max_stack = 1
+attack_power_max = 30
+attack_power_min = 16
+attack_speed = 4.0
+metadata/_custom_type_script = "uid://cyv6boj7muoq0"

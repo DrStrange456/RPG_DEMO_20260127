@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://bw4i28u7ltkc2"]
+
+[ext_resource type="Texture2D" uid="uid://dnqf12regmpld" path="res://Assets/hat.png" id="1_rilla"]
+[ext_resource type="Script" uid="uid://cyv6boj7muoq0" path="res://Scenes/StandaloneInventory/Inventory/item.gd" id="2_e5hwg"]
+
+[resource]
+script = ExtResource("2_e5hwg")
+name = "Basic Hat"
+description = "simple hat"
+icon = ExtResource("1_rilla")
+cost = 50
+item_type = "clothing"
+max_stack = 1
+equip_type = "equipment"
+is_equippable = true
+metadata/_custom_type_script = "uid://cyv6boj7muoq0"

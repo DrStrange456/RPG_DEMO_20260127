@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://cqgfvalcgf3s7"]
 
-[ext_resource type="Script" path="res://scenes/levels/dev_level2/dev_level_2.gd" id="1_rw1km"]
+[ext_resource type="Script" uid="uid://dk2y8u1g0qvu2" path="res://scenes/levels/dev_level2/dev_level_2.gd" id="1_rw1km"]
 [ext_resource type="Texture2D" uid="uid://dpugbd03lo6ua" path="res://assets/TESTING/DevLevel2/!CL_DEMO_32x32_2.png" id="2_4fbjy"]
 [ext_resource type="PackedScene" uid="uid://c2y4xe0rwk0va" path="res://characters/main_player/main_player.tscn" id="2_7sgwg"]
 [ext_resource type="Gradient" uid="uid://qurtk1nc7fic" path="res://utilities/daytime_color_gradient.tres" id="2_mlww0"]

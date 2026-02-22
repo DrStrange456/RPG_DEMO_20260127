@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://b3drpcfikiwff"]
+
+[ext_resource type="Texture2D" uid="uid://drv8cbnn68gn2" path="res://Assets/Items/firesword.png" id="1_6brww"]
+[ext_resource type="Script" uid="uid://cyv6boj7muoq0" path="res://Scenes/StandaloneInventory/Inventory/item.gd" id="2_klc6o"]
+
+[resource]
+script = ExtResource("2_klc6o")
+name = "Fire Sword"
+description = "Strong sword"
+icon = ExtResource("1_6brww")
+cost = 500
+item_type = "Weapon"
+max_stack = 1
+attack_power_max = 16
+attack_power_min = 8
+attack_speed = 1.5
+metadata/_custom_type_script = "uid://cyv6boj7muoq0"
