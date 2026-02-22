@@ -1,6 +1,6 @@
 extends Node2D
 
-var startup_PlayAmbient: bool = true
+var startup_PlayAmbient: bool = false
 
 @onready var player = $Objects/MainPlayer
 @onready var day_transition_material = $Overlay/CanvasLayer/DayTransitionLayer.material
