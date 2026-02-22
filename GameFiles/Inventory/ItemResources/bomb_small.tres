@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://bi42n7a7kt8bu"]
+
+[ext_resource type="Texture2D" uid="uid://bjqrax7kubomr" path="res://Assets/Items/bomb_small.png" id="1_57lpe"]
+[ext_resource type="Script" uid="uid://cyv6boj7muoq0" path="res://Scenes/StandaloneInventory/Inventory/item.gd" id="2_v7xjd"]
+
+[resource]
+script = ExtResource("2_v7xjd")
+name = "bomb_small"
+description = "crafted to explode"
+icon = ExtResource("1_57lpe")
+cost = 3
+item_type = "useable"
+attack_power_max = 20
+attack_power_min = 10
+metadata/_custom_type_script = "uid://cyv6boj7muoq0"

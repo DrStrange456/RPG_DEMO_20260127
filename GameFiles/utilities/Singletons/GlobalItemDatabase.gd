@@ -6,7 +6,7 @@ extends Node
 var items_by_name: Dictionary = {}
 
 func _ready():
-	load_items_from_folder("res://Scenes/StandaloneInventory/Inventory/ItemResources/")
+	load_items_from_folder("res://Inventory/ItemResources/")
 
 func load_items_from_folder(folder_path: String):
 	var dir = DirAccess.open(folder_path)

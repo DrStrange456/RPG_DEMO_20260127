@@ -9963,16 +9963,17 @@ visible = false
 tile_map_data = PackedByteArray("AAAIAA4AAQAHACMAAAAIAA8AAQAHACQAAAAIABAAAQAHACQAAAAJAA4AAQAIACMAAAAJAA8AAQAIACQAAAAJABAAAQAIACQAAAAIAA0AAQAHACIAAAAJAA0AAQAIACIAAAAKAA0AAQAHACIAAAAKAA4AAQAHACMAAAAKAA8AAQAHACQAAAAKABAAAQAHACQAAAALAA0AAQAIACIAAAALAA4AAQAIACMAAAALAA8AAQAIACQAAAALABAAAQAIACQAAAAoAAAAAQAHACMAAAAoAAEAAQAHACQAAAApAAAAAQAIACMAAAApAAEAAQAIACQAAAAoAP//AQAHACIAAAApAP//AQAIACIAAAA=")
 tile_set = SubResource("TileSet_xek0g")
 
-[node name="shop" type="Node2D" parent="." unique_id=2013063962]
+[node name="shop" type="Node2D" parent="base_layers" unique_id=2013063962]
+z_index = 1
 y_sort_enabled = true
 
-[node name="shop_main" type="Sprite2D" parent="shop" unique_id=219684551]
+[node name="shop_main" type="Sprite2D" parent="base_layers/shop" unique_id=219684551]
 position = Vector2(604, -128)
 texture = SubResource("CompressedTexture2D_7i0un")
 region_enabled = true
 region_rect = Rect2(192, 1280, 128, 104)
 
-[node name="shop_open" type="Sprite2D" parent="shop" unique_id=227668321]
+[node name="shop_open" type="Sprite2D" parent="base_layers/shop" unique_id=227668321]
 position = Vector2(608, -116)
 texture = SubResource("CompressedTexture2D_brg1a")
 region_enabled = true
