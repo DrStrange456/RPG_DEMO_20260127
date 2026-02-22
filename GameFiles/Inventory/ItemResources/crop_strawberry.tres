@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Item" format=3 uid="uid://bkwslk2p6u363"]
+
+[ext_resource type="Texture2D" uid="uid://b21g0kc400tr" path="res://assets/icons/strawberry.png" id="1_6dahj"]
+[ext_resource type="Script" uid="uid://dv3wqchqw7hvm" path="res://Inventory/item.gd" id="2_bu0jx"]
+
+[resource]
+script = ExtResource("2_bu0jx")
+name = "StrawberryCrop"
+description = "Foraged from loot drop"
+icon = ExtResource("1_6dahj")
+cost = 3
+item_type = "crop"
+max_stack = 99
+crafting_requirements = {}
+equip_type = ""
+is_equippable = false
+attack_power_max = 0
+attack_power_min = 0
+metadata/_custom_type_script = "uid://cyv6boj7muoq0"
