@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://onhnrvbjq1dn"]
+
+[ext_resource type="Script" uid="uid://v6qpmfqc6rfy" path="res://Scenes/StandaloneInventory/Inventory/slot.gd" id="1_bq42t"]
+[ext_resource type="Texture2D" uid="uid://dvkak368kyqd3" path="res://Assets/UI/Default.png" id="2_jeqw6"]
+[ext_resource type="Texture2D" uid="uid://d1ai0gmsxio86" path="res://Assets/UI/Empty.png" id="3_rfow8"]
+[ext_resource type="Texture2D" uid="uid://bpb4rkokl4q78" path="res://Assets/UI/Selected.png" id="4_wmhr0"]
+[ext_resource type="Texture2D" uid="uid://mfoe8ekdv8xp" path="res://Assets/UI/Slot_Disabled.png" id="5_fcsgn"]
+
+[node name="slot" type="Panel"]
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+mouse_default_cursor_shape = 2
+script = ExtResource("1_bq42t")
+default_texture = ExtResource("2_jeqw6")
+empty_texture = ExtResource("3_rfow8")
+selected_tex = ExtResource("4_wmhr0")
+disabled_tex = ExtResource("5_fcsgn")

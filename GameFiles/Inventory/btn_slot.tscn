@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://dydhm5f01hget"]
+
+[ext_resource type="Script" uid="uid://c5jqm2do5m3q" path="res://Scenes/StandaloneInventory/Inventory/btn_slot.gd" id="1_yoa34"]
+
+[node name="btnSlot" type="Button"]
+offset_right = 8.0
+offset_bottom = 8.0
+mouse_default_cursor_shape = 2
+script = ExtResource("1_yoa34")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
