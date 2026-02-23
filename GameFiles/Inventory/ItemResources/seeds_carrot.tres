@@ -1,7 +1,7 @@
-[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://ge4rx0fbrga0"]
+[gd_resource type="Resource" script_class="Item" format=3 uid="uid://ge4rx0fbrga0"]
 
-[ext_resource type="Texture2D" uid="uid://bvgr1r67jjwk8" path="res://Assets/Items/seeds_carrot.png" id="1_5cc0b"]
-[ext_resource type="Script" uid="uid://cyv6boj7muoq0" path="res://Scenes/StandaloneInventory/Inventory/item.gd" id="2_dr7cq"]
+[ext_resource type="Texture2D" uid="uid://cg4pwmht6unge" path="res://assets/icons/seeds_carrot.png" id="1_5cc0b"]
+[ext_resource type="Script" uid="uid://dy3x21hqptbb3" path="res://Inventory/item.gd" id="2_dr7cq"]
 
 [resource]
 script = ExtResource("2_dr7cq")
@@ -10,10 +10,3 @@ description = "Foraged from loot drop"
 icon = ExtResource("1_5cc0b")
 cost = 3
 item_type = "seed_Pack"
-max_stack = 99
-crafting_requirements = {}
-equip_type = ""
-is_equippable = false
-attack_power_max = 0
-attack_power_min = 0
-metadata/_custom_type_script = "uid://cyv6boj7muoq0"

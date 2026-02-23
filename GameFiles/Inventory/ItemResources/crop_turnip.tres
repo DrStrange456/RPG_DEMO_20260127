@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Item" format=3 uid="uid://b08v6gpietsrg"]
 
 [ext_resource type="Texture2D" uid="uid://bj01v8llr6hne" path="res://assets/icons/turnip.png" id="1_i3tdl"]
-[ext_resource type="Script" uid="uid://dv3wqchqw7hvm" path="res://Inventory/item.gd" id="2_m40dt"]
+[ext_resource type="Script" uid="uid://dy3x21hqptbb3" path="res://Inventory/item.gd" id="2_m40dt"]
 
 [resource]
 script = ExtResource("2_m40dt")
@@ -10,10 +10,3 @@ description = "Foraged from loot drop"
 icon = ExtResource("1_i3tdl")
 cost = 3
 item_type = "crop"
-max_stack = 99
-crafting_requirements = {}
-equip_type = ""
-is_equippable = false
-attack_power_max = 0
-attack_power_min = 0
-metadata/_custom_type_script = "uid://cyv6boj7muoq0"

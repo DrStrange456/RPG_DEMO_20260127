@@ -1,15 +1,7 @@
-[gd_resource type="Resource" script_class="Item" load_steps=2 format=3 uid="uid://c7sfl4ufninem"]
+[gd_resource type="Resource" script_class="Item" format=3 uid="uid://c7sfl4ufninem"]
 
-[ext_resource type="Script" uid="uid://cyv6boj7muoq0" path="res://Scenes/StandaloneInventory/Inventory/item.gd" id="2_eqtyg"]
+[ext_resource type="Script" uid="uid://dy3x21hqptbb3" path="res://Inventory/item.gd" id="2_eqtyg"]
 
 [resource]
 script = ExtResource("2_eqtyg")
-name = ""
-description = ""
-cost = 0
-item_type = "Generic"
 max_stack = 0
-crafting_requirements = {}
-equip_type = ""
-is_equippable = false
-metadata/_custom_type_script = "uid://cyv6boj7muoq0"
