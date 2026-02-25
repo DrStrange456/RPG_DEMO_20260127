@@ -6,7 +6,7 @@ extends Node
 
 # DATA ONLY
 
-var blank_item = preload("res://Scenes/StandaloneInventory/Inventory//ItemResources/blank_item.tres")
+var blank_item = preload("res://Inventory/ItemResources/blank_item.tres")
 
 
 @export var max_slots: int = Global.PLAYER_INV_SLOTS_MAX
