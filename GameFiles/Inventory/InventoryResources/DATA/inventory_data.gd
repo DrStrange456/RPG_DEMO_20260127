@@ -1,9 +1,11 @@
 extends Node
 
-# This is a fully instanced version of the players inventory data
-# Operations on the data are carried out here
-
+# * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+# This is a fully instanced version of the players inventory
+# Operations on the data structure and contents are carried out here
+# * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 # DATA ONLY
+# * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 
 var blank_item = preload("res://Inventory/ItemResources/blank_item.tres")
 
@@ -94,3 +96,24 @@ func update_item_quantity(idx: int, qty: int):
 func nullify_slot(idx: int):
 	if idx >= 0 and idx < slots.size():
 		slots[idx].item = null
+
+
+### Manipulations to DATA Only
+
+func add_slot(enabled, slot_idx: int):
+	# Adds blank slot at initialization time
+	if slots.size() >= max_slots:
+		return
+	var new_slot = InventorySlot.new()
+	new_slot.idx = slot_idx
+	new_slot.enabled = enabled
+	slots.append(new_slot)
+
+func add_slot_item(index: int, nm: String, qty: int):
+	if index >= 0 and index < slots.size():
+		var test = GlobalItemDB.get_item_by_name(nm)
+		set_item_quantity(index, test, qty)
+
+func set_item_quantity(idx: int, item: Item, qty: int):
+	slots[idx].item = item
+	slots[idx].quantity = qty

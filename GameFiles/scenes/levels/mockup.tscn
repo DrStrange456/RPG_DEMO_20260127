@@ -6895,9 +6895,9 @@ position = Vector2(303, 288)
 [node name="Button" type="Button" parent="MainPlayer" unique_id=983459671]
 offset_left = -292.0
 offset_top = -156.0
-offset_right = -231.0
+offset_right = -172.0
 offset_bottom = -136.0
 theme_override_font_sizes/font_size = 8
-text = "Test1"
+text = "Load Inventory"
 
 [connection signal="pressed" from="MainPlayer/Button" to="." method="_on_button_pressed"]

@@ -27,6 +27,7 @@ Data="*res://utilities/Singletons/data.gd"
 Enum="*res://utilities/Singletons/enum.gd"
 GlobalItemDB="*uid://d4k8f16k7igss"
 InventoryData="*uid://cfi5x2ltfodkm"
+InvMW="*uid://c6gagdcosiwli"
 
 [debug]
 

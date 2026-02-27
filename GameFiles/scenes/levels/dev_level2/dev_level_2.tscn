@@ -9840,6 +9840,9 @@ texture_region_size = Vector2i(32, 32)
 tile_size = Vector2i(32, 32)
 sources/1 = SubResource("TileSetAtlasSource_kyoft")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8een6"]
+size = Vector2(109, 27)
+
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7i0un"]
 load_path = "res://.godot/imported/decorations-medieval.png-5b1dba1ab2211299b5c2449139d8bc0d.ctex"
 
@@ -9981,6 +9984,12 @@ tile_set = SubResource("TileSet_xek0g")
 z_index = 1
 y_sort_enabled = true
 script = ExtResource("8_8een6")
+
+[node name="cart_bounds" type="StaticBody2D" parent="base_layers/shop" unique_id=1881373737]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="base_layers/shop/cart_bounds" unique_id=1165398385]
+position = Vector2(606.5, -108.5)
+shape = SubResource("RectangleShape2D_8een6")
 
 [node name="interact_icon" type="Sprite2D" parent="base_layers/shop" unique_id=351081208]
 visible = false
