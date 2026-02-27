@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://b4qu14av085to"]
 
-[ext_resource type="Script" path="res://GameData/NewInventory/new_player_inv_ui.gd" id="1_c47ql"]
-[ext_resource type="Script" path="res://GameData/NewInventory/new_inv_controller.gd" id="1_dsher"]
-[ext_resource type="PackedScene" path="res://GameData/NewInventory/new_slot.tscn" id="1_wmywd"]
+[ext_resource type="Script" uid="uid://b650l2c82yl32" path="res://utilities/Z-prev_ver_scr/old_inventory_files/NewInventory/new_player_inv_ui.gd" id="1_c47ql"]
+[ext_resource type="Script" uid="uid://ddhtj61yo1t82" path="res://utilities/Z-prev_ver_scr/old_inventory_files/NewInventory/new_inv_controller.gd" id="1_dsher"]
+[ext_resource type="PackedScene" uid="uid://c1hkj4vbtyho" path="res://utilities/Z-prev_ver_scr/old_inventory_files/NewInventory/new_slot.tscn" id="1_wmywd"]
 [ext_resource type="PackedScene" path="res://Scenes/Objects/set_hotbar_slot_ui.tscn" id="4_l6vp0"]
-[ext_resource type="PackedScene" path="res://GameData/NewInventory/item_split_ui.tscn" id="5_f2nih"]
+[ext_resource type="PackedScene" uid="uid://vn2iy2il66pc" path="res://utilities/Z-prev_ver_scr/old_inventory_files/NewInventory/item_split_ui.tscn" id="5_f2nih"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_shsqb"]
 bg_color = Color(0.6, 0.6, 0.6, 0)

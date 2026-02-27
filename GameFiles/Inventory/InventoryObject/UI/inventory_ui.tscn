@@ -1,0 +1,102 @@
+[gd_scene format=3 uid="uid://cegcevfs18fdh"]
+
+[ext_resource type="Script" uid="uid://b23a0u1xr5q6w" path="res://Inventory/InventoryObject/inv_controller.gd" id="1_cqcns"]
+[ext_resource type="PackedScene" uid="uid://dlfq4rm6e80dg" path="res://Inventory/slot.tscn" id="2_jn33b"]
+
+[node name="InventoryUI" type="Control" unique_id=448322636]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="InvController" type="Panel" parent="." unique_id=921044862]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_cqcns")
+
+[node name="InvLabel" type="Label" parent="InvController" unique_id=1970032357]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Inventory"
+
+[node name="InventoryContainer" type="GridContainer" parent="InvController" unique_id=29877543]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+columns = 6
+
+[node name="Slot" parent="InvController/InventoryContainer" unique_id=1824220916 instance=ExtResource("2_jn33b")]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="Slot2" parent="InvController/InventoryContainer" unique_id=1372250035 instance=ExtResource("2_jn33b")]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="Slot3" parent="InvController/InventoryContainer" unique_id=971717067 instance=ExtResource("2_jn33b")]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="Slot4" parent="InvController/InventoryContainer" unique_id=1738323434 instance=ExtResource("2_jn33b")]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="Slot5" parent="InvController/InventoryContainer" unique_id=1904552960 instance=ExtResource("2_jn33b")]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="Slot6" parent="InvController/InventoryContainer" unique_id=796445227 instance=ExtResource("2_jn33b")]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="Slot7" parent="InvController/InventoryContainer" unique_id=1380939432 instance=ExtResource("2_jn33b")]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="Slot8" parent="InvController/InventoryContainer" unique_id=603838283 instance=ExtResource("2_jn33b")]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="Slot9" parent="InvController/InventoryContainer" unique_id=751670083 instance=ExtResource("2_jn33b")]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="Slot10" parent="InvController/InventoryContainer" unique_id=1297805594 instance=ExtResource("2_jn33b")]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="Slot11" parent="InvController/InventoryContainer" unique_id=805991512 instance=ExtResource("2_jn33b")]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="Slot12" parent="InvController/InventoryContainer" unique_id=1392924678 instance=ExtResource("2_jn33b")]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="Slot13" parent="InvController/InventoryContainer" unique_id=821601008 instance=ExtResource("2_jn33b")]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="Slot14" parent="InvController/InventoryContainer" unique_id=1188472181 instance=ExtResource("2_jn33b")]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="Slot15" parent="InvController/InventoryContainer" unique_id=1201757664 instance=ExtResource("2_jn33b")]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="Slot16" parent="InvController/InventoryContainer" unique_id=870932978 instance=ExtResource("2_jn33b")]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="Slot17" parent="InvController/InventoryContainer" unique_id=1348270396 instance=ExtResource("2_jn33b")]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="Slot18" parent="InvController/InventoryContainer" unique_id=1724453432 instance=ExtResource("2_jn33b")]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
