@@ -1,0 +1,951 @@
+[gd_scene format=3 uid="uid://fpqeligt7wbs"]
+
+[ext_resource type="Script" uid="uid://641aoei2lk4f" path="res://scenes/levels/general_store/general_store.gd" id="1_x51yu"]
+[ext_resource type="PackedScene" uid="uid://cpsr1xiem504f" path="res://Scenes/Levels/general_store/market_item.tscn" id="2_mylwu"]
+[ext_resource type="PackedScene" uid="uid://onhnrvbjq1dn" path="res://utilities/Z-prev_ver_scr/old_inventory_files/slot.tscn" id="4_tn474"]
+[ext_resource type="Script" uid="uid://dw6nid1ujhmna" path="res://scenes/levels/general_store/slot_v2.gd" id="5_og4d1"]
+[ext_resource type="StyleBox" path="res://scenes/levels/general_store/panel_style_transparent.tres" id="6_8yygn"]
+[ext_resource type="PackedScene" uid="uid://c5ppmdsrkqdmt" path="res://Scenes/Levels/general_store/market_item_sell_ui.tscn" id="6_kndqu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nffoa"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uqg4j"]
+bg_color = Color(0.297598, 0.418264, 0.499197, 1)
+
+[sub_resource type="SystemFont" id="SystemFont_m6m6t"]
+subpixel_positioning = 0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ng5je"]
+
+[node name="General_Store" type="Control" unique_id=702433880]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_x51yu")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=996292617]
+
+[node name="Panel" type="Panel" parent="CanvasLayer" unique_id=894618073]
+visible = false
+offset_left = 38.0
+offset_top = 28.0
+offset_right = 597.0
+offset_bottom = 358.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_nffoa")
+
+[node name="TabContainer" type="TabContainer" parent="CanvasLayer" unique_id=1996441595]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 38.0
+offset_top = 8.0
+offset_right = -42.0
+offset_bottom = -22.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/side_margin = 16
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/font_size = 8
+theme_override_styles/panel = SubResource("StyleBoxFlat_uqg4j")
+current_tab = 1
+
+[node name="BUY" type="TabBar" parent="CanvasLayer/TabContainer" unique_id=1032718853]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+metadata/_tab_index = 0
+
+[node name="Wares_Filters" type="Node2D" parent="CanvasLayer/TabContainer/BUY" unique_id=273459925]
+
+[node name="Button" type="Button" parent="CanvasLayer/TabContainer/BUY/Wares_Filters" unique_id=889363653]
+offset_left = 39.0
+offset_top = 10.0
+offset_right = 60.0
+offset_bottom = 30.0
+tooltip_text = "Seeds"
+
+[node name="Button2" type="Button" parent="CanvasLayer/TabContainer/BUY/Wares_Filters" unique_id=595137846]
+offset_left = 63.0
+offset_top = 10.0
+offset_right = 84.0
+offset_bottom = 30.0
+tooltip_text = "Fruits and Veggies"
+
+[node name="Button3" type="Button" parent="CanvasLayer/TabContainer/BUY/Wares_Filters" unique_id=1576729704]
+offset_left = 87.0
+offset_top = 10.0
+offset_right = 108.0
+offset_bottom = 30.0
+tooltip_text = "Weapons"
+
+[node name="Button4" type="Button" parent="CanvasLayer/TabContainer/BUY/Wares_Filters" unique_id=1457108265]
+offset_left = 111.0
+offset_top = 10.0
+offset_right = 132.0
+offset_bottom = 30.0
+tooltip_text = "Shirts"
+
+[node name="Button5" type="Button" parent="CanvasLayer/TabContainer/BUY/Wares_Filters" unique_id=237440168]
+offset_left = 135.0
+offset_top = 10.0
+offset_right = 156.0
+offset_bottom = 30.0
+tooltip_text = "pants"
+
+[node name="Button6" type="Button" parent="CanvasLayer/TabContainer/BUY/Wares_Filters" unique_id=943225174]
+offset_left = 159.0
+offset_top = 10.0
+offset_right = 180.0
+offset_bottom = 30.0
+tooltip_text = "Shoes"
+
+[node name="Button7" type="Button" parent="CanvasLayer/TabContainer/BUY/Wares_Filters" unique_id=93149662]
+offset_left = 183.0
+offset_top = 10.0
+offset_right = 204.0
+offset_bottom = 30.0
+tooltip_text = "Accessories"
+
+[node name="Button8" type="Button" parent="CanvasLayer/TabContainer/BUY/Wares_Filters" unique_id=1903480922]
+offset_left = 15.0
+offset_top = 10.0
+offset_right = 36.0
+offset_bottom = 30.0
+tooltip_text = "ALL"
+
+[node name="Merchant_Section" type="Node2D" parent="CanvasLayer/TabContainer/BUY" unique_id=990027114]
+position = Vector2(6, -5)
+
+[node name="Panel" type="Panel" parent="CanvasLayer/TabContainer/BUY/Merchant_Section" unique_id=99135340]
+offset_left = 6.0
+offset_top = 39.0
+offset_right = 204.0
+offset_bottom = 334.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/TabContainer/BUY/Merchant_Section/Panel" unique_id=1367458378]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -9.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/TabContainer/BUY/Merchant_Section/Panel/ScrollContainer" unique_id=405214699]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="market_item" parent="CanvasLayer/TabContainer/BUY/Merchant_Section/Panel/ScrollContainer/VBoxContainer" unique_id=1401704522 instance=ExtResource("2_mylwu")]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+nm = "Turnip Seeds"
+qty = 10
+typ = "seeds_turnip"
+
+[node name="market_item2" parent="CanvasLayer/TabContainer/BUY/Merchant_Section/Panel/ScrollContainer/VBoxContainer" unique_id=709351247 instance=ExtResource("2_mylwu")]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+nm = "Carrot Seeds"
+qty = 10
+typ = "seeds_carrot"
+
+[node name="market_item3" parent="CanvasLayer/TabContainer/BUY/Merchant_Section/Panel/ScrollContainer/VBoxContainer" unique_id=1033453473 instance=ExtResource("2_mylwu")]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+nm = "Strawberry Seeds"
+qty = 10
+typ = "seeds_strawberry"
+
+[node name="market_item4" parent="CanvasLayer/TabContainer/BUY/Merchant_Section/Panel/ScrollContainer/VBoxContainer" unique_id=903270534 instance=ExtResource("2_mylwu")]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+nm = "Tomato Seeds"
+qty = 10
+typ = "seeds_tomato"
+
+[node name="market_item5" parent="CanvasLayer/TabContainer/BUY/Merchant_Section/Panel/ScrollContainer/VBoxContainer" unique_id=343565356 instance=ExtResource("2_mylwu")]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+nm = "Turnip Seeds"
+qty = 10
+typ = "seeds_turnip"
+
+[node name="market_item6" parent="CanvasLayer/TabContainer/BUY/Merchant_Section/Panel/ScrollContainer/VBoxContainer" unique_id=1555735909 instance=ExtResource("2_mylwu")]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+nm = "Carrot Seeds"
+qty = 10
+typ = "seeds_carrot"
+
+[node name="market_item7" parent="CanvasLayer/TabContainer/BUY/Merchant_Section/Panel/ScrollContainer/VBoxContainer" unique_id=274464432 instance=ExtResource("2_mylwu")]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+nm = "Strawberry Seeds"
+qty = 10
+typ = "seeds_strawberry"
+
+[node name="market_item8" parent="CanvasLayer/TabContainer/BUY/Merchant_Section/Panel/ScrollContainer/VBoxContainer" unique_id=866868710 instance=ExtResource("2_mylwu")]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+nm = "Tomato Seeds"
+qty = 10
+typ = "seeds_tomato"
+
+[node name="MyInventory_Section" type="Node2D" parent="CanvasLayer/TabContainer/BUY" unique_id=931638957]
+position = Vector2(0, -31)
+
+[node name="Label" type="Label" parent="CanvasLayer/TabContainer/BUY/MyInventory_Section" unique_id=1116273835]
+visible = false
+offset_left = 92.0
+offset_top = 191.0
+offset_right = 149.0
+offset_bottom = 214.0
+theme_override_font_sizes/font_size = 12
+text = "Inventory"
+
+[node name="Panel" type="Panel" parent="CanvasLayer/TabContainer/BUY/MyInventory_Section" unique_id=1851274289]
+offset_left = 225.0
+offset_top = 94.0
+offset_right = 549.0
+offset_bottom = 356.0
+
+[node name="InventoryContainer" type="GridContainer" parent="CanvasLayer/TabContainer/BUY/MyInventory_Section" unique_id=1640158259]
+offset_left = 236.0
+offset_top = 171.0
+offset_right = 541.0
+offset_bottom = 299.0
+theme_override_constants/h_separation = 13
+theme_override_constants/v_separation = 4
+columns = 6
+
+[node name="slot" parent="CanvasLayer/TabContainer/BUY/MyInventory_Section/InventoryContainer" unique_id=2102517321 instance=ExtResource("4_tn474")]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+script = ExtResource("5_og4d1")
+slotNumber = 0
+
+[node name="slot2" parent="CanvasLayer/TabContainer/BUY/MyInventory_Section/InventoryContainer" unique_id=399310386 instance=ExtResource("4_tn474")]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+script = ExtResource("5_og4d1")
+slotNumber = 0
+
+[node name="slot3" parent="CanvasLayer/TabContainer/BUY/MyInventory_Section/InventoryContainer" unique_id=1459729909 instance=ExtResource("4_tn474")]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+script = ExtResource("5_og4d1")
+slotNumber = 0
+
+[node name="slot4" parent="CanvasLayer/TabContainer/BUY/MyInventory_Section/InventoryContainer" unique_id=1476350644 instance=ExtResource("4_tn474")]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+script = ExtResource("5_og4d1")
+slotNumber = 0
+
+[node name="slot5" parent="CanvasLayer/TabContainer/BUY/MyInventory_Section/InventoryContainer" unique_id=1658024081 instance=ExtResource("4_tn474")]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+script = ExtResource("5_og4d1")
+slotNumber = 0
+
+[node name="slot6" parent="CanvasLayer/TabContainer/BUY/MyInventory_Section/InventoryContainer" unique_id=300979437 instance=ExtResource("4_tn474")]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+script = ExtResource("5_og4d1")
+slotNumber = 0
+
+[node name="slot7" parent="CanvasLayer/TabContainer/BUY/MyInventory_Section/InventoryContainer" unique_id=774080949 instance=ExtResource("4_tn474")]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+script = ExtResource("5_og4d1")
+slotNumber = 0
+
+[node name="slot8" parent="CanvasLayer/TabContainer/BUY/MyInventory_Section/InventoryContainer" unique_id=1718525746 instance=ExtResource("4_tn474")]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+script = ExtResource("5_og4d1")
+slotNumber = 0
+
+[node name="slot9" parent="CanvasLayer/TabContainer/BUY/MyInventory_Section/InventoryContainer" unique_id=732543508 instance=ExtResource("4_tn474")]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+script = ExtResource("5_og4d1")
+slotNumber = 0
+
+[node name="slot10" parent="CanvasLayer/TabContainer/BUY/MyInventory_Section/InventoryContainer" unique_id=681202817 instance=ExtResource("4_tn474")]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+script = ExtResource("5_og4d1")
+slotNumber = 0
+
+[node name="slot11" parent="CanvasLayer/TabContainer/BUY/MyInventory_Section/InventoryContainer" unique_id=577376127 instance=ExtResource("4_tn474")]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+script = ExtResource("5_og4d1")
+slotNumber = 0
+
+[node name="slot12" parent="CanvasLayer/TabContainer/BUY/MyInventory_Section/InventoryContainer" unique_id=1712654064 instance=ExtResource("4_tn474")]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+script = ExtResource("5_og4d1")
+slotNumber = 0
+
+[node name="slot13" parent="CanvasLayer/TabContainer/BUY/MyInventory_Section/InventoryContainer" unique_id=112775248 instance=ExtResource("4_tn474")]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+script = ExtResource("5_og4d1")
+slotNumber = 0
+
+[node name="slot14" parent="CanvasLayer/TabContainer/BUY/MyInventory_Section/InventoryContainer" unique_id=1464580590 instance=ExtResource("4_tn474")]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+script = ExtResource("5_og4d1")
+slotNumber = 0
+
+[node name="slot15" parent="CanvasLayer/TabContainer/BUY/MyInventory_Section/InventoryContainer" unique_id=2038703711 instance=ExtResource("4_tn474")]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+script = ExtResource("5_og4d1")
+slotNumber = 0
+
+[node name="slot16" parent="CanvasLayer/TabContainer/BUY/MyInventory_Section/InventoryContainer" unique_id=1665247867 instance=ExtResource("4_tn474")]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+script = ExtResource("5_og4d1")
+slotNumber = 0
+
+[node name="slot17" parent="CanvasLayer/TabContainer/BUY/MyInventory_Section/InventoryContainer" unique_id=1471417858 instance=ExtResource("4_tn474")]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+script = ExtResource("5_og4d1")
+slotNumber = 0
+
+[node name="slot18" parent="CanvasLayer/TabContainer/BUY/MyInventory_Section/InventoryContainer" unique_id=1212940631 instance=ExtResource("4_tn474")]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+script = ExtResource("5_og4d1")
+slotNumber = 0
+
+[node name="market_item_sell_ui" parent="CanvasLayer/TabContainer/BUY" unique_id=1244790351 instance=ExtResource("6_kndqu")]
+visible = false
+layout_mode = 1
+offset_top = -31.0
+offset_bottom = -31.0
+
+[node name="MoneyCounterUI" type="Panel" parent="CanvasLayer/TabContainer/BUY" unique_id=818828138]
+layout_mode = 0
+offset_left = 454.0
+offset_top = 26.0
+offset_right = 539.0
+offset_bottom = 50.0
+
+[node name="txtMONEY" type="RichTextLabel" parent="CanvasLayer/TabContainer/BUY/MoneyCounterUI" unique_id=603461292]
+layout_direction = 2
+layout_mode = 0
+offset_left = 8.0
+offset_top = 4.0
+offset_right = 74.0
+offset_bottom = 20.0
+theme_override_constants/outline_size = -2
+theme_override_constants/table_h_separation = 78
+theme_override_fonts/normal_font = SubResource("SystemFont_m6m6t")
+theme_override_font_sizes/normal_font_size = 11
+text = "0"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="Label" type="Label" parent="CanvasLayer/TabContainer/BUY/MoneyCounterUI" unique_id=2310052]
+layout_mode = 0
+offset_left = -55.0
+offset_top = 3.0
+offset_right = -7.0
+offset_bottom = 26.0
+theme_override_font_sizes/font_size = 12
+text = "Money:"
+
+[node name="btnEXIT" type="Button" parent="CanvasLayer/TabContainer/BUY" unique_id=1731665176]
+visible = false
+layout_mode = 0
+offset_left = 528.0
+offset_top = -31.0
+offset_right = 547.0
+offset_bottom = -8.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_ng5je")
+text = "X"
+
+[node name="SELL" type="TabBar" parent="CanvasLayer/TabContainer" unique_id=687172214]
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="MyInventory_Section" type="Node2D" parent="CanvasLayer/TabContainer/SELL" unique_id=1294373613]
+position = Vector2(222, -118)
+
+[node name="Panel" type="Panel" parent="CanvasLayer/TabContainer/SELL/MyInventory_Section" unique_id=2017759917]
+offset_left = -192.0
+offset_top = 175.0
+offset_right = 147.0
+offset_bottom = 369.0
+
+[node name="InventoryContainer" type="GridContainer" parent="CanvasLayer/TabContainer/SELL/MyInventory_Section" unique_id=147891187]
+offset_left = -181.0
+offset_top = 199.0
+offset_right = 124.0
+offset_bottom = 345.0
+theme_override_constants/h_separation = 13
+theme_override_constants/v_separation = 13
+columns = 6
+
+[node name="slot" parent="CanvasLayer/TabContainer/SELL/MyInventory_Section/InventoryContainer" unique_id=210245977 instance=ExtResource("4_tn474")]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_stretch_ratio = 2.0
+script = ExtResource("5_og4d1")
+slotNumber = 0
+
+[node name="slot2" parent="CanvasLayer/TabContainer/SELL/MyInventory_Section/InventoryContainer" unique_id=283455983 instance=ExtResource("4_tn474")]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+script = ExtResource("5_og4d1")
+slotNumber = 0
+
+[node name="slot3" parent="CanvasLayer/TabContainer/SELL/MyInventory_Section/InventoryContainer" unique_id=2064012658 instance=ExtResource("4_tn474")]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+script = ExtResource("5_og4d1")
+slotNumber = 0
+
+[node name="slot4" parent="CanvasLayer/TabContainer/SELL/MyInventory_Section/InventoryContainer" unique_id=661381362 instance=ExtResource("4_tn474")]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+script = ExtResource("5_og4d1")
+slotNumber = 0
+
+[node name="slot5" parent="CanvasLayer/TabContainer/SELL/MyInventory_Section/InventoryContainer" unique_id=413888592 instance=ExtResource("4_tn474")]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+script = ExtResource("5_og4d1")
+slotNumber = 0
+
+[node name="slot6" parent="CanvasLayer/TabContainer/SELL/MyInventory_Section/InventoryContainer" unique_id=47716938 instance=ExtResource("4_tn474")]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+script = ExtResource("5_og4d1")
+slotNumber = 0
+
+[node name="slot7" parent="CanvasLayer/TabContainer/SELL/MyInventory_Section/InventoryContainer" unique_id=1852783323 instance=ExtResource("4_tn474")]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+script = ExtResource("5_og4d1")
+slotNumber = 0
+
+[node name="slot8" parent="CanvasLayer/TabContainer/SELL/MyInventory_Section/InventoryContainer" unique_id=1135371262 instance=ExtResource("4_tn474")]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+script = ExtResource("5_og4d1")
+slotNumber = 0
+
+[node name="slot9" parent="CanvasLayer/TabContainer/SELL/MyInventory_Section/InventoryContainer" unique_id=14355062 instance=ExtResource("4_tn474")]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+script = ExtResource("5_og4d1")
+slotNumber = 0
+
+[node name="slot10" parent="CanvasLayer/TabContainer/SELL/MyInventory_Section/InventoryContainer" unique_id=1092665268 instance=ExtResource("4_tn474")]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+script = ExtResource("5_og4d1")
+slotNumber = 0
+
+[node name="slot11" parent="CanvasLayer/TabContainer/SELL/MyInventory_Section/InventoryContainer" unique_id=1808377096 instance=ExtResource("4_tn474")]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+script = ExtResource("5_og4d1")
+slotNumber = 0
+
+[node name="slot12" parent="CanvasLayer/TabContainer/SELL/MyInventory_Section/InventoryContainer" unique_id=45286449 instance=ExtResource("4_tn474")]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+script = ExtResource("5_og4d1")
+slotNumber = 0
+
+[node name="slot13" parent="CanvasLayer/TabContainer/SELL/MyInventory_Section/InventoryContainer" unique_id=288189599 instance=ExtResource("4_tn474")]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+script = ExtResource("5_og4d1")
+slotNumber = 0
+
+[node name="slot14" parent="CanvasLayer/TabContainer/SELL/MyInventory_Section/InventoryContainer" unique_id=187613219 instance=ExtResource("4_tn474")]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+script = ExtResource("5_og4d1")
+slotNumber = 0
+
+[node name="slot15" parent="CanvasLayer/TabContainer/SELL/MyInventory_Section/InventoryContainer" unique_id=870994941 instance=ExtResource("4_tn474")]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+script = ExtResource("5_og4d1")
+slotNumber = 0
+
+[node name="slot16" parent="CanvasLayer/TabContainer/SELL/MyInventory_Section/InventoryContainer" unique_id=593902926 instance=ExtResource("4_tn474")]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+script = ExtResource("5_og4d1")
+slotNumber = 0
+
+[node name="slot17" parent="CanvasLayer/TabContainer/SELL/MyInventory_Section/InventoryContainer" unique_id=1731609574 instance=ExtResource("4_tn474")]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+script = ExtResource("5_og4d1")
+slotNumber = 0
+
+[node name="slot18" parent="CanvasLayer/TabContainer/SELL/MyInventory_Section/InventoryContainer" unique_id=1354724223 instance=ExtResource("4_tn474")]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+script = ExtResource("5_og4d1")
+slotNumber = 0
+
+[node name="SellQuantityContainer" type="GridContainer" parent="CanvasLayer/TabContainer/SELL/MyInventory_Section" unique_id=2056863190]
+offset_left = -181.0
+offset_top = 199.0
+offset_right = 124.0
+offset_bottom = 345.0
+mouse_filter = 2
+theme_override_constants/h_separation = 13
+theme_override_constants/v_separation = 13
+columns = 6
+
+[node name="Control" type="Panel" parent="CanvasLayer/TabContainer/SELL/MyInventory_Section/SellQuantityContainer" unique_id=2133159095]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("6_8yygn")
+
+[node name="sell_qty" type="Label" parent="CanvasLayer/TabContainer/SELL/MyInventory_Section/SellQuantityContainer/Control" unique_id=603961418 groups=["sell_value"]]
+self_modulate = Color(1, 1, 1, 0.384314)
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_font_sizes/font_size = 28
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control2" type="Panel" parent="CanvasLayer/TabContainer/SELL/MyInventory_Section/SellQuantityContainer" unique_id=743724134]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("6_8yygn")
+
+[node name="sell_qty2" type="Label" parent="CanvasLayer/TabContainer/SELL/MyInventory_Section/SellQuantityContainer/Control2" unique_id=177839854 groups=["sell_value"]]
+self_modulate = Color(1, 1, 1, 0.384314)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_font_sizes/font_size = 28
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control3" type="Panel" parent="CanvasLayer/TabContainer/SELL/MyInventory_Section/SellQuantityContainer" unique_id=1896081038]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("6_8yygn")
+
+[node name="sell_qty3" type="Label" parent="CanvasLayer/TabContainer/SELL/MyInventory_Section/SellQuantityContainer/Control3" unique_id=408970501 groups=["sell_value"]]
+self_modulate = Color(1, 1, 1, 0.384314)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_font_sizes/font_size = 28
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control4" type="Panel" parent="CanvasLayer/TabContainer/SELL/MyInventory_Section/SellQuantityContainer" unique_id=1951140599]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("6_8yygn")
+
+[node name="sell_qty4" type="Label" parent="CanvasLayer/TabContainer/SELL/MyInventory_Section/SellQuantityContainer/Control4" unique_id=1509102639 groups=["sell_value"]]
+self_modulate = Color(1, 1, 1, 0.384314)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_font_sizes/font_size = 28
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control5" type="Panel" parent="CanvasLayer/TabContainer/SELL/MyInventory_Section/SellQuantityContainer" unique_id=602857075]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("6_8yygn")
+
+[node name="sell_qty5" type="Label" parent="CanvasLayer/TabContainer/SELL/MyInventory_Section/SellQuantityContainer/Control5" unique_id=1700139041 groups=["sell_value"]]
+self_modulate = Color(1, 1, 1, 0.384314)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_font_sizes/font_size = 28
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control6" type="Panel" parent="CanvasLayer/TabContainer/SELL/MyInventory_Section/SellQuantityContainer" unique_id=1095078026]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("6_8yygn")
+
+[node name="sell_qty6" type="Label" parent="CanvasLayer/TabContainer/SELL/MyInventory_Section/SellQuantityContainer/Control6" unique_id=510881692 groups=["sell_value"]]
+self_modulate = Color(1, 1, 1, 0.384314)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_font_sizes/font_size = 28
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control7" type="Panel" parent="CanvasLayer/TabContainer/SELL/MyInventory_Section/SellQuantityContainer" unique_id=1890920069]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("6_8yygn")
+
+[node name="sell_qty7" type="Label" parent="CanvasLayer/TabContainer/SELL/MyInventory_Section/SellQuantityContainer/Control7" unique_id=1341753238 groups=["sell_value"]]
+self_modulate = Color(1, 1, 1, 0.384314)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_font_sizes/font_size = 28
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control8" type="Panel" parent="CanvasLayer/TabContainer/SELL/MyInventory_Section/SellQuantityContainer" unique_id=866546458]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("6_8yygn")
+
+[node name="sell_qty8" type="Label" parent="CanvasLayer/TabContainer/SELL/MyInventory_Section/SellQuantityContainer/Control8" unique_id=1772458068 groups=["sell_value"]]
+self_modulate = Color(1, 1, 1, 0.384314)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_font_sizes/font_size = 28
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control9" type="Panel" parent="CanvasLayer/TabContainer/SELL/MyInventory_Section/SellQuantityContainer" unique_id=356264070]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("6_8yygn")
+
+[node name="sell_qty9" type="Label" parent="CanvasLayer/TabContainer/SELL/MyInventory_Section/SellQuantityContainer/Control9" unique_id=505252522 groups=["sell_value"]]
+self_modulate = Color(1, 1, 1, 0.384314)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_font_sizes/font_size = 28
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control10" type="Panel" parent="CanvasLayer/TabContainer/SELL/MyInventory_Section/SellQuantityContainer" unique_id=679559170]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("6_8yygn")
+
+[node name="sell_qty10" type="Label" parent="CanvasLayer/TabContainer/SELL/MyInventory_Section/SellQuantityContainer/Control10" unique_id=1729010421 groups=["sell_value"]]
+self_modulate = Color(1, 1, 1, 0.384314)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_font_sizes/font_size = 28
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control11" type="Panel" parent="CanvasLayer/TabContainer/SELL/MyInventory_Section/SellQuantityContainer" unique_id=1348335576]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("6_8yygn")
+
+[node name="sell_qty11" type="Label" parent="CanvasLayer/TabContainer/SELL/MyInventory_Section/SellQuantityContainer/Control11" unique_id=181555784 groups=["sell_value"]]
+self_modulate = Color(1, 1, 1, 0.384314)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_font_sizes/font_size = 28
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control12" type="Panel" parent="CanvasLayer/TabContainer/SELL/MyInventory_Section/SellQuantityContainer" unique_id=955356997]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("6_8yygn")
+
+[node name="sell_qty12" type="Label" parent="CanvasLayer/TabContainer/SELL/MyInventory_Section/SellQuantityContainer/Control12" unique_id=1210822493 groups=["sell_value"]]
+self_modulate = Color(1, 1, 1, 0.384314)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_font_sizes/font_size = 28
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control13" type="Panel" parent="CanvasLayer/TabContainer/SELL/MyInventory_Section/SellQuantityContainer" unique_id=1621970390]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("6_8yygn")
+
+[node name="sell_qty13" type="Label" parent="CanvasLayer/TabContainer/SELL/MyInventory_Section/SellQuantityContainer/Control13" unique_id=199790329 groups=["sell_value"]]
+self_modulate = Color(1, 1, 1, 0.384314)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_font_sizes/font_size = 28
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control14" type="Panel" parent="CanvasLayer/TabContainer/SELL/MyInventory_Section/SellQuantityContainer" unique_id=359772974]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("6_8yygn")
+
+[node name="sell_qty14" type="Label" parent="CanvasLayer/TabContainer/SELL/MyInventory_Section/SellQuantityContainer/Control14" unique_id=889634666 groups=["sell_value"]]
+self_modulate = Color(1, 1, 1, 0.384314)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_font_sizes/font_size = 28
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control15" type="Panel" parent="CanvasLayer/TabContainer/SELL/MyInventory_Section/SellQuantityContainer" unique_id=1395754344]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("6_8yygn")
+
+[node name="sell_qty15" type="Label" parent="CanvasLayer/TabContainer/SELL/MyInventory_Section/SellQuantityContainer/Control15" unique_id=1983378106 groups=["sell_value"]]
+self_modulate = Color(1, 1, 1, 0.384314)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_font_sizes/font_size = 28
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control16" type="Panel" parent="CanvasLayer/TabContainer/SELL/MyInventory_Section/SellQuantityContainer" unique_id=1460465452]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("6_8yygn")
+
+[node name="sell_qty16" type="Label" parent="CanvasLayer/TabContainer/SELL/MyInventory_Section/SellQuantityContainer/Control16" unique_id=951799623 groups=["sell_value"]]
+self_modulate = Color(1, 1, 1, 0.384314)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_font_sizes/font_size = 28
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control17" type="Panel" parent="CanvasLayer/TabContainer/SELL/MyInventory_Section/SellQuantityContainer" unique_id=1666607651]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("6_8yygn")
+
+[node name="sell_qty17" type="Label" parent="CanvasLayer/TabContainer/SELL/MyInventory_Section/SellQuantityContainer/Control17" unique_id=1516548546 groups=["sell_value"]]
+self_modulate = Color(1, 1, 1, 0.384314)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_font_sizes/font_size = 28
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control18" type="Panel" parent="CanvasLayer/TabContainer/SELL/MyInventory_Section/SellQuantityContainer" unique_id=2092615159]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("6_8yygn")
+
+[node name="sell_qty18" type="Label" parent="CanvasLayer/TabContainer/SELL/MyInventory_Section/SellQuantityContainer/Control18" unique_id=548388572 groups=["sell_value"]]
+self_modulate = Color(1, 1, 1, 0.384314)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_font_sizes/font_size = 28
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MoneyCounterUI" type="Panel" parent="CanvasLayer/TabContainer/SELL" unique_id=1929443857]
+layout_mode = 0
+offset_left = 443.0
+offset_top = 40.0
+offset_right = 528.0
+offset_bottom = 64.0
+
+[node name="Label" type="Label" parent="CanvasLayer/TabContainer/SELL/MoneyCounterUI" unique_id=1391861060]
+layout_mode = 0
+offset_left = 8.0
+offset_top = -17.0
+offset_right = 71.0
+offset_bottom = 6.0
+theme_override_font_sizes/font_size = 12
+text = "Credits:"
+
+[node name="txtMONEY" type="RichTextLabel" parent="CanvasLayer/TabContainer/SELL/MoneyCounterUI" unique_id=1144300609]
+layout_direction = 2
+layout_mode = 0
+offset_left = 8.0
+offset_top = 4.0
+offset_right = 74.0
+offset_bottom = 20.0
+theme_override_constants/outline_size = -2
+theme_override_constants/table_h_separation = 78
+theme_override_fonts/normal_font = SubResource("SystemFont_m6m6t")
+theme_override_font_sizes/normal_font_size = 11
+text = "0"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="txtSellValue" type="Panel" parent="CanvasLayer/TabContainer/SELL" unique_id=1683267980]
+layout_mode = 0
+offset_left = 109.0
+offset_top = 286.0
+offset_right = 281.0
+offset_bottom = 310.0
+
+[node name="txtSellValueAmount" type="RichTextLabel" parent="CanvasLayer/TabContainer/SELL/txtSellValue" unique_id=452916657]
+layout_direction = 2
+layout_mode = 0
+offset_left = 13.0
+offset_top = 4.0
+offset_right = 79.0
+offset_bottom = 20.0
+theme_override_constants/outline_size = -2
+theme_override_constants/table_h_separation = 78
+theme_override_fonts/normal_font = SubResource("SystemFont_m6m6t")
+theme_override_font_sizes/normal_font_size = 11
+text = "Sell Value:"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="txtSellAmount" type="RichTextLabel" parent="CanvasLayer/TabContainer/SELL/txtSellValue" unique_id=1624449215]
+layout_direction = 2
+layout_mode = 0
+offset_left = 91.0
+offset_top = 4.0
+offset_right = 157.0
+offset_bottom = 20.0
+theme_override_constants/outline_size = -2
+theme_override_constants/table_h_separation = 78
+theme_override_fonts/normal_font = SubResource("SystemFont_m6m6t")
+theme_override_font_sizes/normal_font_size = 11
+text = "0"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="btnSELL_ALL_ITEMS_IN_LIST" type="Button" parent="CanvasLayer/TabContainer/SELL" unique_id=437027134]
+layout_mode = 0
+offset_left = 402.0
+offset_top = 267.0
+offset_right = 545.0
+offset_bottom = 326.0
+text = "Accept"
+
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=311112901]
+offset_left = 429.0
+offset_top = 361.0
+offset_right = 623.0
+offset_bottom = 375.0
+theme_override_font_sizes/font_size = 14
+text = "Exit (Escape Key)"
+
+[node name="market_item_sell_ui" parent="CanvasLayer" unique_id=1700192504 instance=ExtResource("6_kndqu")]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1272837941]
+visible = false
+custom_minimum_size = Vector2(1200, 1200)
+layout_mode = 0
+offset_left = -281.0
+offset_top = -284.0
+offset_right = 919.0
+offset_bottom = 916.0
+color = Color(0.4, 0.4, 0.4, 1)
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="tab_changed" from="CanvasLayer/TabContainer" to="." method="_on_tab_container_tab_changed"]
+[connection signal="pressed" from="CanvasLayer/TabContainer/BUY/btnEXIT" to="." method="_on_btn_exit_pressed"]
+[connection signal="pressed" from="CanvasLayer/TabContainer/SELL/btnSELL_ALL_ITEMS_IN_LIST" to="." method="_on_btn_sell_all_items_in_list_pressed"]

@@ -12,9 +12,11 @@
 [ext_resource type="PackedScene" uid="uid://h7l2tm4dxb3l" path="res://scenes/ui/resource_ui.tscn" id="4_w4ohm"]
 [ext_resource type="Texture2D" uid="uid://tv5kwwk4frhm" path="res://assets/tilesets/soil_water.png" id="5_8een6"]
 [ext_resource type="Texture2D" uid="uid://da1u0rhfjt8a3" path="res://assets/weather/drops.png" id="5_mlww0"]
-[ext_resource type="PackedScene" uid="uid://bulu3lofpssks" path="res://scenes/levels/house.tscn" id="5_ww0gb"]
+[ext_resource type="PackedScene" uid="uid://bulu3lofpssks" path="res://scenes/objects/house.tscn" id="5_ww0gb"]
 [ext_resource type="Texture2D" uid="uid://bkeqcflkolrsa" path="res://assets/plants/icons/delete.png" id="6_pspya"]
 [ext_resource type="Shader" uid="uid://bspgr42xh4th" path="res://shaders/water_caustic_shader.gdshader" id="6_q4l0b"]
+[ext_resource type="Script" uid="uid://b3jg8peukkbh4" path="res://scenes/levels/dev_level2/shop.gd" id="8_8een6"]
+[ext_resource type="Texture2D" uid="uid://bqpyyykh336n3" path="res://assets/misc/Letter_E.png" id="9_q4l0b"]
 [ext_resource type="AudioStream" uid="uid://cew2dhsgr0elx" path="res://audio/ambient/155 November_snow-33_tape_leveled.mp3" id="11_w4ohm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8s7gw"]
@@ -9844,6 +9846,9 @@ load_path = "res://.godot/imported/decorations-medieval.png-5b1dba1ab2211299b5c2
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_brg1a"]
 load_path = "res://.godot/imported/decorations-medieval.png-5b1dba1ab2211299b5c2449139d8bc0d.ctex"
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8s7gw"]
+size = Vector2(16, 16)
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wmip0"]
 shader = ExtResource("3_xek0g")
 shader_parameter/progress = 0.0
@@ -9878,6 +9883,15 @@ y_sort_enabled = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls" unique_id=1473104650]
 polygon = PackedVector2Array(1728, -32, 1373, -33, 1373, -121, 971, -121, 974, -8, 791, -9, 789, -121, 447, -123, 447, -64, 441, -38, 0, -41, -3, -26, -11, -13, -34, -5, -39, 294, -120, 293, -120, 865, -356, 865, -369, -536, 2256, -512, 2253, -31)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Walls" unique_id=2039801657]
+polygon = PackedVector2Array(-118, 410, -62, 410, -32, 441, 253, 438, 256, 537, -48, 538, -66, 510, -121, 503)
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="Walls" unique_id=1454693764]
+polygon = PackedVector2Array(387, 438, 389, 543, 942, 536, 1025, 448, 1076, 439, 1090, 413, 1172, 408, 1250, 327, 1241, 62, 1273, 58, 1272, -6, 1246, -2, 1237, 39, 1229, 56, 1235, 233, 1148, 310, 1087, 310, 1055, 345, 1031, 340, 927, 441)
+
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="Walls" unique_id=1295522075]
+polygon = PackedVector2Array(1362, -111, 1360, -18, 1346, -15, 1346, 56, 1372, 54, 1371, -111)
 
 [node name="Layers" type="Node2D" parent="." unique_id=1196270321]
 
@@ -9966,6 +9980,12 @@ tile_set = SubResource("TileSet_xek0g")
 [node name="shop" type="Node2D" parent="base_layers" unique_id=2013063962]
 z_index = 1
 y_sort_enabled = true
+script = ExtResource("8_8een6")
+
+[node name="interact_icon" type="Sprite2D" parent="base_layers/shop" unique_id=351081208]
+visible = false
+position = Vector2(604, -192)
+texture = ExtResource("9_q4l0b")
 
 [node name="shop_main" type="Sprite2D" parent="base_layers/shop" unique_id=219684551]
 position = Vector2(604, -128)
@@ -9978,6 +9998,11 @@ position = Vector2(608, -116)
 texture = SubResource("CompressedTexture2D_brg1a")
 region_enabled = true
 region_rect = Rect2(200, 1400, 120, 80)
+
+[node name="market_interactor" type="Area2D" parent="base_layers/shop" unique_id=878100352]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="base_layers/shop/market_interactor" unique_id=83490181]
+shape = SubResource("RectangleShape2D_8s7gw")
 
 [node name="Overlay" type="Node2D" parent="." unique_id=2141172951]
 
@@ -10025,6 +10050,8 @@ position = Vector2(94, 180)
 [node name="House" parent="Objects" unique_id=1558206741 instance=ExtResource("5_ww0gb")]
 position = Vector2(179, 44)
 
+[node name="Interactables" type="Node2D" parent="." unique_id=1406730106]
+
 [node name="Timers" type="Node2D" parent="." unique_id=806749753]
 
 [node name="BlobTimer" type="Timer" parent="Timers" unique_id=1951449138]
@@ -10045,6 +10072,8 @@ volume_db = -15.509
 
 [node name="Music" type="Node2D" parent="Sound" unique_id=1087827275]
 
+[connection signal="body_entered" from="base_layers/shop/market_interactor" to="base_layers/shop" method="_on_market_interactor_body_entered"]
+[connection signal="body_exited" from="base_layers/shop/market_interactor" to="base_layers/shop" method="_on_market_interactor_body_exited"]
 [connection signal="build" from="Objects/MainPlayer" to="." method="_on_main_player_build"]
 [connection signal="day_change" from="Objects/MainPlayer" to="." method="_on_main_player_day_change"]
 [connection signal="machine_change" from="Objects/MainPlayer" to="." method="_on_main_player_machine_change"]

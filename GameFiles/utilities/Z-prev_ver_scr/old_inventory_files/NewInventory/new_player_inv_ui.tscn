@@ -1,0 +1,144 @@
+[gd_scene format=3 uid="uid://b4qu14av085to"]
+
+[ext_resource type="Script" path="res://GameData/NewInventory/new_player_inv_ui.gd" id="1_c47ql"]
+[ext_resource type="Script" path="res://GameData/NewInventory/new_inv_controller.gd" id="1_dsher"]
+[ext_resource type="PackedScene" path="res://GameData/NewInventory/new_slot.tscn" id="1_wmywd"]
+[ext_resource type="PackedScene" path="res://Scenes/Objects/set_hotbar_slot_ui.tscn" id="4_l6vp0"]
+[ext_resource type="PackedScene" path="res://GameData/NewInventory/item_split_ui.tscn" id="5_f2nih"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_shsqb"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="GDScript" id="GDScript_c453l"]
+script/source = "extends PopupMenu
+
+func _on_visibility_changed():
+	set_item_checked(0,true)
+"
+
+[node name="New_PlayerInvUI" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_c47ql")
+
+[node name="New_InvController" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 145.0
+offset_top = 97.0
+offset_right = 487.0
+offset_bottom = 291.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_shsqb")
+script = ExtResource("1_dsher")
+
+[node name="InvLabel" type="Label" parent="New_InvController"]
+layout_mode = 0
+offset_left = 134.0
+offset_top = 4.0
+offset_right = 209.0
+offset_bottom = 27.0
+text = "Inventory
+"
+
+[node name="InventoryContainer" type="GridContainer" parent="New_InvController"]
+layout_mode = 0
+offset_left = 38.0
+offset_top = 30.0
+offset_right = 298.0
+offset_bottom = 158.0
+columns = 6
+
+[node name="NewSlot" parent="New_InvController/InventoryContainer" instance=ExtResource("1_wmywd")]
+layout_mode = 2
+
+[node name="NewSlot2" parent="New_InvController/InventoryContainer" instance=ExtResource("1_wmywd")]
+layout_mode = 2
+
+[node name="NewSlot3" parent="New_InvController/InventoryContainer" instance=ExtResource("1_wmywd")]
+layout_mode = 2
+
+[node name="NewSlot4" parent="New_InvController/InventoryContainer" instance=ExtResource("1_wmywd")]
+layout_mode = 2
+
+[node name="NewSlot5" parent="New_InvController/InventoryContainer" instance=ExtResource("1_wmywd")]
+layout_mode = 2
+
+[node name="NewSlot6" parent="New_InvController/InventoryContainer" instance=ExtResource("1_wmywd")]
+layout_mode = 2
+
+[node name="NewSlot7" parent="New_InvController/InventoryContainer" instance=ExtResource("1_wmywd")]
+layout_mode = 2
+
+[node name="NewSlot8" parent="New_InvController/InventoryContainer" instance=ExtResource("1_wmywd")]
+layout_mode = 2
+
+[node name="NewSlot9" parent="New_InvController/InventoryContainer" instance=ExtResource("1_wmywd")]
+layout_mode = 2
+
+[node name="NewSlot10" parent="New_InvController/InventoryContainer" instance=ExtResource("1_wmywd")]
+layout_mode = 2
+
+[node name="NewSlot11" parent="New_InvController/InventoryContainer" instance=ExtResource("1_wmywd")]
+layout_mode = 2
+
+[node name="NewSlot12" parent="New_InvController/InventoryContainer" instance=ExtResource("1_wmywd")]
+layout_mode = 2
+
+[node name="NewSlot13" parent="New_InvController/InventoryContainer" instance=ExtResource("1_wmywd")]
+layout_mode = 2
+
+[node name="NewSlot14" parent="New_InvController/InventoryContainer" instance=ExtResource("1_wmywd")]
+layout_mode = 2
+
+[node name="NewSlot15" parent="New_InvController/InventoryContainer" instance=ExtResource("1_wmywd")]
+layout_mode = 2
+
+[node name="NewSlot16" parent="New_InvController/InventoryContainer" instance=ExtResource("1_wmywd")]
+layout_mode = 2
+
+[node name="NewSlot17" parent="New_InvController/InventoryContainer" instance=ExtResource("1_wmywd")]
+layout_mode = 2
+
+[node name="NewSlot18" parent="New_InvController/InventoryContainer" instance=ExtResource("1_wmywd")]
+layout_mode = 2
+
+[node name="set_hotbar_slot_ui" parent="New_InvController" instance=ExtResource("4_l6vp0")]
+visible = false
+z_index = 30
+offset_left = -43.0
+offset_top = -79.0
+offset_right = -43.0
+offset_bottom = -79.0
+
+[node name="cmsOPTIONS" type="PopupMenu" parent="."]
+auto_translate_mode = 1
+initial_position = 4
+size = Vector2i(107, 71)
+allow_search = false
+item_count = 3
+item_0/text = "      Split"
+item_1/id = 2
+item_1/separator = true
+item_2/text = " Set Hotbar"
+item_2/id = 1
+script = SubResource("GDScript_c453l")
+
+[node name="set_hotbar_slot_ui" parent="." instance=ExtResource("4_l6vp0")]
+visible = false
+z_index = 0
+offset_left = 110.0
+offset_top = 155.0
+offset_right = 110.0
+offset_bottom = 155.0
+
+[node name="item_split_ui" parent="." instance=ExtResource("5_f2nih")]
+visible = false
+
+[node name="sound_player" type="AudioStreamPlayer" parent="."]
+
+[connection signal="id_pressed" from="cmsOPTIONS" to="New_InvController" method="_on_cms_options_id_pressed"]
+[connection signal="visibility_changed" from="cmsOPTIONS" to="cmsOPTIONS" method="_on_visibility_changed"]
+[connection signal="hbref_changes_made" from="set_hotbar_slot_ui" to="New_InvController" method="_on_set_hotbar_slot_ui_hbref_changes_made"]
+[connection signal="visibility_changed" from="set_hotbar_slot_ui" to="." method="_on_set_hotbar_slot_ui_visibility_changed"]
+[connection signal="split_activated" from="item_split_ui" to="New_InvController" method="_on_item_split_ui_split_activated"]

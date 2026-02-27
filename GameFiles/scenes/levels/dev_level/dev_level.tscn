@@ -12,9 +12,9 @@
 [ext_resource type="PackedScene" uid="uid://h7l2tm4dxb3l" path="res://scenes/ui/resource_ui.tscn" id="5_psclu"]
 [ext_resource type="Texture2D" uid="uid://da1u0rhfjt8a3" path="res://assets/weather/drops.png" id="6_if8cl"]
 [ext_resource type="Texture2D" uid="uid://bkeqcflkolrsa" path="res://assets/plants/icons/delete.png" id="7_bmxux"]
-[ext_resource type="PackedScene" path="res://scenes/objects/tree.tscn" id="9_psclu"]
-[ext_resource type="PackedScene" uid="uid://ba3j4iu30rya2" path="res://scenes/objects/tree_medium.tscn" id="13_f2ds3"]
-[ext_resource type="PackedScene" uid="uid://bulu3lofpssks" path="res://scenes/levels/house.tscn" id="14_j7exa"]
+[ext_resource type="PackedScene" uid="uid://d2530w2lrixv4" path="res://scenes/objects/tree.tscn" id="9_psclu"]
+[ext_resource type="PackedScene" uid="uid://barv73jhaise7" path="res://scenes/objects/tree_medium.tscn" id="13_f2ds3"]
+[ext_resource type="PackedScene" uid="uid://bulu3lofpssks" path="res://scenes/objects/house.tscn" id="14_j7exa"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_f0qyu"]
 resource_name = "tillable"

@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://g4cgjwx67iof"]
+
+[ext_resource type="Script" path="res://UI/slot_v2.gd" id="1_12d2b"]
+[ext_resource type="Texture2D" uid="uid://b16rq7bbkq1vt" path="res://ArtAssets/UI/Inventory_Stylized/BG_Item_Slot_PURPLE_Default.png" id="2_hgofq"]
+[ext_resource type="Texture2D" uid="uid://cdrk2w4y6t037" path="res://ArtAssets/UI/Inventory_Stylized/BG_Item_Slot_PURPLE_Empty.png" id="3_tgbcp"]
+[ext_resource type="Texture2D" uid="uid://cwckgyynjas2p" path="res://ArtAssets/UI/Inventory_Stylized/BG_Item_Slot_PURPLE_Selected.png" id="4_5n7p8"]
+
+[sub_resource type="Theme" id="Theme_jc0j6"]
+
+[node name="slot" type="Panel"]
+custom_minimum_size = Vector2(40, 40)
+offset_right = 40.0
+offset_bottom = 40.0
+theme = SubResource("Theme_jc0j6")
+script = ExtResource("1_12d2b")
+default_texture = ExtResource("2_hgofq")
+empty_texture = ExtResource("3_tgbcp")
+selected_tex = ExtResource("4_5n7p8")

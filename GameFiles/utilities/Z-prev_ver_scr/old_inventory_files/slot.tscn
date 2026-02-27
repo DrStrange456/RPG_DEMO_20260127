@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://onhnrvbjq1dn"]
+
+[ext_resource type="Script" uid="uid://c5nqx1rkwx8ks" path="res://utilities/Z-prev_ver_scr/old_inventory_files/slot.gd" id="1_bq42t"]
+[ext_resource type="Texture2D" uid="uid://cc4ge7blf83ee" path="res://assets/ui/Default.png" id="2_jeqw6"]
+[ext_resource type="Texture2D" uid="uid://7llmycaik2im" path="res://assets/ui/Empty.png" id="3_rfow8"]
+[ext_resource type="Texture2D" uid="uid://jqlmssfn6tab" path="res://assets/ui/Selected.png" id="4_wmhr0"]
+[ext_resource type="Texture2D" uid="uid://bm2g3ihqxflj3" path="res://assets/ui/Slot_Disabled.png" id="5_fcsgn"]
+
+[node name="slot" type="Panel"]
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+mouse_default_cursor_shape = 2
+script = ExtResource("1_bq42t")
+default_texture = ExtResource("2_jeqw6")
+empty_texture = ExtResource("3_rfow8")
+selected_tex = ExtResource("4_wmhr0")
+disabled_tex = ExtResource("5_fcsgn")

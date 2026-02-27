@@ -9,7 +9,7 @@ extends Node
 var blank_item = preload("res://Inventory/ItemResources/blank_item.tres")
 
 
-@export var max_slots: int = Global.PLAYER_INV_SLOTS_MAX
+@export var max_slots: int = Global.NUMBER_ACTIVE_INVENTORY_SLOTS
 var slots: Array[InventorySlot] = []
 
 
@@ -207,14 +207,14 @@ func find_first_stackable_slot(item: Item) -> InventorySlot:
 
 func find_first_empty_slot_in_data() -> InventorySlot:
 	for slot in slots:
-		if slot.enabled and slot.item == preload("res://Scenes/StandaloneInventory/Inventory//ItemResources/blank_item.tres"):
+		if slot.enabled and slot.item == preload("res://Inventory/ItemResources/blank_item.tres"):
 			return slot
 	return null
 
 func find_first_empty_slot_in_ui() -> int:
 	var idx: int = 0
 	for slot in slots:
-		if slot.enabled and slot.item == preload("res://Scenes/StandaloneInventory/Inventory//ItemResources/blank_item.tres"):
+		if slot.enabled and slot.item == preload("res://Inventory/ItemResources/blank_item.tres"):
 			return idx
 		idx += 1
 	return -1

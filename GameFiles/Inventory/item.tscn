@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bjiwvnos7i80b"]
 
-[ext_resource type="Script" uid="uid://037rblb7561n" path="res://Inventory/item_ui_obj.gd" id="1_1o2hk"]
+[ext_resource type="Script" uid="uid://037rblb7561n" path="res://utilities/Z-prev_ver_scr/old_inventory_files/item_ui_obj.gd" id="1_1o2hk"]
 [ext_resource type="Texture2D" uid="uid://cxpua55dw1rnj" path="res://assets/icons/wood.png" id="1_tm8dr"]
 [ext_resource type="FontFile" uid="uid://b7s2fv2laugyl" path="res://assets/fonts/font_pixelmix.ttf" id="2_1o2hk"]
 

@@ -1,11 +1,11 @@
 [gd_scene format=4 uid="uid://bulu3lofpssks"]
 
 [ext_resource type="Texture2D" uid="uid://dpdlqi1ulwvu8" path="res://assets/tilesets/walls_floor_tile.png" id="1_g6yoe"]
-[ext_resource type="Script" uid="uid://bmc6cxq7nsf46" path="res://scenes/levels/house.gd" id="1_jfia5"]
+[ext_resource type="Script" uid="uid://bmc6cxq7nsf46" path="res://scenes/objects/house.gd" id="1_jfia5"]
 [ext_resource type="TileSet" uid="uid://cw45kfg2c8mfk" path="res://utilities/premade/HouseTileSet.tres" id="2_bbbus"]
 [ext_resource type="Texture2D" uid="uid://c3qbb4x5qjic7" path="res://assets/tilesets/roof.png" id="3_bbbus"]
-[ext_resource type="PackedScene" uid="uid://dxxa2cdh5ipd1" path="res://scenes/levels/tv.tscn" id="5_4yql1"]
-[ext_resource type="PackedScene" uid="uid://b8llmw8weehkr" path="res://scenes/levels/bed.tscn" id="6_dc68u"]
+[ext_resource type="PackedScene" uid="uid://dxxa2cdh5ipd1" path="res://scenes/objects/tv.tscn" id="5_4yql1"]
+[ext_resource type="PackedScene" uid="uid://b8llmw8weehkr" path="res://scenes/objects/bed.tscn" id="6_dc68u"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jfia5"]
 texture = ExtResource("1_g6yoe")

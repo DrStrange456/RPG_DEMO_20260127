@@ -1,0 +1,102 @@
+[gd_scene format=3 uid="uid://cxvjlphq6bsp2"]
+
+[ext_resource type="Script" path="res://Scenes/Levels/general_store/market_item_sell.gd" id="1_igcqh"]
+[ext_resource type="Script" path="res://Scenes/Levels/general_store/Panel_sell.gd" id="2_cj023"]
+[ext_resource type="Texture2D" uid="uid://d217rm0bqbuy0" path="res://ArtAssets/UI/Inventory/TrashCan_inverted.png" id="3_338cx"]
+
+[node name="market_item_sell" type="Panel"]
+custom_minimum_size = Vector2(0, 45)
+offset_right = 256.0
+offset_bottom = 45.0
+script = ExtResource("1_igcqh")
+
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(256, 45)
+layout_mode = 0
+offset_right = 256.0
+offset_bottom = 45.0
+mouse_default_cursor_shape = 2
+script = ExtResource("2_cj023")
+
+[node name="TextureRect" type="TextureRect" parent="Panel"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 0
+offset_left = 3.0
+offset_top = 2.0
+offset_right = 43.0
+offset_bottom = 42.0
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 45.0
+offset_top = 4.0
+offset_right = 90.0
+offset_bottom = 18.0
+theme_override_font_sizes/font_size = 8
+text = "Name"
+
+[node name="txtItemName" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 45.0
+offset_top = 22.0
+offset_right = 138.0
+offset_bottom = 38.0
+theme_override_font_sizes/font_size = 10
+text = "Carrot Seeds"
+
+[node name="Label2" type="Label" parent="Panel"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 0
+offset_left = 149.0
+offset_top = 4.0
+offset_right = 189.0
+offset_bottom = 18.0
+theme_override_font_sizes/font_size = 8
+text = "Qty"
+horizontal_alignment = 1
+
+[node name="txtItemCost" type="Label" parent="Panel"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 0
+offset_left = 149.0
+offset_top = 22.0
+offset_right = 189.0
+offset_bottom = 38.0
+theme_override_font_sizes/font_size = 10
+text = "10"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="Panel"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 0
+offset_left = 192.0
+offset_top = 5.0
+offset_right = 232.0
+offset_bottom = 19.0
+theme_override_font_sizes/font_size = 8
+text = "Value"
+horizontal_alignment = 1
+
+[node name="txtItemValue" type="Label" parent="Panel" groups=["sell_value"]]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 0
+offset_left = 192.0
+offset_top = 23.0
+offset_right = 232.0
+offset_bottom = 39.0
+theme_override_font_sizes/font_size = 10
+text = "10"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="Panel"]
+self_modulate = Color(0.996078, 0.996078, 0.996078, 1)
+layout_mode = 0
+offset_left = 234.0
+offset_top = 9.0
+offset_right = 256.0
+offset_bottom = 36.0
+icon = ExtResource("3_338cx")
+icon_alignment = 1
+expand_icon = true
+
+[connection signal="pressed" from="Panel/Button" to="." method="_on_button_pressed"]

@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://dbywxvrx6t10g"]
+
+[ext_resource type="Script" path="res://GameData/PlayerInventory/slot.gd" id="1_25sd2"]
+[ext_resource type="Texture2D" uid="uid://b16rq7bbkq1vt" path="res://ArtAssets/UI/Inventory_Stylized/BG_Item_Slot_PURPLE_Default.png" id="2_rud7r"]
+[ext_resource type="Texture2D" uid="uid://cdrk2w4y6t037" path="res://ArtAssets/UI/Inventory_Stylized/BG_Item_Slot_PURPLE_Empty.png" id="3_20k5k"]
+[ext_resource type="Texture2D" uid="uid://cwckgyynjas2p" path="res://ArtAssets/UI/Inventory_Stylized/BG_Item_Slot_PURPLE_Selected.png" id="4_fr8gi"]
+
+[node name="slot2" type="Panel"]
+custom_minimum_size = Vector2(40, 40)
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_25sd2")
+default_texture = ExtResource("2_rud7r")
+empty_texture = ExtResource("3_20k5k")
+selected_tex = ExtResource("4_fr8gi")

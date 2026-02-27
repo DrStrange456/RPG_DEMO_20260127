@@ -1,0 +1,166 @@
+[gd_scene load_steps=4 format=3 uid="uid://vn2iy2il66pc"]
+
+[ext_resource type="Script" path="res://GameData/NewInventory/item_split_ui.gd" id="1_pqjwg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_innqb"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_y7cqx"]
+load_path = "res://.godot/imported/wood.png-704b1b6fe222237da656948a13b0fb68.ctex"
+
+[node name="item_split_ui" type="Control"]
+z_index = 1
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_pqjwg")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 599.0
+offset_bottom = 341.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.266667, 0.266667, 0.266667, 1)
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 199.0
+offset_top = 31.0
+offset_right = 432.0
+offset_bottom = 314.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_innqb")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 224.0
+offset_top = 31.0
+offset_right = 399.0
+offset_bottom = 54.0
+theme_override_font_sizes/font_size = 12
+text = "Amount to Split"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 322.0
+offset_right = 573.0
+offset_bottom = 345.0
+theme_override_font_sizes/font_size = 12
+text = "Left - Take Away  |  Right - Add  | Left on Zero goes to Maximum allowed  | Esc to Cancel"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="picItemToBeSold" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 275.0
+offset_top = 61.0
+offset_right = 315.0
+offset_bottom = 101.0
+scale = Vector2(2, 2)
+texture = SubResource("CompressedTexture2D_y7cqx")
+
+[node name="NAME" type="Node2D" parent="."]
+position = Vector2(17, 19)
+
+[node name="Label4" type="Label" parent="NAME"]
+visible = false
+offset_left = 207.0
+offset_top = 118.0
+offset_right = 246.0
+offset_bottom = 141.0
+theme_override_font_sizes/font_size = 12
+text = "Name:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="txtItemName" type="Label" parent="NAME"]
+offset_left = 190.0
+offset_top = 126.0
+offset_right = 413.0
+offset_bottom = 149.0
+text = "long name here - - - - - - - -
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="QUANTITY" type="Node2D" parent="."]
+position = Vector2(21, 44)
+
+[node name="ColorRect" type="ColorRect" parent="QUANTITY"]
+offset_left = 186.0
+offset_top = 146.0
+offset_right = 401.0
+offset_bottom = 189.0
+color = Color(0.0588235, 0.113725, 0.509804, 1)
+
+[node name="Label2" type="Label" parent="QUANTITY"]
+visible = false
+offset_left = 440.0
+offset_top = 54.0
+offset_right = 472.0
+offset_bottom = 77.0
+theme_override_font_sizes/font_size = 12
+text = "Qty:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="txtQuantity" type="Label" parent="QUANTITY"]
+offset_left = 261.0
+offset_top = 156.0
+offset_right = 324.0
+offset_bottom = 179.0
+text = "99999"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="btnSetQty_Minus1" type="Button" parent="QUANTITY"]
+offset_left = 192.0
+offset_top = 152.0
+offset_right = 230.0
+offset_bottom = 183.0
+text = "-"
+
+[node name="btnSetQty_Plus1" type="Button" parent="QUANTITY"]
+offset_left = 360.0
+offset_top = 152.0
+offset_right = 398.0
+offset_bottom = 183.0
+text = "+"
+
+[node name="btnSetQty_Min" type="Button" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 426.0
+offset_top = 26.0
+offset_right = 464.0
+offset_bottom = 57.0
+text = "Min"
+
+[node name="btnSetQty_Max" type="Button" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 425.0
+offset_top = 56.0
+offset_right = 466.0
+offset_bottom = 87.0
+text = "Max"
+
+[node name="btnACCEPT" type="Button" parent="."]
+layout_mode = 0
+offset_left = 241.0
+offset_top = 249.0
+offset_right = 391.0
+offset_bottom = 292.0
+text = "ACCEPT
+"
+
+[connection signal="pressed" from="QUANTITY/btnSetQty_Minus1" to="." method="_on_btn_set_qty_minus_1_pressed"]
+[connection signal="pressed" from="QUANTITY/btnSetQty_Plus1" to="." method="_on_btn_set_qty_plus_1_pressed"]
+[connection signal="pressed" from="btnACCEPT" to="." method="_on_btn_accept_pressed"]
