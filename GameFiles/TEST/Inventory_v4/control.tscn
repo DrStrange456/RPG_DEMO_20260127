@@ -19,10 +19,10 @@ zoom = Vector2(3, 3)
 
 [node name="InventoryContainer" type="GridContainer" parent="." unique_id=717380986]
 layout_mode = 0
-offset_left = 232.0
-offset_top = 131.0
-offset_right = 448.0
-offset_bottom = 215.0
+offset_left = 222.0
+offset_top = 65.0
+offset_right = 438.0
+offset_bottom = 149.0
 columns = 5
 script = ExtResource("2_t20jv")
 
@@ -63,5 +63,38 @@ custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 
 [node name="InventorySlot10" parent="InventoryContainer" unique_id=2019268142 instance=ExtResource("1_2hold")]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="GenericContainer" type="GridContainer" parent="." unique_id=858700666]
+layout_mode = 0
+offset_left = 271.0
+offset_top = 192.0
+offset_right = 399.0
+offset_bottom = 276.0
+columns = 3
+script = ExtResource("2_t20jv")
+
+[node name="InventorySlot" parent="GenericContainer" unique_id=877745052 instance=ExtResource("1_2hold")]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="InventorySlot2" parent="GenericContainer" unique_id=1161953702 instance=ExtResource("1_2hold")]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="InventorySlot3" parent="GenericContainer" unique_id=836562221 instance=ExtResource("1_2hold")]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="InventorySlot4" parent="GenericContainer" unique_id=455163747 instance=ExtResource("1_2hold")]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="InventorySlot5" parent="GenericContainer" unique_id=977953024 instance=ExtResource("1_2hold")]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="InventorySlot6" parent="GenericContainer" unique_id=429175800 instance=ExtResource("1_2hold")]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
