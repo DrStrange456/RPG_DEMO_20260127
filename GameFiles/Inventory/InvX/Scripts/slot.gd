@@ -4,7 +4,6 @@ class_name InvSlot extends Panel
 @export var itm: Item:
 	set(value):
 		if get_parent() is InventoryContainer:
-			print("setting value")
 			texture_rect.texture = value.icon
 
 @onready var texture_rect: TextureRect = $CenterContainer/TextureRect
