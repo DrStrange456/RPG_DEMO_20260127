@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://c57av2avr37in"]
+
+[ext_resource type="PackedScene" uid="uid://d1egfgrg4xcub" path="res://Inventory/InvX/inventory_slot.tscn" id="1_2hold"]
+[ext_resource type="Script" uid="uid://ci4mtgiaxyig6" path="res://TEST/Inventory_v4/control.gd" id="1_fdm57"]
+[ext_resource type="Script" uid="uid://cq38cea8f0v7p" path="res://Inventory/InvX/Scripts/InventoryContainer.gd" id="2_t20jv"]
+
+[node name="Control" type="Control" unique_id=72935360]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fdm57")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1910422571]
+position = Vector2(331, 170)
+zoom = Vector2(3, 3)
+
+[node name="InventoryContainer" type="GridContainer" parent="." unique_id=717380986]
+layout_mode = 0
+offset_left = 232.0
+offset_top = 131.0
+offset_right = 448.0
+offset_bottom = 215.0
+columns = 5
+script = ExtResource("2_t20jv")
+
+[node name="InventorySlot" parent="InventoryContainer" unique_id=1553750204 instance=ExtResource("1_2hold")]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="InventorySlot2" parent="InventoryContainer" unique_id=1428395393 instance=ExtResource("1_2hold")]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="InventorySlot3" parent="InventoryContainer" unique_id=1151711655 instance=ExtResource("1_2hold")]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="InventorySlot4" parent="InventoryContainer" unique_id=1160184455 instance=ExtResource("1_2hold")]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="InventorySlot5" parent="InventoryContainer" unique_id=2112299916 instance=ExtResource("1_2hold")]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="InventorySlot6" parent="InventoryContainer" unique_id=2076955342 instance=ExtResource("1_2hold")]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="InventorySlot7" parent="InventoryContainer" unique_id=135649929 instance=ExtResource("1_2hold")]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="InventorySlot8" parent="InventoryContainer" unique_id=1514732770 instance=ExtResource("1_2hold")]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="InventorySlot9" parent="InventoryContainer" unique_id=143474185 instance=ExtResource("1_2hold")]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="InventorySlot10" parent="InventoryContainer" unique_id=2019268142 instance=ExtResource("1_2hold")]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2

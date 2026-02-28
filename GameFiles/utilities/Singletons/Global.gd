@@ -44,3 +44,16 @@ var PLAYER_INVENTORY: Dictionary = {
 		34: ["", 0, false],
 		35: ["", 0, false],
 }
+
+var PLAYER_INVENTORY_TEST: Dictionary = {
+		0: ["res://Inventory/ItemResources/crop_carrot.tres", 10, true],
+		1: ["res://Inventory/ItemResources/crop_carrot.tres", 1, true],
+		2: ["res://Inventory/ItemResources/crop_carrot.tres", 1, true],
+		3: ["res://Inventory/ItemResources/seeds_strawberry.tres", 10, true],
+		4: ["res://Inventory/ItemResources/crop_carrot.tres", 65, true],
+		5: ["res://Inventory/ItemResources/seeds_strawberry.tres", 10, true],
+		6: ["res://Inventory/ItemResources/crop_carrot.tres", 1, true],
+		7: ["res://Inventory/ItemResources/crop_carrot.tres", 1, true],
+		8: ["res://Inventory/ItemResources/seeds_strawberry.tres", 90, true],
+		9: ["res://Inventory/ItemResources/crop_carrot.tres", 1, true],
+}

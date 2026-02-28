@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://d1egfgrg4xcub"]
+
+[ext_resource type="Script" uid="uid://blm25eauk3f7u" path="res://Inventory/InvX/Scripts/slot.gd" id="1_wief3"]
+[ext_resource type="Texture2D" uid="uid://cxpua55dw1rnj" path="res://assets/icons/wood.png" id="2_ub7r8"]
+[ext_resource type="FontFile" uid="uid://b7s2fv2laugyl" path="res://assets/fonts/font_pixelmix.ttf" id="3_wus1h"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wief3"]
+bg_color = Color(0.15, 0.15, 0.15, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eq0fi"]
+bg_color = Color(0.384314, 0, 0.984314, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vvuwh"]
+bg_color = Color(0.384314, 0, 0.984314, 1)
+
+[node name="InventorySlot" type="Panel" unique_id=1553750204]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_wief3")
+script = ExtResource("1_wief3")
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=884047947]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="CenterContainer" unique_id=1469716402]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("2_ub7r8")
+
+[node name="Label" type="Label" parent="." unique_id=376861571]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 31.0
+offset_right = 36.0
+offset_bottom = 39.0
+theme_override_fonts/font = ExtResource("3_wus1h")
+theme_override_font_sizes/font_size = 8
+text = "99"
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=1184608436]
+visible = false
+layout_mode = 0
+offset_left = 36.0
+offset_top = 5.0
+offset_right = 40.0
+offset_bottom = 39.0
+mouse_filter = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_eq0fi")
+theme_override_styles/fill = SubResource("StyleBoxFlat_vvuwh")
+max_value = 10.0
+step = 1.0
+value = 10.0
+show_percentage = false

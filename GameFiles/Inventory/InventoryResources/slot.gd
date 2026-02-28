@@ -1,6 +1,8 @@
+@icon("res://assets/icons/inv_Icons/InventorySlot.svg")
 extends Panel
 
-@onready var ItemClass = preload("res://Inventory/item.tscn")
+
+@onready var ItemClass = preload("res://Inventory/InventoryResources/item.tscn")
 
 @export var slotNumber : int
 @export var default_texture : Texture
@@ -35,7 +37,7 @@ func _ready():
 	refresh_style()
 
 func initialize_item(item_name, item_quantity) -> void:
-	ItemClass = preload("res://Inventory/item.tscn")
+	ItemClass = preload("res://Inventory/InventoryResources/item.tscn")
 	
 	#1) Child attached but Item is null -> Update Item
 	#2) Child attached and Item is not null -> Update Item
