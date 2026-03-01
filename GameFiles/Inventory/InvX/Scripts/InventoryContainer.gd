@@ -16,3 +16,12 @@ func _set_slot(indx, itm, qty):
 	var ic_children = get_children()
 	var slot_for_update: InvSlot = ic_children[indx]
 	slot_for_update._update(new_item, qty)
+	slot_for_update.connect("gui_input", _slot_gui_input.bind(slot_for_update))
+
+func _slot_gui_input(event: InputEvent, slot: InvSlot):
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT && event.pressed:
+			print("Left Mouse Button Clicked")
+		if event.button_index == MOUSE_BUTTON_RIGHT && event.pressed:
+			print("Right Mouse Button Clicked")
+		

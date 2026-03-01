@@ -23,6 +23,7 @@ offset_left = 222.0
 offset_top = 65.0
 offset_right = 438.0
 offset_bottom = 149.0
+mouse_filter = 2
 columns = 5
 script = ExtResource("2_t20jv")
 
@@ -72,6 +73,7 @@ offset_left = 271.0
 offset_top = 192.0
 offset_right = 399.0
 offset_bottom = 276.0
+mouse_filter = 2
 columns = 3
 script = ExtResource("2_t20jv")
 

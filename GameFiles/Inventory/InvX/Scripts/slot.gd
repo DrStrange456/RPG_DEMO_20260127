@@ -1,6 +1,7 @@
 @icon("res://assets/icons/inv_Icons/InventorySlot.svg")
 class_name InvSlot extends Panel
 
+
 @export var itm: Item:
 	set(value):
 		if get_parent() is InventoryContainer:
@@ -13,3 +14,6 @@ class_name InvSlot extends Panel
 func _update(value: Item, qty: int):
 	itm = value
 	label.text = str(qty)
+
+func _gui_clicked():
+	print("click detected")
