@@ -24,4 +24,11 @@ func _slot_gui_input(event: InputEvent, slot: InvSlot):
 			print("Left Mouse Button Clicked")
 		if event.button_index == MOUSE_BUTTON_RIGHT && event.pressed:
 			print("Right Mouse Button Clicked")
-		
+
+# Pop item preview to cursor
+func _itm_to_cursor():
+	pass
+
+# SECTION RESERVED FOR SCRIPT
+func left_click():
+	pass
