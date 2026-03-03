@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://d1egfgrg4xcub" path="res://Inventory/InvX/inventory_slot.tscn" id="1_2hold"]
 [ext_resource type="Script" uid="uid://ci4mtgiaxyig6" path="res://TEST/Inventory_v4/control.gd" id="1_fdm57"]
 [ext_resource type="Script" uid="uid://cq38cea8f0v7p" path="res://Inventory/InvX/Scripts/InventoryContainer.gd" id="2_t20jv"]
+[ext_resource type="Script" uid="uid://dkddy3rke10ol" path="res://Inventory/InvX/Scripts/GenericContainer.gd" id="4_80lji"]
 
 [node name="Control" type="Control" unique_id=72935360]
 layout_mode = 3
@@ -11,6 +12,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_fdm57")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1910422571]
@@ -23,7 +25,6 @@ offset_left = 222.0
 offset_top = 65.0
 offset_right = 438.0
 offset_bottom = 149.0
-mouse_filter = 2
 columns = 5
 script = ExtResource("2_t20jv")
 
@@ -75,7 +76,7 @@ offset_right = 399.0
 offset_bottom = 276.0
 mouse_filter = 2
 columns = 3
-script = ExtResource("2_t20jv")
+script = ExtResource("4_80lji")
 
 [node name="InventorySlot" parent="GenericContainer" unique_id=877745052 instance=ExtResource("1_2hold")]
 custom_minimum_size = Vector2(40, 40)
