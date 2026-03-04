@@ -113,12 +113,22 @@ func _return_what_didnt_fit(gcGRID_INV: GridContainer,intSlotIndex: int):
 
 
 func _remove_from_storage(gcGRID: GridContainer, intSlotIndex: int):
-	ptrINVENTORY = Global.PLAYER_INVENTORY_TEST
 	# - - Remove from Data then remove from UI
 	# DATA - Not applicable
 	# UI
 	var slots = gcGRID.get_children()
 	slots[intSlotIndex]._update(null,0)
+
+func _return_what_didnt_fit(gcGRID: GridContainer, intSlotIndex: int):
+	# - - Update Data then UI
+	# DATA - Not Applicable
+	# UI
+	var slots = gcGRID.get_children()
+	slots[intSlotIndex]._update(null,0)
+	
+	var handle_to_source_slot = gcGRID.get_child(intSlotIndex)
+	handle_to_source_slot._update(load(ptrINVENTORY[intSlotIndex][0]),leftover_delta)
+	handle_to_source_slot._refresh()
 
 
 # bottom
