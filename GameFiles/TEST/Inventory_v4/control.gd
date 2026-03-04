@@ -13,7 +13,7 @@ func _reset_inventory():
 	_load_slots_from_save()
 
 func _clear_all_slots():
-	# insert code for removing old slots and adding new ones
+	# code for removing old slots and adding new ones
 	# this makes the function dynamic in case the number changes
 	for k in inventory_container.get_children():
 		k.queue_free()

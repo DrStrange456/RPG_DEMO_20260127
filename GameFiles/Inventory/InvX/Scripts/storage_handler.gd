@@ -5,7 +5,7 @@ var res1: String = "res://Inventory/ItemResources/crop_carrot.tres"
 var res2: String = "res://Inventory/ItemResources/crop_tomato.tres"
 var res3: String = "res://Inventory/ItemResources/seeds_strawberry.tres"
 
-
+# Move, Transfer, Drop
 
 func _handle_click(srcSlot: InvSlot,destSlot: InvSlot,cursor_node,is_box_xfer):
 	var new_item1: Item = load(res1)

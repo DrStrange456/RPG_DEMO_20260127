@@ -2,22 +2,8 @@
 class_name InventoryContainer extends GridContainer
 
 
-var res1: String = "res://Inventory/ItemResources/crop_carrot.tres"
-var res2: String = "res://Inventory/ItemResources/crop_tomato.tres"
-var res3: String = "res://Inventory/ItemResources/seeds_strawberry.tres"
-
 
 func _ready() -> void:
-	#_set_slot(0,res2,20)
-	#_set_slot(1,res2,1)
-	#_set_slot(2,res3,1)
-	#_set_slot(3,res2,1)
-	#_set_slot(4,res1,1)
-	#_set_slot(5,res3,1)
-	#_set_slot(6,res1,1)
-	#_set_slot(7,res2,1)
-	#_set_slot(8,res3,1)
-	#_set_slot(9,res2,1)
 	pass
 
 
@@ -34,5 +20,5 @@ func _slot_gui_input(event: InputEvent, _slot: InvSlot):
 			print("Left Mouse Button Clicked")
 			var ic_children = get_children()
 			StorageHandler._handle_click(ic_children[3],ic_children[4],self,true)
-		if event.button_index == MOUSE_BUTTON_RIGHT && event.pressed:
-			print("Right Mouse Button Clicked")
+		#if event.button_index == MOUSE_BUTTON_RIGHT && event.pressed:
+			#print("Right Mouse Button Clicked")
