@@ -1,25 +1,58 @@
 class_name storage_click_event_handler
 extends Node
 
-var ptrINVENTORY = Global.PLAYER_INVENTORY_TEST  # For Debugging
+var ptrINVENTORY # For Debugging ( Global.PLAYER_INVENTORY_TEST )
+var leftover_delta: int = 0
+
+func handle_click_InvToStrg(gcGRID_INV: GridContainer,gcGRID_STRG: GridContainer, intSlotIndex: int):
+	if _transfer_inv_to_storage(gcGRID_STRG,intSlotIndex):
+		_remove_from_inventory(gcGRID_INV,intSlotIndex)  # All items successfully transferred
+	else:
+		_return_what_didnt_fit(gcGRID_INV,intSlotIndex)
+	leftover_delta = 0
 
 
-func _handle_click_InvToStrg(gcGRID_INV: GridContainer,gcGRID_STRG: GridContainer, intSlotIndex: int):
-	var tmpINV_Item = load(ptrINVENTORY[intSlotIndex][0])
-	_add_to_storage(gcGRID_STRG,tmpINV_Item,ptrINVENTORY[intSlotIndex][1])
-	_remove_from_inventory(gcGRID_INV,intSlotIndex)
+func handle_click_StrgToInv(SRC: InvSlot,gcGRID_STRG: GridContainer,gcGRID_INV: GridContainer, intSlotIndex: int):
+	_transfer_storage_to_inv(SRC,gcGRID_INV,intSlotIndex)
+	
+	#_remove_from_storage(gcGRID_STRG,intSlotIndex)
+
+
+func _transfer_storage_to_inv(SRC: InvSlot,gcGRID_DEST: GridContainer,slotIndex: int):
+	var item = SRC.itm
+	var amount = int(SRC.label.text)
+	var remaining = amount
+	
+	# Step 1: Fill existing stacks
+	var slots = gcGRID_DEST.get_children()
+	for slot in slots:
+		if slot.itm == item and int(slot.label.text) < item.max_stack:
+			var space = item.max_stack - int(slot.label.text)
+			var to_add = min(space, remaining)
+			slot.label.text = str(int(slot.label.text) + to_add)
+			slot._refresh()
+			remaining -= to_add
+			if remaining <= 0:
+				return true  # Done adding
+	# Step 2: Fill new empty slots
+	for slot in slots:
+		if slot.itm == null:
+			var to_add = min(item.max_stack, remaining)
+			slot.itm = item
+			slot.label.text = str(int(slot.label.text) + to_add)
+			slot._refresh()
+			remaining -= to_add
+			if remaining <= 0:
+				print(slot)
+				return true  # Done adding
 
 
 
-func _remove_from_inventory(gcGRID: GridContainer, intSlotIndex: int):
-	# - - Remove from Data then remove from UI
-	# DATA
-	ptrINVENTORY.erase(intSlotIndex)
-	# UI
-	var slots = gcGRID.get_children()
-	slots[intSlotIndex]._update(null,0)
-
-func _add_to_storage(gcGRID_DEST: GridContainer,item: Item,amount: int):
+func _transfer_inv_to_storage(gcGRID_DEST: GridContainer,slotIndex: int):
+	ptrINVENTORY = Global.PLAYER_INVENTORY_TEST
+	var item = load(ptrINVENTORY[slotIndex][0])
+	var amount = ptrINVENTORY[slotIndex][1]
+	
 	var remaining = amount
 	
 	# Step 1: Fill existing stacks
@@ -47,25 +80,39 @@ func _add_to_storage(gcGRID_DEST: GridContainer,item: Item,amount: int):
 	# Step 3: Not enough space
 	if remaining > 0:
 		print("Not enough space to add item: %s (Missing %d)" % [item.name, remaining])
+		leftover_delta = remaining
 		return false
-	
-		
-	
-	
-	
-	
-	
-	#var tmp = ptrINVENTORY[intSlotIndex]
-	#var item: Item = load(tmp[0])
-	#slots[4]._update(new_item,tmp[1])
+
+func _remove_from_inventory(gcGRID: GridContainer, intSlotIndex: int):
+	ptrINVENTORY = Global.PLAYER_INVENTORY_TEST
+	# - - Remove from Data then remove from UI
+	# DATA
+	ptrINVENTORY.erase(intSlotIndex)
+	# UI
+	var slots = gcGRID.get_children()
+	slots[intSlotIndex]._update(null,0)
+
+func _return_what_didnt_fit(gcGRID_INV: GridContainer,intSlotIndex: int):
+	ptrINVENTORY = Global.PLAYER_INVENTORY_TEST
+	# - - Update Data then UI
+	# DATA
+	ptrINVENTORY[intSlotIndex][1] = leftover_delta
+	# UI
+	var handle_to_source_slot = gcGRID_INV.get_child(intSlotIndex)
+	handle_to_source_slot._update(load(ptrINVENTORY[intSlotIndex][0]),leftover_delta)
+	handle_to_source_slot._refresh()
 
 
 
 
-#func _handle_click(srcSlot: InvSlot,destSlot: InvSlot,cursor_node,is_box_xfer):
-	#var new_item1: Item = load(res1)
-	#var new_item3: Item = load(res3)
-	#srcSlot._update(new_item1, 2)
-	#destSlot._update(new_item3, 3)
+
+func _remove_from_storage(gcGRID: GridContainer, intSlotIndex: int):
+	ptrINVENTORY = Global.PLAYER_INVENTORY_TEST
+	# - - Remove from Data then remove from UI
+	# DATA - Not applicable
+	# UI
+	var slots = gcGRID.get_children()
+	slots[intSlotIndex]._update(null,0)
+
 
 # bottom

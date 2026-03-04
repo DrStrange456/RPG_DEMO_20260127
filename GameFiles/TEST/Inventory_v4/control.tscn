@@ -80,24 +80,29 @@ typ = 1
 [node name="InventorySlot2" parent="TestContainer" unique_id=1255501671 instance=ExtResource("1_2hold")]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
+indx = 1
 typ = 1
 
 [node name="InventorySlot3" parent="TestContainer" unique_id=355473628 instance=ExtResource("1_2hold")]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
+indx = 2
 typ = 1
 
 [node name="InventorySlot4" parent="TestContainer" unique_id=1891687682 instance=ExtResource("1_2hold")]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
+indx = 3
 typ = 1
 
 [node name="InventorySlot5" parent="TestContainer" unique_id=1747037199 instance=ExtResource("1_2hold")]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
+indx = 4
 typ = 1
 
 [node name="InventorySlot6" parent="TestContainer" unique_id=2041070652 instance=ExtResource("1_2hold")]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
+indx = 5
 typ = 1

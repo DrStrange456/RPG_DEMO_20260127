@@ -17,8 +17,6 @@ func _set_slot(indx, itm, qty):
 func _slot_gui_input(event: InputEvent, slot: InvSlot):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT && event.pressed:
-			print("Left Mouse Button Clicked")
-			StorageHandler._handle_click_InvToStrg(self,get_parent().test_container,slot.indx)
-			#StorageHandler._handle_click(ic_children[3],ic_children[4],self,true)
+			StorageHandler.handle_click_InvToStrg(self,get_parent().test_container,slot.indx)
 		#if event.button_index == MOUSE_BUTTON_RIGHT && event.pressed:
 			#print("Right Mouse Button Clicked")

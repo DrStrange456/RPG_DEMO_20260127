@@ -9,8 +9,8 @@ func _ready() -> void:
 	_set_slot(0,res3,75)
 	_set_slot(1,res2,97)
 	_set_slot(2,res3,2)
-	_set_slot(3,null,0)
-	_set_slot(4,null,0)
+	_set_slot(3,res2,96)
+	_set_slot(4,res2,80)
 	_set_slot(5,null,0)
 
 func _set_slot(indx, itm, qty):
@@ -28,10 +28,9 @@ func _set_blank_slot(indx):
 	slot_for_update._nullify()
 	slot_for_update.connect("gui_input", _slot_gui_input.bind(slot_for_update))
 
-func _slot_gui_input(event: InputEvent, _slot: InvSlot):
+func _slot_gui_input(event: InputEvent, slot: InvSlot):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT && event.pressed:
-			var ic_children = get_children()
-			StorageHandler._handle_click(ic_children[3],ic_children[4],self,true)
+			StorageHandler.handle_click_StrgToInv(slot,self,get_parent().inventory_container,slot.indx)
 		#if event.button_index == MOUSE_BUTTON_RIGHT && event.pressed:
 			#print("Right Mouse Button Clicked")

@@ -21,6 +21,7 @@ func _clear_all_slots():
 		k.queue_free()
 
 func _load_slots_from_save():
+	await get_tree().process_frame  # without this the items would not load correctly
 	for l in Global.PLAYER_INVENTORY_TEST:
 		var new_slot = load("res://Inventory/InvX/inventory_slot.tscn").instantiate()
 		new_slot.custom_minimum_size = Vector2(40,40)
@@ -31,6 +32,9 @@ func _load_slots_from_save():
 	inventory_container = $InventoryContainer
 	await get_tree().process_frame  # without this the items would not load correctly
 	for j in Global.PLAYER_INVENTORY_TEST:
-		var new_item: Item = load(Global.PLAYER_INVENTORY_TEST[j][0])
-		inventory_container._set_slot(j,new_item,Global.PLAYER_INVENTORY_TEST[j][1])
+		if Global.PLAYER_INVENTORY_TEST[j][0] != null:
+			var new_item: Item = load(Global.PLAYER_INVENTORY_TEST[j][0])
+			inventory_container._set_slot(j,new_item,Global.PLAYER_INVENTORY_TEST[j][1])
+		else:
+			inventory_container._set_slot(j,null,Global.PLAYER_INVENTORY_TEST[j][1])
 	print("inventory loaded")
