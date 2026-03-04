@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://d1egfgrg4xcub" path="res://Inventory/InvX/inventory_slot.tscn" id="1_2hold"]
 [ext_resource type="Script" uid="uid://ci4mtgiaxyig6" path="res://TEST/Inventory_v4/control.gd" id="1_fdm57"]
 [ext_resource type="Script" uid="uid://cq38cea8f0v7p" path="res://Inventory/InvX/Scripts/InventoryContainer.gd" id="2_t20jv"]
-[ext_resource type="Script" path="res://Inventory/InvX/Scripts/test_container.gd" id="4_80lji"]
+[ext_resource type="Script" uid="uid://c355b0e21rvpl" path="res://Inventory/InvX/Scripts/test_container.gd" id="4_80lji"]
 
 [node name="Control" type="Control" unique_id=544425969]
 layout_mode = 3

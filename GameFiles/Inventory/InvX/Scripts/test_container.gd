@@ -9,15 +9,21 @@ func _ready() -> void:
 	_set_slot(0,res3,10)
 	_set_slot(1,res2,1)
 	_set_slot(2,res3,2)
-	_set_slot(3,res2,3)
-	_set_slot(4,res1,4)
-	_set_slot(5,res3,5)
+	_set_slot(3,null,0)
+	_set_slot(4,null,0)
+	_set_slot(5,null,0)
 
 func _set_slot(indx, itm, qty):
-	var new_item: Item = load(itm)
+	var new_item: Item = load(itm) if itm != null else null
 	var ic_children = get_children()
 	var slot_for_update: InvSlot = ic_children[indx]
 	slot_for_update._update(new_item, qty)
+	slot_for_update.connect("gui_input", _slot_gui_input.bind(slot_for_update))
+
+func _set_blank_slot(indx):
+	var ic_children = get_children()
+	var slot_for_update: InvSlot = ic_children[indx]
+	slot_for_update._nullify()
 	slot_for_update.connect("gui_input", _slot_gui_input.bind(slot_for_update))
 
 func _slot_gui_input(event: InputEvent, slot: InvSlot):
