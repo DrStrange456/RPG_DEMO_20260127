@@ -14,11 +14,11 @@ func _set_slot(indx, itm, qty):
 	slot_for_update._update(new_item, qty)
 	slot_for_update.connect("gui_input", _slot_gui_input.bind(slot_for_update))
 
-func _slot_gui_input(event: InputEvent, _slot: InvSlot):
+func _slot_gui_input(event: InputEvent, slot: InvSlot):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT && event.pressed:
 			print("Left Mouse Button Clicked")
-			var ic_children = get_children()
-			StorageHandler._handle_click(ic_children[3],ic_children[4],self,true)
+			StorageHandler._handle_click_InvToStrg(self,get_parent().test_container,slot.indx)
+			#StorageHandler._handle_click(ic_children[3],ic_children[4],self,true)
 		#if event.button_index == MOUSE_BUTTON_RIGHT && event.pressed:
 			#print("Right Mouse Button Clicked")
