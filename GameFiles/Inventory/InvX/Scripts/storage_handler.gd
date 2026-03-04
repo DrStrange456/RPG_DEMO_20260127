@@ -13,9 +13,11 @@ func handle_click_InvToStrg(gcGRID_INV: GridContainer,gcGRID_STRG: GridContainer
 
 
 func handle_click_StrgToInv(SRC: InvSlot,gcGRID_STRG: GridContainer,gcGRID_INV: GridContainer, intSlotIndex: int):
-	_transfer_storage_to_inv(SRC,gcGRID_INV,intSlotIndex)
-	
-	#_remove_from_storage(gcGRID_STRG,intSlotIndex)
+	if _transfer_storage_to_inv(SRC,gcGRID_INV,intSlotIndex):
+		_remove_from_storage(gcGRID_STRG,intSlotIndex)
+	else:
+		_return_what_didnt_fit(gcGRID_STRG,intSlotIndex)
+	leftover_delta = 0
 
 
 func _transfer_storage_to_inv(SRC: InvSlot,gcGRID_DEST: GridContainer,slotIndex: int):
@@ -45,7 +47,11 @@ func _transfer_storage_to_inv(SRC: InvSlot,gcGRID_DEST: GridContainer,slotIndex:
 			if remaining <= 0:
 				print(slot)
 				return true  # Done adding
-
+	# Step 3: Not enough space
+	if remaining > 0:
+		print("Not enough space to add item: %s (Missing %d)" % [item.name, remaining])
+		leftover_delta = remaining
+		return false
 
 
 func _transfer_inv_to_storage(gcGRID_DEST: GridContainer,slotIndex: int):
