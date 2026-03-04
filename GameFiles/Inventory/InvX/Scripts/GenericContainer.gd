@@ -20,9 +20,10 @@ func _set_slot(indx, itm, qty):
 	var new_item: Item = load(itm)
 	var ic_children = get_children()
 	var slot_for_update: InvSlot = ic_children[indx]
+	#print(new_item)
 	slot_for_update._update(new_item, qty)
 	slot_for_update.connect("gui_input", _slot_gui_input.bind(slot_for_update))
-	print(itm)
+
 
 func _slot_gui_input(event: InputEvent, slot: InvSlot):
 	if event is InputEventMouseButton:
