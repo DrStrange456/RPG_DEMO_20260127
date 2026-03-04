@@ -8,17 +8,17 @@ var res3: String = "res://Inventory/ItemResources/seeds_strawberry.tres"
 
 
 func _ready() -> void:
-	#_set_slot(0,res1,1)
-	#_set_slot(1,res2,1)
-	#_set_slot(2,res3,1)
-	#_set_slot(3,res2,1)
-	#_set_slot(4,res1,1)
-	#_set_slot(5,res3,1)
-	#_set_slot(6,res1,1)
-	#_set_slot(7,res2,1)
-	#_set_slot(8,res3,1)
-	#_set_slot(9,res2,1)
-	pass
+	_set_slot(0,res2,20)
+	_set_slot(1,res2,1)
+	_set_slot(2,res3,1)
+	_set_slot(3,res2,1)
+	_set_slot(4,res1,1)
+	_set_slot(5,res3,1)
+	_set_slot(6,res1,1)
+	_set_slot(7,res2,1)
+	_set_slot(8,res3,1)
+	_set_slot(9,res2,1)
+
 
 func _set_slot(indx, itm, qty):
 	var new_item: Item = load(itm)
@@ -35,11 +35,3 @@ func _slot_gui_input(event: InputEvent, slot: InvSlot):
 			StorageHandler._handle_click(ic_children[3],ic_children[4],self,true)
 		if event.button_index == MOUSE_BUTTON_RIGHT && event.pressed:
 			print("Right Mouse Button Clicked")
-
-# Pop item preview to cursor
-func _itm_to_cursor():
-	pass
-
-# SECTION RESERVED FOR SCRIPT
-func left_click():
-	pass
