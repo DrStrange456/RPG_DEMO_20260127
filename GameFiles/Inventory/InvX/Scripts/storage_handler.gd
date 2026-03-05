@@ -94,6 +94,10 @@ func _remove_from_inventory(gcGRID: GridContainer, intSlotIndex: int):
 	# - - Remove from Data then remove from UI
 	# DATA
 	ptrINVENTORY.erase(intSlotIndex)
+	
+	var tmpINV = Global.PLAYER_INVENTORY_TEST
+	Global.PLAYER_INVENTORY_TEST = reindex_sorted(tmpINV)
+	
 	# UI
 	var slots = gcGRID.get_children()
 	slots[intSlotIndex]._update(null,0)
@@ -127,5 +131,18 @@ func _return_what_didnt_fit_strg(SRC: InvSlot, gcGRID: GridContainer, intSlotInd
 	handle_to_source_slot._update(SRC.itm,leftover_delta)
 	handle_to_source_slot._refresh()
 
+
+
+
+
+func reindex_sorted(dict: Dictionary) -> Dictionary:
+	var keys := dict.keys()
+	keys.sort()
+	var new_dict := {}
+	var i := 0
+	for k in keys:
+		new_dict[i] = dict[k]
+		i += 1  
+	return new_dict
 
 # bottom
