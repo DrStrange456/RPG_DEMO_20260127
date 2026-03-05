@@ -93,10 +93,13 @@ func _remove_from_inventory(gcGRID: GridContainer, intSlotIndex: int):
 	ptrINVENTORY = Global.PLAYER_INVENTORY_TEST
 	# - - Remove from Data then remove from UI
 	# DATA
-	ptrINVENTORY.erase(intSlotIndex)
+	#ptrINVENTORY.erase(intSlotIndex)
 	
-	var tmpINV = Global.PLAYER_INVENTORY_TEST
-	Global.PLAYER_INVENTORY_TEST = reindex_sorted(tmpINV)
+	ptrINVENTORY[intSlotIndex][0] = null
+	ptrINVENTORY[intSlotIndex][1] = 0
+	
+	#var tmpINV = Global.PLAYER_INVENTORY_TEST
+	#Global.PLAYER_INVENTORY_TEST = reindex_sorted(tmpINV)
 	
 	# UI
 	var slots = gcGRID.get_children()
