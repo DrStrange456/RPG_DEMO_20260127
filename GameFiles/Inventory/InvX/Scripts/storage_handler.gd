@@ -34,6 +34,9 @@ func _transfer_storage_to_inv(SRC: InvSlot,gcGRID_DEST: GridContainer,slotIndex:
 			slot.label.text = str(int(slot.label.text) + to_add)
 			slot._refresh()
 			remaining -= to_add
+			
+			# Update DATA here
+			
 			if remaining <= 0:
 				return true  # Done adding
 	# Step 2: Fill new empty slots
@@ -44,6 +47,9 @@ func _transfer_storage_to_inv(SRC: InvSlot,gcGRID_DEST: GridContainer,slotIndex:
 			slot.label.text = str(int(slot.label.text) + to_add)
 			slot._refresh()
 			remaining -= to_add
+			
+			# Update DATA here
+			
 			if remaining <= 0:
 				print(slot)
 				return true  # Done adding
