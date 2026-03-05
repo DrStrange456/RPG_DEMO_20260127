@@ -16,7 +16,7 @@ func handle_click_StrgToInv(SRC: InvSlot,gcGRID_STRG: GridContainer,gcGRID_INV: 
 	if _transfer_storage_to_inv(SRC,gcGRID_INV,intSlotIndex):
 		_remove_from_storage(gcGRID_STRG,intSlotIndex)
 	else:
-		_return_what_didnt_fit(gcGRID_STRG,intSlotIndex)
+		_return_what_didnt_fit_strg(SRC,gcGRID_STRG,intSlotIndex)
 	leftover_delta = 0
 
 
@@ -119,15 +119,12 @@ func _remove_from_storage(gcGRID: GridContainer, intSlotIndex: int):
 	var slots = gcGRID.get_children()
 	slots[intSlotIndex]._update(null,0)
 
-func _return_what_didnt_fit(gcGRID: GridContainer, intSlotIndex: int):
+func _return_what_didnt_fit_strg(SRC: InvSlot, gcGRID: GridContainer, intSlotIndex: int):
 	# - - Update Data then UI
 	# DATA - Not Applicable
 	# UI
-	var slots = gcGRID.get_children()
-	slots[intSlotIndex]._update(null,0)
-	
 	var handle_to_source_slot = gcGRID.get_child(intSlotIndex)
-	handle_to_source_slot._update(load(ptrINVENTORY[intSlotIndex][0]),leftover_delta)
+	handle_to_source_slot._update(SRC.itm,leftover_delta)
 	handle_to_source_slot._refresh()
 
 
