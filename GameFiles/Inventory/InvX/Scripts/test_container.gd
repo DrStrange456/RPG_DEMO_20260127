@@ -5,13 +5,18 @@ var res1: String = "res://Inventory/ItemResources/crop_carrot.tres"
 var res2: String = "res://Inventory/ItemResources/crop_tomato.tres"
 var res3: String = "res://Inventory/ItemResources/seeds_strawberry.tres"
 
+var arrITEMS: Array = [[res3,20],[res2,97],[res3,2],[res2,96],[res2,80],[null,0]]
+
 func _ready() -> void:
-	_set_slot(0,res3,75)
-	_set_slot(1,res2,97)
-	_set_slot(2,res3,2)
-	_set_slot(3,res2,96)
-	_set_slot(4,res2,80)
-	_set_slot(5,null,0)
+	_load_item_set(arrITEMS)
+
+
+
+func _load_item_set(itms: Array):
+	for N in get_children().size():
+		_set_slot(N,null,0)
+	for M in itms.size():
+		_set_slot(M,itms[M][0],itms[M][1])
 
 func _set_slot(indx, itm, qty):
 	var new_item: Item = load(itm) if itm != null else null
@@ -20,7 +25,8 @@ func _set_slot(indx, itm, qty):
 	await get_tree().process_frame
 	slot_for_update.itm = load(itm) if itm != null else null
 	slot_for_update._update(new_item, qty)
-	slot_for_update.connect("gui_input", _slot_gui_input.bind(slot_for_update))
+	if !slot_for_update.is_connected("gui_input", _slot_gui_input.bind(slot_for_update)):
+		slot_for_update.connect("gui_input", _slot_gui_input.bind(slot_for_update))
 
 func _set_blank_slot(indx):
 	var ic_children = get_children()

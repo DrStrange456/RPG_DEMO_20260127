@@ -1,7 +1,7 @@
 extends Control
 
 @onready var inventory_container: InventoryContainer = $InventoryContainer
-@onready var test_container: TestContainer = $TestContainer
+@onready var test_container: TestContainer = $SmallContainer
 
 #@onready var inventory_slot: InvSlot = $InventoryContainer/InventorySlot
 

@@ -4,6 +4,31 @@ extends Node
 @onready var ptrINVENTORY = Global.PLAYER_INVENTORY_TEST # For Debugging ( Global.PLAYER_INVENTORY_TEST )
 var leftover_delta: int = 0
 
+### - - RIGHT CLICKS
+
+func handle_click_single_item(gcGRID_INV: GridContainer,gcGRID_STRG: GridContainer, intSlotIndex: int):
+	ptrINVENTORY = Global.PLAYER_INVENTORY_TEST
+	if ptrINVENTORY[intSlotIndex][0] != null:
+		if int(ptrINVENTORY[intSlotIndex][1]) == 1:
+			# only 1 left in slot
+			handle_click_InvToStrg(gcGRID_INV,gcGRID_STRG,intSlotIndex)
+		else:
+			# more than 1 in slot, just move 1 and update count
+			handle_click_InvToStrg_OnlyOne(gcGRID_INV,gcGRID_STRG,intSlotIndex)
+	else:
+		print("nothing to move")
+
+
+
+func handle_click_InvToStrg_OnlyOne(gcGRID_INV: GridContainer,gcGRID_STRG: GridContainer, intSlotIndex: int):
+	if ptrINVENTORY[intSlotIndex][0] != null:
+		_transfer_inv_to_storage_JustOne(gcGRID_STRG,intSlotIndex)
+		_return_what_didnt_fit(gcGRID_INV,intSlotIndex)
+		leftover_delta = 0
+
+
+### - - LEFT CLICKS
+
 ##
 ### PRIMARY FUNCTION CALLS
 ##
@@ -107,6 +132,38 @@ func _transfer_inv_to_storage(gcGRID_DEST: GridContainer,slotIndex: int):
 		print("Not enough space to add item: %s (Missing %d)" % [item.name, remaining])
 		leftover_delta = remaining
 		return false
+
+func _transfer_inv_to_storage_JustOne(gcGRID_DEST: GridContainer,slotIndex: int):
+	var item = load(ptrINVENTORY[slotIndex][0])
+	var amount = ptrINVENTORY[slotIndex][1]
+	var remaining:int  = int(amount)
+	
+	# Step 1: Fill existing stacks
+	var slots = gcGRID_DEST.get_children()
+	for slot in slots:
+		if slot.itm == item and int(slot.label.text) < item.max_stack:
+			var to_add = 1
+			slot.label.text = str(int(slot.label.text) + to_add)
+			slot._refresh()
+			remaining -= to_add
+			leftover_delta = remaining
+			return true  # Done adding
+	# Step 2: Fill new empty slots
+	for slot in slots:
+		if slot.itm == null:
+			var to_add = 1
+			slot.itm = item
+			slot.label.text = str(int(slot.label.text) + to_add)
+			slot._refresh()
+			remaining -= to_add
+			leftover_delta = remaining
+			return true  # Done adding
+	## Step 3: Not enough space
+	if remaining > 0:
+		print("Not enough space to add item: %s (Missing %d)" % [item.name, remaining])
+		leftover_delta = remaining
+		return false
+
 
 ##
 ### SUPPORT FUNCTIONS
