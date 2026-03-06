@@ -19,4 +19,4 @@ func _slot_gui_input(event: InputEvent, slot: InvSlot):
 		if event.button_index == MOUSE_BUTTON_LEFT && event.pressed:
 			StorageHandler.handle_click_InvToStrg(self,get_parent().test_container,slot.indx)
 		if event.button_index == MOUSE_BUTTON_RIGHT && event.pressed:
-			StorageHandler.handle_click_single_item(self,get_parent().test_container,slot.indx)
+			StorageHandler.handle_click_InvToStrg_single_item(self,get_parent().test_container,slot.indx)

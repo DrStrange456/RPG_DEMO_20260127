@@ -1,12 +1,12 @@
 class_name storage_click_event_handler
 extends Node
 
-@onready var ptrINVENTORY = Global.PLAYER_INVENTORY_TEST # For Debugging ( Global.PLAYER_INVENTORY_TEST )
+@onready var ptrINVENTORY = Global.PLAYER_INVENTORY_TEST # For Debugging
 var leftover_delta: int = 0
 
 ### - - RIGHT CLICKS
 
-func handle_click_single_item(gcGRID_INV: GridContainer,gcGRID_STRG: GridContainer, intSlotIndex: int):
+func handle_click_InvToStrg_single_item(gcGRID_INV: GridContainer,gcGRID_STRG: GridContainer, intSlotIndex: int):
 	ptrINVENTORY = Global.PLAYER_INVENTORY_TEST
 	if ptrINVENTORY[intSlotIndex][0] != null:
 		if int(ptrINVENTORY[intSlotIndex][1]) == 1:
@@ -18,6 +18,18 @@ func handle_click_single_item(gcGRID_INV: GridContainer,gcGRID_STRG: GridContain
 	else:
 		print("nothing to move")
 
+func handle_click_StrgToInv_single_item(SRC: InvSlot,gcGRID_STRG: GridContainer,gcGRID_INV: GridContainer, intSlotIndex: int):
+	if SRC.itm != null:
+		var amount = int(SRC.label.text)
+		if amount == 1:
+			# only 1 left in slot
+			handle_click_StrgToInv(SRC,gcGRID_STRG,gcGRID_INV,intSlotIndex)
+		else:
+			# more than 1 in slot, just move 1 and update count
+			handle_click_StrgToInv_OnlyOne(SRC,gcGRID_STRG,gcGRID_INV,intSlotIndex)
+	else:
+		print("nothing to move")
+
 
 
 func handle_click_InvToStrg_OnlyOne(gcGRID_INV: GridContainer,gcGRID_STRG: GridContainer, intSlotIndex: int):
@@ -26,6 +38,11 @@ func handle_click_InvToStrg_OnlyOne(gcGRID_INV: GridContainer,gcGRID_STRG: GridC
 		_return_what_didnt_fit(gcGRID_INV,intSlotIndex)
 		leftover_delta = 0
 
+func handle_click_StrgToInv_OnlyOne(SRC: InvSlot,gcGRID_STRG: GridContainer,gcGRID_INV: GridContainer, intSlotIndex: int):
+	if SRC.itm != null:
+		_transfer_storage_to_inv_JustOne(SRC,gcGRID_INV,intSlotIndex)
+		_return_what_didnt_fit_strg(SRC,gcGRID_STRG,intSlotIndex)
+		leftover_delta = 0
 
 ### - - LEFT CLICKS
 
@@ -164,6 +181,55 @@ func _transfer_inv_to_storage_JustOne(gcGRID_DEST: GridContainer,slotIndex: int)
 		leftover_delta = remaining
 		return false
 
+func _transfer_storage_to_inv_JustOne(SRC: InvSlot,gcGRID_DEST: GridContainer,_slotIndex: int):
+	var item = SRC.itm
+	var amount = int(SRC.label.text)
+	var remaining = amount
+	var destIndex: int = 0
+	
+	# Step 1: Fill existing stacks
+	var slots = gcGRID_DEST.get_children()
+	destIndex = 0
+	for slot in slots:
+		if slot.itm == item and int(slot.label.text) < item.max_stack:
+			var to_add = 1
+			var new_qty = str(int(ptrINVENTORY[destIndex][1]) + to_add)
+			slot.label.text = new_qty
+			slot._refresh()
+			remaining -= to_add
+			
+			# Update DATA here
+			ptrINVENTORY[destIndex][0] = item.resource_path
+			ptrINVENTORY[destIndex][1] = new_qty
+			
+			leftover_delta = remaining
+			return true  # Done adding
+			
+		destIndex += 1
+	# Step 2: Fill new empty slots
+	destIndex = 0
+	for slot in slots:
+		if slot.itm == null:
+			var to_add = 1
+			var new_qty = str(int(ptrINVENTORY[destIndex][1]) + to_add)
+			slot.itm = item
+			slot.label.text = new_qty
+			slot._refresh()
+			remaining -= to_add
+			
+			# Update DATA here
+			ptrINVENTORY[destIndex][0] = item.resource_path
+			ptrINVENTORY[destIndex][1] = new_qty
+			
+			leftover_delta = remaining
+			return true  # Done adding
+			
+		destIndex += 1
+	# Step 3: Not enough space
+	if remaining > 0:
+		print("Not enough space to add item: %s (Missing %d)" % [item.name, remaining])
+		leftover_delta = remaining
+		return false
 
 ##
 ### SUPPORT FUNCTIONS
