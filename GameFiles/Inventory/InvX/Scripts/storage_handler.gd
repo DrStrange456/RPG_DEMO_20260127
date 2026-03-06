@@ -109,7 +109,6 @@ func _transfer_storage_to_inv(SRC: InvSlot,gcGRID_DEST: GridContainer,_slotIndex
 			ptrINVENTORY[destIndex][1] = new_qty
 			
 			if remaining <= 0:
-				print(slot)
 				return true  # Done adding
 		destIndex += 1
 	# Step 3: Not enough space
