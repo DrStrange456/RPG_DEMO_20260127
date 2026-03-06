@@ -6,6 +6,7 @@ var res2: String = "res://Inventory/ItemResources/crop_tomato.tres"
 var res3: String = "res://Inventory/ItemResources/seeds_strawberry.tres"
 
 var arrITEMS: Array = [[res3,20],[res2,1],[res3,2],[res2,3],[res2,80],[null,0]]
+#var arrITEMS: Array = [[res3,75],[res3,50],[res3,50],[null,0],[null,0],[null,0]]
 
 func _ready() -> void:
 	_load_item_set(arrITEMS)

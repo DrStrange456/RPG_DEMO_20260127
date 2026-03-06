@@ -283,4 +283,148 @@ func reindex_sorted(dict: Dictionary) -> Dictionary:
 		i += 1  
 	return new_dict
 
+func sort_and_combine_inventory_Strg(grid: GridContainer):
+
+	var slots := grid.get_children()
+	var item_totals := {}
+
+	# Collect all quantities
+	for slot in slots:
+		if slot.itm != null:
+			var qty := int(slot.label.text)
+
+			if item_totals.has(slot.itm):
+				item_totals[slot.itm] += qty
+			else:
+				item_totals[slot.itm] = qty
+
+	# Clear all slots
+	for slot in slots:
+		slot.itm = null
+		slot.texture_rect.texture = null
+		slot.label.text = ""
+
+	# Rebuild stacks
+	var slot_index := 0
+
+	for item in item_totals.keys():
+
+		var remaining: int = item_totals[item]
+
+		while remaining > 0 and slot_index < slots.size():
+
+			var stack_size: int = min(item.max_stack, remaining)
+			var slot = slots[slot_index]
+
+			slot.itm = item
+			slot.texture_rect.texture = item.icon
+			slot.label.text = str(stack_size)
+			slot._refresh()
+
+			remaining -= stack_size
+			slot_index += 1
+
+#func sort_and_combine_inventory_Inv(inventory: Dictionary):
+#
+	#var item_totals := {}
+	#var enabled_slots := []
+#
+	## --- Collect totals and track enabled slots ---
+	#for slot_index in inventory.keys():
+#
+		#var slot = inventory[slot_index]
+		#var path = slot[0]
+		#var qty = slot[1]
+		#var enabled = slot[2]
+#
+		#if enabled:
+			#enabled_slots.append(slot_index)
+#
+		#if path == null:
+			#continue
+#
+		#var item = load(path)
+#
+		#if item_totals.has(item):
+			#item_totals[item] += qty
+		#else:
+			#item_totals[item] = qty
+#
+	## --- Clear enabled slots ---
+	#for i in enabled_slots:
+		#inventory[i] = [null, 0, true]
+#
+	## --- Rebuild stacks ---
+	#var slot_pointer := 0
+#
+	#for item in item_totals.keys():
+#
+		#var remaining: int = item_totals[item]
+#
+		#while remaining > 0 and slot_pointer < enabled_slots.size():
+#
+			#var slot_index = enabled_slots[slot_pointer]
+			#var stack_size = min(item.max_stack, remaining)
+#
+			#inventory[slot_index] = [
+				#item.resource_path,
+				#stack_size,
+				#true
+			#]
+			##slot._refresh()
+#
+			#remaining -= stack_size
+			#slot_pointer += 1
+
+func sort_and_combine_inventory_Inv(inventory: Dictionary):
+
+	var item_totals := {}
+
+	# --- Collect totals ---
+	for slot_index in inventory.keys():
+
+		var slot = inventory[slot_index]
+		var path = slot[0]
+		var qty = slot[1]
+
+		if path == null:
+			continue
+
+		var item = load(path)
+
+		if item_totals.has(item):
+			item_totals[item] += int(qty)
+		else:
+			item_totals[item] = int(qty)
+
+	# --- Clear all slots ---
+	for slot_index in inventory.keys():
+		inventory[slot_index] = [null, 0, true]
+
+	# --- Rebuild stacks ---
+	var slot_keys = inventory.keys()
+	slot_keys.sort()
+
+	var slot_pointer := 0
+
+	for item in item_totals.keys():
+
+		var remaining: int = item_totals[item]
+
+		while remaining > 0 and slot_pointer < slot_keys.size():
+
+			var stack_size: int = min(item.max_stack, remaining)
+			var slot_index = slot_keys[slot_pointer]
+
+			inventory[slot_index] = [
+				item.resource_path,
+				stack_size,
+				true
+			]
+
+			remaining -= stack_size
+			slot_pointer += 1
+	# NOTE: UI needs to be refreshed after this
+
+
 # bottom

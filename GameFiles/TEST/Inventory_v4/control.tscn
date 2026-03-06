@@ -106,3 +106,24 @@ custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 indx = 5
 typ = 1
+
+[node name="Button" type="Button" parent="." unique_id=906849919]
+layout_mode = 0
+offset_left = 451.0
+offset_top = 36.0
+offset_right = 514.0
+offset_bottom = 59.0
+theme_override_font_sizes/font_size = 10
+text = "SORT (Inv)"
+
+[node name="Button2" type="Button" parent="." unique_id=973148650]
+layout_mode = 0
+offset_left = 457.0
+offset_top = 281.0
+offset_right = 520.0
+offset_bottom = 304.0
+theme_override_font_sizes/font_size = 10
+text = "SORT (Strg)"
+
+[connection signal="pressed" from="Button" to="." method="_on_sort_inventory_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_sort_storage_pressed"]

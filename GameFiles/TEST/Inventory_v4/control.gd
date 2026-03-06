@@ -3,12 +3,10 @@ extends Control
 @onready var inventory_container: InventoryContainer = $InventoryContainer
 @onready var test_container: TestContainer = $SmallContainer
 
-#@onready var inventory_slot: InvSlot = $InventoryContainer/InventorySlot
 
 
 func _ready() -> void:
 	_reset_inventory()
-
 
 func _reset_inventory():
 	_clear_all_slots()
@@ -38,3 +36,16 @@ func _load_slots_from_save():
 		else:
 			inventory_container._set_slot(j,null,Global.PLAYER_INVENTORY_TEST[j][1])
 	print("inventory loaded")
+
+func _on_sort_inventory_pressed() -> void:
+	StorageHandler.sort_and_combine_inventory_Inv(Global.PLAYER_INVENTORY_TEST)
+	inventory_container = $InventoryContainer
+	for l in Global.PLAYER_INVENTORY_TEST:
+		if Global.PLAYER_INVENTORY_TEST[l][0] != null:
+			var new_item = load(Global.PLAYER_INVENTORY_TEST[l][0])
+			inventory_container._set_slot(l,new_item,Global.PLAYER_INVENTORY_TEST[l][1])
+		else:
+			inventory_container._set_slot(l,null,0)
+
+func _on_sort_storage_pressed() -> void:
+	StorageHandler.sort_and_combine_inventory_Strg(test_container)
