@@ -107,7 +107,7 @@ layout_mode = 2
 indx = 5
 typ = 1
 
-[node name="Button" type="Button" parent="." unique_id=906849919]
+[node name="btnSortInventory" type="Button" parent="." unique_id=906849919]
 layout_mode = 0
 offset_left = 451.0
 offset_top = 36.0
@@ -116,7 +116,7 @@ offset_bottom = 59.0
 theme_override_font_sizes/font_size = 10
 text = "SORT (Inv)"
 
-[node name="Button2" type="Button" parent="." unique_id=973148650]
+[node name="btnSortStorage" type="Button" parent="." unique_id=973148650]
 layout_mode = 0
 offset_left = 457.0
 offset_top = 281.0
@@ -125,5 +125,25 @@ offset_bottom = 304.0
 theme_override_font_sizes/font_size = 10
 text = "SORT (Strg)"
 
-[connection signal="pressed" from="Button" to="." method="_on_sort_inventory_pressed"]
-[connection signal="pressed" from="Button2" to="." method="_on_sort_storage_pressed"]
+[node name="btnTransferToInv" type="Button" parent="." unique_id=978835952]
+layout_mode = 0
+offset_left = 457.0
+offset_top = 252.0
+offset_right = 520.0
+offset_bottom = 275.0
+theme_override_font_sizes/font_size = 10
+text = "Xfer All"
+
+[node name="btnMoveLikeItems" type="Button" parent="." unique_id=1390407750]
+layout_mode = 0
+offset_left = 458.0
+offset_top = 225.0
+offset_right = 521.0
+offset_bottom = 248.0
+theme_override_font_sizes/font_size = 10
+text = "Xfer Like Items"
+
+[connection signal="pressed" from="btnSortInventory" to="." method="_on_sort_inventory_pressed"]
+[connection signal="pressed" from="btnSortStorage" to="." method="_on_sort_storage_pressed"]
+[connection signal="pressed" from="btnTransferToInv" to="." method="_on_btn_transfer_to_inv_pressed"]
+[connection signal="pressed" from="btnMoveLikeItems" to="." method="_on_btn_move_like_items_pressed"]

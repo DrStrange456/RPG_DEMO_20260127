@@ -37,8 +37,7 @@ func _load_slots_from_save():
 			inventory_container._set_slot(j,null,Global.PLAYER_INVENTORY_TEST[j][1])
 	print("inventory loaded")
 
-func _on_sort_inventory_pressed() -> void:
-	StorageHandler.sort_and_combine_inventory_Inv(Global.PLAYER_INVENTORY_TEST)
+func _refresh_inventory_items():
 	inventory_container = $InventoryContainer
 	for l in Global.PLAYER_INVENTORY_TEST:
 		if Global.PLAYER_INVENTORY_TEST[l][0] != null:
@@ -47,5 +46,19 @@ func _on_sort_inventory_pressed() -> void:
 		else:
 			inventory_container._set_slot(l,null,0)
 
+
+
+func _on_sort_inventory_pressed() -> void:
+	StorageHandler.sort_and_combine_inventory_Inv(Global.PLAYER_INVENTORY_TEST)
+	_refresh_inventory_items()
+
 func _on_sort_storage_pressed() -> void:
 	StorageHandler.sort_and_combine_inventory_Strg(test_container)
+
+func _on_btn_transfer_to_inv_pressed() -> void:
+	StorageHandler.collect_all_from_container(test_container,Global.PLAYER_INVENTORY_TEST)
+	_refresh_inventory_items()
+
+func _on_btn_move_like_items_pressed() -> void:
+	StorageHandler.collect_similar_from_container(test_container,Global.PLAYER_INVENTORY_TEST)
+	_refresh_inventory_items()

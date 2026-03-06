@@ -4,8 +4,10 @@ class_name TestContainer extends GridContainer
 var res1: String = "res://Inventory/ItemResources/crop_carrot.tres"
 var res2: String = "res://Inventory/ItemResources/crop_tomato.tres"
 var res3: String = "res://Inventory/ItemResources/seeds_strawberry.tres"
+var res4: String = "res://Inventory/ItemResources/seeds_turnip.tres"
 
-var arrITEMS: Array = [[res3,20],[res2,1],[res3,2],[res2,3],[res2,80],[null,0]]
+
+var arrITEMS: Array = [[res3,20],[res2,1],[res3,2],[res4,3],[res2,80],[null,0]]
 #var arrITEMS: Array = [[res3,75],[res3,50],[res3,50],[null,0],[null,0],[null,0]]
 
 func _ready() -> void:
