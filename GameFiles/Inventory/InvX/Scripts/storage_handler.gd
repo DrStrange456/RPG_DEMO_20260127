@@ -4,8 +4,11 @@ extends Node
 @onready var ptrINVENTORY = Global.PLAYER_INVENTORY_TEST # For Debugging ( Global.PLAYER_INVENTORY_TEST )
 var leftover_delta: int = 0
 
+##
+### PRIMARY FUNCTION CALLS
+##
 func handle_click_InvToStrg(gcGRID_INV: GridContainer,gcGRID_STRG: GridContainer, intSlotIndex: int):
-	if Global.PLAYER_INVENTORY_TEST[intSlotIndex][0] != null:
+	if ptrINVENTORY[intSlotIndex][0] != null:
 		if _transfer_inv_to_storage(gcGRID_STRG,intSlotIndex):
 			_remove_from_inventory(gcGRID_INV,intSlotIndex)  # All items successfully transferred
 		else:
@@ -20,7 +23,9 @@ func handle_click_StrgToInv(SRC: InvSlot,gcGRID_STRG: GridContainer,gcGRID_INV: 
 			_return_what_didnt_fit_strg(SRC,gcGRID_STRG,intSlotIndex)
 		leftover_delta = 0
 
-
+##
+### INTERMEDIATE FUNCTION CALLS
+##
 func _transfer_storage_to_inv(SRC: InvSlot,gcGRID_DEST: GridContainer,_slotIndex: int):
 	var item = SRC.itm
 	var amount = int(SRC.label.text)
@@ -32,16 +37,16 @@ func _transfer_storage_to_inv(SRC: InvSlot,gcGRID_DEST: GridContainer,_slotIndex
 	destIndex = 0
 	for slot in slots:
 		if slot.itm == item and int(slot.label.text) < item.max_stack:
-			var space = int(item.max_stack) - int(Global.PLAYER_INVENTORY_TEST[destIndex][1])
+			var space = int(item.max_stack) - int(ptrINVENTORY[destIndex][1])
 			var to_add = min(space, remaining)
-			var new_qty = str(int(Global.PLAYER_INVENTORY_TEST[destIndex][1]) + to_add)
+			var new_qty = str(int(ptrINVENTORY[destIndex][1]) + to_add)
 			slot.label.text = new_qty
 			slot._refresh()
 			remaining -= to_add
 			
 			# Update DATA here
-			Global.PLAYER_INVENTORY_TEST[destIndex][0] = item.resource_path
-			Global.PLAYER_INVENTORY_TEST[destIndex][1] = new_qty
+			ptrINVENTORY[destIndex][0] = item.resource_path
+			ptrINVENTORY[destIndex][1] = new_qty
 			
 			if remaining <= 0:
 				return true  # Done adding
@@ -51,15 +56,15 @@ func _transfer_storage_to_inv(SRC: InvSlot,gcGRID_DEST: GridContainer,_slotIndex
 	for slot in slots:
 		if slot.itm == null:
 			var to_add = min(item.max_stack, remaining)
-			var new_qty = str(int(Global.PLAYER_INVENTORY_TEST[destIndex][1]) + to_add)
+			var new_qty = str(int(ptrINVENTORY[destIndex][1]) + to_add)
 			slot.itm = item
 			slot.label.text = new_qty
 			slot._refresh()
 			remaining -= to_add
 			
 			# Update DATA here
-			Global.PLAYER_INVENTORY_TEST[destIndex][0] = item.resource_path
-			Global.PLAYER_INVENTORY_TEST[destIndex][1] = new_qty
+			ptrINVENTORY[destIndex][0] = item.resource_path
+			ptrINVENTORY[destIndex][1] = new_qty
 			
 			if remaining <= 0:
 				print(slot)
@@ -72,8 +77,8 @@ func _transfer_storage_to_inv(SRC: InvSlot,gcGRID_DEST: GridContainer,_slotIndex
 		return false
 
 func _transfer_inv_to_storage(gcGRID_DEST: GridContainer,slotIndex: int):
-	var item = load(Global.PLAYER_INVENTORY_TEST[slotIndex][0])
-	var amount = Global.PLAYER_INVENTORY_TEST[slotIndex][1]
+	var item = load(ptrINVENTORY[slotIndex][0])
+	var amount = ptrINVENTORY[slotIndex][1]
 	var remaining:int  = int(amount)
 	
 	# Step 1: Fill existing stacks
@@ -103,13 +108,14 @@ func _transfer_inv_to_storage(gcGRID_DEST: GridContainer,slotIndex: int):
 		leftover_delta = remaining
 		return false
 
-
-
+##
+### SUPPORT FUNCTIONS
+##
 func _remove_from_inventory(gcGRID: GridContainer, intSlotIndex: int):
 	# - - Remove from Data then remove from UI
 	# DATA
-	Global.PLAYER_INVENTORY_TEST[intSlotIndex][0] = null
-	Global.PLAYER_INVENTORY_TEST[intSlotIndex][1] = 0
+	ptrINVENTORY[intSlotIndex][0] = null
+	ptrINVENTORY[intSlotIndex][1] = 0
 	# UI
 	var slots = gcGRID.get_children()
 	slots[intSlotIndex]._update(null,0)
@@ -117,10 +123,10 @@ func _remove_from_inventory(gcGRID: GridContainer, intSlotIndex: int):
 func _return_what_didnt_fit(gcGRID_INV: GridContainer,intSlotIndex: int):
 	# - - Update Data then UI
 	# DATA
-	Global.PLAYER_INVENTORY_TEST[intSlotIndex][1] = leftover_delta
+	ptrINVENTORY[intSlotIndex][1] = leftover_delta
 	# UI
 	var handle_to_source_slot = gcGRID_INV.get_child(intSlotIndex)
-	var tmpItemForReturn = load(Global.PLAYER_INVENTORY_TEST[intSlotIndex][0])
+	var tmpItemForReturn = load(ptrINVENTORY[intSlotIndex][0])
 	handle_to_source_slot._update(tmpItemForReturn,leftover_delta)
 	handle_to_source_slot._refresh()
 
