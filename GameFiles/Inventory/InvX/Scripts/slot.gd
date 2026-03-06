@@ -25,4 +25,4 @@ func _refresh():
 	label.visible = true if int(label.text) > 1 else false
 
 func _gui_clicked():
-	print("click detected")
+	print("click detected in slot")
