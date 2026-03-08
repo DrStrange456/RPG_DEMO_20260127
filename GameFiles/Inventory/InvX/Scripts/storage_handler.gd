@@ -427,9 +427,9 @@ func collect_all_from_container(container: GridContainer, inventory: Dictionary)
 			continue
 
 		if totals.has(path):
-			totals[path] += qty
+			totals[path] += int(qty)
 		else:
-			totals[path] = qty
+			totals[path] = int(qty)
 
 	# --- gather totals from container slots ---
 	for slot in container.get_children():
@@ -480,19 +480,15 @@ func collect_all_from_container(container: GridContainer, inventory: Dictionary)
 
 func collect_similar_from_container(container: GridContainer, inventory: Dictionary):
 
-	# --- Build a set of existing inventory items ---
-	var existing_paths := []
+	var totals := {}
+
+	# --- Determine which items exist in inventory ---
 	for slot in inventory.values():
 		var path = slot[0]
-		if path != null and not existing_paths.has(path):
-			existing_paths.append(path)
+		if path != null and not totals.has(path):
+			totals[path] = 0
 
-	# --- Gather totals for matching items ---
-	var totals := {}
-	for path in existing_paths:
-		totals[path] = 0
-
-	# --- Process chest slots ---
+	# --- Pull matching items from chest ---
 	for slot in container.get_children():
 
 		if slot.itm == null:
@@ -500,22 +496,19 @@ func collect_similar_from_container(container: GridContainer, inventory: Diction
 
 		var path = slot.itm.resource_path
 
-		# Only collect if inventory already has this item
-		if existing_paths.has(path):
-			var qty = int(slot.label.text)
+		if totals.has(path):
 
-			if totals.has(path):
-				totals[path] += qty
-			else:
-				totals[path] = qty
+			var qty = int(slot.label.text)
+			totals[path] += qty
 
 			# Clear chest slot
 			slot.itm = null
 			slot.texture_rect.texture = null
 			slot.label.text = ""
 
-	# --- Add quantities to inventory ---
+	# --- Fill existing stacks first ---
 	for key in inventory.keys():
+
 		var slot = inventory[key]
 		var path = slot[0]
 
@@ -523,16 +516,105 @@ func collect_similar_from_container(container: GridContainer, inventory: Diction
 			continue
 
 		if totals.has(path) and totals[path] > 0:
+
 			var item = load(path)
-			var remaining = totals[path]
+			var max_stack = item.max_stack
 
-			# Fill stack respecting max_stack
 			var current_qty = slot[1]
-			var space = int(item.max_stack) - int(current_qty)
-			var to_add = min(space, remaining)
+			var space = int(max_stack) - int(current_qty)
+			var add = min(space, totals[path])
 
-			slot[1] = int(current_qty) + int(to_add)
-			totals[path] -= int(to_add)
+			slot[1] = int(current_qty) + int(add)
+			totals[path] -= int(add)
+
+	# --- Place overflow into empty slots ---
+	var keys = inventory.keys()
+	keys.sort()
+
+	for path in totals.keys():
+
+		var remaining = totals[path]
+		if remaining <= 0:
+			continue
+
+		var item = load(path)
+
+		for key in keys:
+
+			if remaining <= 0:
+				break
+
+			var slot = inventory[key]
+
+			if slot[0] == null:
+
+				var stack_size = min(item.max_stack, remaining)
+
+				inventory[key] = [
+					path,
+					stack_size,
+					true
+				]
+
+				remaining -= stack_size
+
+		totals[path] = remaining
+
+#func collect_similar_from_container(container: GridContainer, inventory: Dictionary):
+#
+	## --- Build a set of existing inventory items ---
+	#var existing_paths := []
+	#for slot in inventory.values():
+		#var path = slot[0]
+		#if path != null and not existing_paths.has(path):
+			#existing_paths.append(path)
+#
+	## --- Gather totals for matching items ---
+	#var totals := {}
+	#for path in existing_paths:
+		#totals[path] = 0
+#
+	## --- Process chest slots ---
+	#for slot in container.get_children():
+#
+		#if slot.itm == null:
+			#continue
+#
+		#var path = slot.itm.resource_path
+#
+		## Only collect if inventory already has this item
+		#if existing_paths.has(path):
+			#var qty = int(slot.label.text)
+#
+			#if totals.has(path):
+				#totals[path] += qty
+			#else:
+				#totals[path] = qty
+#
+			## Clear chest slot
+			#slot.itm = null
+			#slot.texture_rect.texture = null
+			#slot.label.text = ""
+#
+	## --- Add quantities to inventory ---
+	#for key in inventory.keys():
+		#var slot = inventory[key]
+		#var path = slot[0]
+#
+		#if path == null:
+			#continue
+#
+		#if totals.has(path) and totals[path] > 0:
+			#var item = load(path)
+			#var remaining = totals[path]
+#
+			## Fill stack respecting max_stack
+			#var current_qty = slot[1]
+			#var space = int(item.max_stack) - int(current_qty)
+			#var to_add = min(space, remaining)
+#
+			#slot[1] = int(current_qty) + int(to_add)
+			#totals[path] -= int(to_add)
 
 
 
