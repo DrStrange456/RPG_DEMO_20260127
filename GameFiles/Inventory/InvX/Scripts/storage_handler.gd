@@ -46,7 +46,6 @@ func handle_click_StrgToInv_OnlyOne(SRC: InvSlot,gcGRID_STRG: GridContainer,gcGR
 
 ### - - LEFT CLICKS
 
-##
 ### PRIMARY FUNCTION CALLS
 ##
 func handle_click_InvToStrg(gcGRID_INV: GridContainer,gcGRID_STRG: GridContainer, intSlotIndex: int):
@@ -65,7 +64,6 @@ func handle_click_StrgToInv(SRC: InvSlot,gcGRID_STRG: GridContainer,gcGRID_INV: 
 			_return_what_didnt_fit_strg(SRC,gcGRID_STRG,intSlotIndex)
 		leftover_delta = 0
 
-##
 ### INTERMEDIATE FUNCTION CALLS
 ##
 func _transfer_storage_to_inv(SRC: InvSlot,gcGRID_DEST: GridContainer,_slotIndex: int):
@@ -230,7 +228,6 @@ func _transfer_storage_to_inv_JustOne(SRC: InvSlot,gcGRID_DEST: GridContainer,_s
 		leftover_delta = remaining
 		return false
 
-##
 ### SUPPORT FUNCTIONS
 ##
 func _remove_from_inventory(gcGRID: GridContainer, intSlotIndex: int):
@@ -531,11 +528,11 @@ func collect_similar_from_container(container: GridContainer, inventory: Diction
 
 			# Fill stack respecting max_stack
 			var current_qty = slot[1]
-			var space = item.max_stack - current_qty
+			var space = int(item.max_stack) - int(current_qty)
 			var to_add = min(space, remaining)
 
-			slot[1] = current_qty + to_add
-			totals[path] -= to_add
+			slot[1] = int(current_qty) + int(to_add)
+			totals[path] -= int(to_add)
 
 
 
