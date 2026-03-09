@@ -2,11 +2,40 @@ extends Control
 
 @onready var inventory_container: InventoryContainer = $InventoryContainer
 @onready var test_container: TestContainer = $SmallContainer
+@onready var menu_button: MenuButton = $Testing/MenuButton
 
+var res1: String = "res://Inventory/ItemResources/crop_carrot.tres"
+var res2: String = "res://Inventory/ItemResources/crop_tomato.tres"
+var res3: String = "res://Inventory/ItemResources/seeds_strawberry.tres"
+var res4: String = "res://Inventory/ItemResources/seeds_turnip.tres"
 
 
 func _ready() -> void:
 	_reset_inventory()
+	init_menu_button()
+
+func init_menu_button():
+	var popup = menu_button.get_popup()
+	popup.add_item("Open", 0)
+	popup.add_item("Save", 1)
+	popup.add_separator()
+	popup.add_item("Quit", 2)
+	popup.id_pressed.connect(_on_item_pressed)
+
+
+func _on_item_pressed(id):
+	match id:
+		0:
+			print("Add Carrots x5")
+			#var new_item: Item = load(Global.PLAYER_INVENTORY_TEST[j][0])
+			#inventory_container._set_slot(j,new_item,Global.PLAYER_INVENTORY_TEST[j][1])
+			inventory_container.try_add_item_to_inventory(Global.PLAYER_INVENTORY_TEST,res1,5)
+			
+		1:
+			print("Save selected")
+		2:
+			print("Quit selected")
+
 
 func _reset_inventory():
 	_clear_all_slots()
