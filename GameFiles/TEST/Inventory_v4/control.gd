@@ -16,7 +16,7 @@ func _ready() -> void:
 
 func init_menu_button():
 	var popup = menu_button.get_popup()
-	popup.add_item("Open", 0)
+	popup.add_item("Add Carrots", 0)
 	popup.add_item("Save", 1)
 	popup.add_separator()
 	popup.add_item("Quit", 2)
@@ -30,7 +30,7 @@ func _on_item_pressed(id):
 			#var new_item: Item = load(Global.PLAYER_INVENTORY_TEST[j][0])
 			#inventory_container._set_slot(j,new_item,Global.PLAYER_INVENTORY_TEST[j][1])
 			inventory_container.try_add_item_to_inventory(Global.PLAYER_INVENTORY_TEST,res1,5)
-			
+			_refresh_inventory_items()
 		1:
 			print("Save selected")
 		2:
