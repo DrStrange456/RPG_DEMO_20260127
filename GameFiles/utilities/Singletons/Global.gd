@@ -59,6 +59,20 @@ var PLAYER_INVENTORY_TEST: Dictionary = {
 		9: ["res://Inventory/ItemResources/crop_carrot.tres", 1, true],
 }
 
+var PLAYER_INVENTORY_T2: Dictionary = {
+	0: OptiInventorySlot.new(),
+	1: OptiInventorySlot.new(),
+	2: OptiInventorySlot.new(),
+	3: OptiInventorySlot.new(),
+	4: OptiInventorySlot.new(),
+	5: OptiInventorySlot.new(),
+	6: OptiInventorySlot.new(),
+	7: OptiInventorySlot.new(),
+	8: OptiInventorySlot.new(),
+	9: OptiInventorySlot.new(),
+}
+
+
 var INVENTORY_TEST: Dictionary = {
 		0: ["res://Inventory/ItemResources/crop_carrot.tres", 10, true],
 		1: ["res://Inventory/ItemResources/crop_tomato.tres", 97, true],
