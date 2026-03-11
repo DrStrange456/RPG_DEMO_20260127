@@ -14,7 +14,6 @@ func bind_slot(s: OptiInventorySlot):
 
 	update_ui()
 
-
 func update_ui():
 
 	if slot.item == null:

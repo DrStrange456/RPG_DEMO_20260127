@@ -2,11 +2,6 @@
 class_name InventoryContainer extends GridContainer
 
 
-
-func _ready() -> void:
-	pass
-
-
 func _set_slot(indx, itm, qty):
 	var new_item: Item = itm
 	var ic_children = get_children()
