@@ -1,9 +1,9 @@
 extends Control
 
-var res1: String = "res://Inventory/ItemResources/crop_carrot.tres"
-var res2: String = "res://Inventory/ItemResources/crop_tomato.tres"
-var res3: String = "res://Inventory/ItemResources/seeds_strawberry.tres"
-var res4: String = "res://Inventory/ItemResources/seeds_turnip.tres"
+#var res1: String = "res://Inventory/ItemResources/crop_carrot.tres"
+#var res2: String = "res://Inventory/ItemResources/crop_tomato.tres"
+#var res3: String = "res://Inventory/ItemResources/seeds_strawberry.tres"
+#var res4: String = "res://Inventory/ItemResources/seeds_turnip.tres"
 
 
 var inventory : Array[OptiInventorySlot] = []
@@ -24,7 +24,7 @@ func _reset_inventory():
 
 
 func _load_slots_from_save():
-	inventory.resize(10)
+	inventory.resize(Global.PLAYER_INVENTORY_TEST.size())
 	for i in inventory.size():
 		inventory[i] = OptiInventorySlot.new()
 	

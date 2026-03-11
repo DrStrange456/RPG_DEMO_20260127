@@ -59,18 +59,18 @@ var PLAYER_INVENTORY_TEST: Dictionary = {
 		9: ["res://Inventory/ItemResources/crop_carrot.tres", 1, true],
 }
 
-var PLAYER_INVENTORY_T2: Dictionary = {
-	0: OptiInventorySlot.new(),
-	1: OptiInventorySlot.new(),
-	2: OptiInventorySlot.new(),
-	3: OptiInventorySlot.new(),
-	4: OptiInventorySlot.new(),
-	5: OptiInventorySlot.new(),
-	6: OptiInventorySlot.new(),
-	7: OptiInventorySlot.new(),
-	8: OptiInventorySlot.new(),
-	9: OptiInventorySlot.new(),
-}
+#var PLAYER_INVENTORY_T2: Dictionary = {
+	#0: OptiInventorySlot.new(),
+	#1: OptiInventorySlot.new(),
+	#2: OptiInventorySlot.new(),
+	#3: OptiInventorySlot.new(),
+	#4: OptiInventorySlot.new(),
+	#5: OptiInventorySlot.new(),
+	#6: OptiInventorySlot.new(),
+	#7: OptiInventorySlot.new(),
+	#8: OptiInventorySlot.new(),
+	#9: OptiInventorySlot.new(),
+#}
 
 
 var INVENTORY_TEST: Dictionary = {
@@ -79,4 +79,5 @@ var INVENTORY_TEST: Dictionary = {
 		2: ["res://Inventory/ItemResources/crop_carrot.tres", 25, true],
 		3: [null, 0, true],
 		4: ["res://Inventory/ItemResources/crop_carrot.tres", 65, true],
+		5: ["res://Inventory/ItemResources/seeds_strawberry.tres", 65, true],
 }
