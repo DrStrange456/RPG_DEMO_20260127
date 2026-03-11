@@ -1,13 +1,13 @@
 @icon("res://assets/icons/inv_Icons/InventorySlot.svg")
 class_name InvSlotUI extends Panel
 
-var slot : InventorySlot
+var slot : OptiInventorySlot
 
 @onready var icon = $CenterContainer/TextureRect
 @onready var qty_label = $Label
 
 
-func bind_slot(s: InventorySlot):
+func bind_slot(s: OptiInventorySlot):
 
 	slot = s
 	slot.changed.connect(update_ui)
