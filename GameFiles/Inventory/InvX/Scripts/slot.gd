@@ -23,6 +23,3 @@ func _update(value: Item, qty: int):
 
 func _refresh():
 	label.visible = true if int(label.text) > 1 else false
-
-func _gui_clicked():
-	print("click detected in slot")

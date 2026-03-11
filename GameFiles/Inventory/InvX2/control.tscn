@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://dxcoagr7dng1l" path="res://Inventory/InvX2/control.gd" id="1_uc1gs"]
 [ext_resource type="Script" uid="uid://1m5aamday5qv" path="res://Inventory/InvX2/inventory_container_ui.gd" id="2_g8gj8"]
 [ext_resource type="PackedScene" uid="uid://lt04e7ajlebf" path="res://Inventory/InvX2/inventory_slot_ui.tscn" id="3_2lbub"]
+[ext_resource type="Script" uid="uid://cmjxv1rkven4y" path="res://Inventory/InvX2/small_container.gd" id="4_qyfit"]
 
 [node name="Control" type="Control" unique_id=1355165246]
 layout_mode = 3
@@ -61,5 +62,38 @@ custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 
 [node name="InventorySlotUI10" parent="InventoryContainerUI" unique_id=1995275335 instance=ExtResource("3_2lbub")]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="SmallContainer" type="GridContainer" parent="." unique_id=1872605051]
+layout_mode = 0
+offset_left = 271.0
+offset_top = 192.0
+offset_right = 399.0
+offset_bottom = 276.0
+columns = 3
+script = ExtResource("4_qyfit")
+
+[node name="InventorySlotUI" parent="SmallContainer" unique_id=206119375 instance=ExtResource("3_2lbub")]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="InventorySlotUI2" parent="SmallContainer" unique_id=377496725 instance=ExtResource("3_2lbub")]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="InventorySlotUI3" parent="SmallContainer" unique_id=1816834079 instance=ExtResource("3_2lbub")]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="InventorySlotUI4" parent="SmallContainer" unique_id=1973705277 instance=ExtResource("3_2lbub")]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="InventorySlotUI5" parent="SmallContainer" unique_id=1726031109 instance=ExtResource("3_2lbub")]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="InventorySlotUI6" parent="SmallContainer" unique_id=1599074605 instance=ExtResource("3_2lbub")]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
