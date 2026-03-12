@@ -1,9 +1,5 @@
-extends GridContainer
-
-#var res1: String = "res://Inventory/ItemResources/crop_carrot.tres"
-#var res2: String = "res://Inventory/ItemResources/crop_tomato.tres"
-#var res3: String = "res://Inventory/ItemResources/seeds_strawberry.tres"
-#var res4: String = "res://Inventory/ItemResources/seeds_turnip.tres"
+@icon("res://assets/icons/inv_Icons/InventoryContainer.svg")
+class_name TestContainer extends GridContainer
 
 
 var inventory : Array[OptiInventorySlot] = []
@@ -19,18 +15,9 @@ func _load_slots_from_save():
 	
 	bind_inventory(inventory)
 	
-	inventory[0].set_item(load(Global.INVENTORY_TEST[0][0]) if Global.INVENTORY_TEST[0][1] else null)
-	inventory[0].set_quantity(Global.INVENTORY_TEST[0][1])
-	inventory[1].set_item(load(Global.INVENTORY_TEST[1][0]) if Global.INVENTORY_TEST[1][1] else null)
-	inventory[1].set_quantity(Global.INVENTORY_TEST[1][1])
-	inventory[2].set_item(load(Global.INVENTORY_TEST[2][0]) if Global.INVENTORY_TEST[2][1] else null)
-	inventory[2].set_quantity(Global.INVENTORY_TEST[2][1])
-	inventory[3].set_item(load(Global.INVENTORY_TEST[3][1]) if Global.INVENTORY_TEST[3][1] else null)
-	inventory[3].set_quantity(Global.INVENTORY_TEST[3][1])
-	inventory[4].set_item(load(Global.INVENTORY_TEST[4][0]) if Global.INVENTORY_TEST[4][1] else null)
-	inventory[4].set_quantity(Global.INVENTORY_TEST[4][1])
-	inventory[5].set_item(load(Global.INVENTORY_TEST[5][0]) if Global.INVENTORY_TEST[5][1] else null)
-	inventory[5].set_quantity(Global.INVENTORY_TEST[5][1])
+	for k in Global.STORAGE_TEST.size():
+		inventory[k].set_item(load(Global.STORAGE_TEST[k][0]) if Global.STORAGE_TEST[k][0] else null)
+		inventory[k].set_quantity(Global.STORAGE_TEST[k][1])
 
 
 func bind_inventory(inv):

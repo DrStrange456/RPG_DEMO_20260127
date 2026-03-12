@@ -32,38 +32,47 @@ layout_mode = 2
 [node name="InventorySlotUI2" parent="InventoryContainerUI" unique_id=1063310907 instance=ExtResource("3_2lbub")]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
+indx = 1
 
 [node name="InventorySlotUI3" parent="InventoryContainerUI" unique_id=1606278055 instance=ExtResource("3_2lbub")]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
+indx = 2
 
 [node name="InventorySlotUI4" parent="InventoryContainerUI" unique_id=1942417292 instance=ExtResource("3_2lbub")]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
+indx = 3
 
 [node name="InventorySlotUI5" parent="InventoryContainerUI" unique_id=757594139 instance=ExtResource("3_2lbub")]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
+indx = 4
 
 [node name="InventorySlotUI6" parent="InventoryContainerUI" unique_id=952641919 instance=ExtResource("3_2lbub")]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
+indx = 5
 
 [node name="InventorySlotUI7" parent="InventoryContainerUI" unique_id=485646415 instance=ExtResource("3_2lbub")]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
+indx = 6
 
 [node name="InventorySlotUI8" parent="InventoryContainerUI" unique_id=851521994 instance=ExtResource("3_2lbub")]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
+indx = 7
 
 [node name="InventorySlotUI9" parent="InventoryContainerUI" unique_id=1401840983 instance=ExtResource("3_2lbub")]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
+indx = 8
 
 [node name="InventorySlotUI10" parent="InventoryContainerUI" unique_id=1995275335 instance=ExtResource("3_2lbub")]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
+indx = 9
 
 [node name="SmallContainer" type="GridContainer" parent="." unique_id=1872605051]
 layout_mode = 0
@@ -81,19 +90,24 @@ layout_mode = 2
 [node name="InventorySlotUI2" parent="SmallContainer" unique_id=377496725 instance=ExtResource("3_2lbub")]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
+indx = 1
 
 [node name="InventorySlotUI3" parent="SmallContainer" unique_id=1816834079 instance=ExtResource("3_2lbub")]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
+indx = 2
 
 [node name="InventorySlotUI4" parent="SmallContainer" unique_id=1973705277 instance=ExtResource("3_2lbub")]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
+indx = 3
 
 [node name="InventorySlotUI5" parent="SmallContainer" unique_id=1726031109 instance=ExtResource("3_2lbub")]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
+indx = 4
 
 [node name="InventorySlotUI6" parent="SmallContainer" unique_id=1599074605 instance=ExtResource("3_2lbub")]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
+indx = 5

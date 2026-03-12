@@ -1,5 +1,5 @@
 @icon("res://assets/icons/inv_Icons/InventoryContainer.svg")
-class_name TestContainer extends GridContainer
+class_name TestContainer_old extends GridContainer
 
 var res1: String = "res://Inventory/ItemResources/crop_carrot.tres"
 var res2: String = "res://Inventory/ItemResources/crop_tomato.tres"

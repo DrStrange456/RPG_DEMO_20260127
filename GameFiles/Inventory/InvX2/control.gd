@@ -1,10 +1,6 @@
 extends Control
 
-#var res1: String = "res://Inventory/ItemResources/crop_carrot.tres"
-#var res2: String = "res://Inventory/ItemResources/crop_tomato.tres"
-#var res3: String = "res://Inventory/ItemResources/seeds_strawberry.tres"
-#var res4: String = "res://Inventory/ItemResources/seeds_turnip.tres"
-
+@onready var test_container: TestContainer = $SmallContainer
 
 var inventory : Array[OptiInventorySlot] = []
 
@@ -34,5 +30,6 @@ func _load_slots_from_save():
 		if Global.PLAYER_INVENTORY_TEST[j][0] != null:
 			var ui = $InventoryContainerUI
 			ui._set_slot(j)
+			inventory[j].indx = j
 			inventory[j].set_item(load(Global.PLAYER_INVENTORY_TEST[j][0]))
 			inventory[j].set_quantity(Global.PLAYER_INVENTORY_TEST[j][1])

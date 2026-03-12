@@ -4,6 +4,8 @@ extends RefCounted
 
 signal changed
 
+@export var indx: int  # for inventory slots this will be the place in the array
+
 var item: Resource = null
 var quantity: int = 0
 var enabled: bool = true

@@ -1,6 +1,7 @@
 @icon("res://assets/icons/inv_Icons/InventorySlot.svg")
 class_name InvSlotUI extends Panel
 
+@export var indx: int  # for inventory slots this will be the place in the array
 var slot : OptiInventorySlot
 
 @onready var icon = $CenterContainer/TextureRect
