@@ -11,15 +11,20 @@ var leftover_delta: int = 0
 ### - - LEFT CLICKS
 func handle_click_InvToStrg(gcGRID_INV: GridContainer,gcGRID_STRG: GridContainer, intSlotIndex: int):
 	if ptrINVENTORY[intSlotIndex][0] != null:
-		if transfer_inventory_slot_to_container(Global.PLAYER_INVENTORY_TEST,gcGRID_STRG.get_children(),intSlotIndex):
-		#if _transfer_inv_to_storage(gcGRID_STRG,intSlotIndex):
+		if transfer_inventory_slot_to_container(ptrINVENTORY,gcGRID_STRG.get_children(),intSlotIndex):
 			_remove_from_inventory(gcGRID_INV,intSlotIndex)  # All items successfully transferred
 		else:
 			_return_what_didnt_fit(gcGRID_INV,intSlotIndex)
 		leftover_delta = 0
 
 
-
+func handle_click_StrgToInv(SRC: InvSlot,gcGRID_STRG: GridContainer,gcGRID_INV: GridContainer, intSlotIndex: int):
+	if SRC.itm != null:
+		if _transfer_storage_to_inv(SRC,gcGRID_INV,intSlotIndex):
+			_remove_from_storage(gcGRID_STRG,intSlotIndex)
+		else:
+			_return_what_didnt_fit_strg(SRC,gcGRID_STRG,intSlotIndex)
+		leftover_delta = 0
 
 
 
@@ -182,7 +187,67 @@ func transfer_inventory_slot_to_container(inventory: Dictionary, container: Arra
 
 
 
+func _transfer_storage_to_inv(SRC: InvSlot,gcGRID_DEST: GridContainer,_slotIndex: int):
+	var item = SRC.itm
+	var amount = int(SRC.label.text)
+	var remaining = amount
+	var destIndex: int = 0
+	
+	# Step 1: Fill existing stacks
+	var slots = gcGRID_DEST.get_children()
+	destIndex = 0
+	for slot in slots:
+		if slot.itm == item and int(slot.label.text) < item.max_stack:
+			var space = int(item.max_stack) - int(ptrINVENTORY[destIndex][1])
+			var to_add = min(space, remaining)
+			var new_qty = str(int(ptrINVENTORY[destIndex][1]) + to_add)
+			slot.label.text = new_qty
+			slot._refresh()
+			remaining -= to_add
+			
+			# Update DATA here
+			ptrINVENTORY[destIndex][0] = item.resource_path
+			ptrINVENTORY[destIndex][1] = new_qty
+			
+			if remaining <= 0:
+				return true  # Done adding
+		destIndex += 1
+	# Step 2: Fill new empty slots
+	destIndex = 0
+	for slot in slots:
+		if slot.itm == null:
+			var to_add = min(item.max_stack, remaining)
+			var new_qty = str(int(ptrINVENTORY[destIndex][1]) + to_add)
+			slot.itm = item
+			slot.label.text = new_qty
+			slot._refresh()
+			remaining -= to_add
+			
+			# Update DATA here
+			ptrINVENTORY[destIndex][0] = item.resource_path
+			ptrINVENTORY[destIndex][1] = new_qty
+			
+			if remaining <= 0:
+				return true  # Done adding
+		destIndex += 1
+	# Step 3: Not enough space
+	if remaining > 0:
+		print("Not enough space to add item: %s (Missing %d)" % [item.name, remaining])
+		leftover_delta = remaining
+		return false
 
+func _remove_from_storage(gcGRID: GridContainer, intSlotIndex: int):
+	# - - Only remove from UI.  Not handling data same as inventory.
+	# UI
+	var slots = gcGRID.get_children()
+	slots[intSlotIndex]._update(null,0)
+
+func _return_what_didnt_fit_strg(SRC: InvSlot, gcGRID: GridContainer, intSlotIndex: int):
+	# - - Update Data then UI
+	# UI
+	var handle_to_source_slot = gcGRID.get_child(intSlotIndex)
+	handle_to_source_slot._update(SRC.itm,leftover_delta)
+	handle_to_source_slot._refresh()
 
 
 
