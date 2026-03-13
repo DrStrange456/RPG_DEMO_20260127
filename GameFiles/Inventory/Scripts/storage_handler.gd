@@ -475,124 +475,6 @@ func sort_and_combine_inventory_Strg(grid: GridContainer):
 			remaining -= stack_size
 			slot_index += 1
 
-func collect_similar_from_container(container: GridContainer, inventory: Dictionary):
-
-	var totals := {}
-
-	# --- Determine which items exist in inventory ---
-	for slot in inventory.values():
-		var path = slot[0]
-		if path != null and not totals.has(path):
-			totals[path] = 0
-
-	# --- Pull matching items from chest ---
-	for slot in container.get_children():
-
-		if slot.slot.item == null:
-			continue
-
-		var path = slot.slot.item.resource_path
-
-		if totals.has(path):
-
-			var qty = int(slot.label.text)
-			totals[path] += qty
-
-			# Clear chest slot
-			slot.slot.item = null
-			slot.texture_rect.texture = null
-			slot.label.text = ""
-
-	# --- Fill existing stacks first ---
-	for key in inventory.keys():
-
-		var slot = inventory[key]
-		var path = slot[0]
-
-		if path == null:
-			continue
-
-		if totals.has(path) and totals[path] > 0:
-
-			var item = load(path)
-			var max_stack = item.max_stack
-
-			var current_qty = slot[1]
-			var space = int(max_stack) - int(current_qty)
-			var add = min(space, totals[path])
-
-			slot[1] = int(current_qty) + int(add)
-			totals[path] -= int(add)
-
-	# --- Place overflow into empty slots ---
-	var keys = inventory.keys()
-	keys.sort()
-
-	for path in totals.keys():
-
-		var remaining = totals[path]
-		if remaining <= 0:
-			continue
-
-		var item = load(path)
-
-		for key in keys:
-
-			if remaining <= 0:
-				break
-
-			var slot = inventory[key]
-
-			if slot[0] == null:
-
-				var stack_size = min(item.max_stack, remaining)
-
-				inventory[key] = [
-					path,
-					stack_size,
-					true
-				]
-
-				remaining -= stack_size
-
-		totals[path] = remaining
-
-func collect_similar_from_chest(container: Array, inventory: Dictionary):
-
-	for slot in container:
-
-		if slot.slot.item == null:
-			continue
-
-		var item = slot.slot.item
-		var item_path = item.resource_path
-		var qty = slot.slot.quantity
-
-		if not inventory_has_item(inventory, item_path):
-			continue
-
-		var remaining = try_add_item_to_inventory(inventory, item_path, qty)
-
-		if remaining == 0:
-			slot.slot.clear()
-		else:
-			slot.slot.set_quantity(remaining)
-
-func inventory_has_item(inventory: Dictionary, item_path: String) -> bool:
-
-	for slot in inventory.values():
-
-		if slot[0] == item_path and int(slot[1]) > int(0):
-			return true
-
-	return false
-
-
-
-
-
-
-
 func move_all_to_inventory(container: Array, inventory: Dictionary):
 
 	for slot in container:
@@ -613,6 +495,11 @@ func move_all_to_inventory(container: Array, inventory: Dictionary):
 			slot.slot.clear()
 		else:
 			slot.slot.set_quantity(remaining)
+
+
+
+
+
 
 func try_add_item_to_inventory(inventory: Dictionary, item_path: String, quantity: int) -> int:
 
@@ -726,6 +613,19 @@ func try_add_item_to_inventory(inventory: Dictionary, item_path: String, quantit
 #
 			#remaining -= stack_size
 			#pointer += 1
+
+func inventory_has_item(inventory: Dictionary, item_path: String) -> bool:
+
+	for slot in inventory.values():
+
+		if slot[0] == item_path and int(slot[1]) > int(0):
+			return true
+
+	return false
+
+
+
+
 
 
 
