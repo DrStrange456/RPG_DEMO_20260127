@@ -15,7 +15,7 @@ func set_item(new_item):
 	changed.emit()
 
 func set_quantity(q):
-	quantity = q
+	quantity = int(q)
 	changed.emit()
 
 func clear():

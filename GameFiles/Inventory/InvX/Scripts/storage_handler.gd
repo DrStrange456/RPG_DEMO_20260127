@@ -440,7 +440,7 @@ func sort_and_combine_inventory_Strg(grid: GridContainer):
 	# Collect all quantities
 	for slot in slots:
 		if slot.slot.item != null:
-			var qty := int(slot.qty_label.text)
+			var qty := int(slot.slot.quantity)
 
 			if item_totals.has(slot.slot.item):
 				item_totals[slot.slot.item] += qty
@@ -452,6 +452,7 @@ func sort_and_combine_inventory_Strg(grid: GridContainer):
 		slot.slot.item = null
 		slot.icon.texture = null
 		slot.qty_label.text = ""
+		slot.slot.quantity = int(0)
 
 	# Rebuild stacks
 	var slot_index := 0
@@ -468,10 +469,232 @@ func sort_and_combine_inventory_Strg(grid: GridContainer):
 			slot.slot.item = item
 			slot.icon.texture = item.icon
 			slot.qty_label.text = str(stack_size)
+			slot.slot.quantity = int(slot.qty_label.text)
 			slot.update_ui()
 
 			remaining -= stack_size
 			slot_index += 1
+
+func collect_all_from_container(container: GridContainer, inventory: Dictionary):
+
+	var totals := {}
+
+	# --- gather totals from inventory dictionary ---
+	for slot in inventory.values():
+		var path = slot[0]
+		var qty = slot[1]
+		if path == null:
+			continue
+		if totals.has(path):
+			totals[path] += int(qty)
+		else:
+			totals[path] = int(qty)
+
+	# --- gather totals from container slots ---
+	for slot in container.get_children():
+
+		if slot.slot.item == null:
+			continue
+
+		var path = slot.slot.item.resource_path
+		var qty = int(slot.qty_label.text)
+
+		if totals.has(path):
+			totals[path] += qty
+		else:
+			totals[path] = qty
+
+		# clear chest slot
+		slot.slot.item = null
+		slot.icon.texture = null
+		slot.qty_label.text = ""
+		slot.slot.quantity = int(0)
+
+	# --- clear inventory dictionary ---
+	for key in inventory.keys():
+		inventory[key] = [null, 0, true]
+
+	# --- rebuild stacks ---
+	var keys = inventory.keys()
+	keys.sort()
+
+	var pointer := 0
+
+	for path in totals.keys():
+
+		var item = load(path)
+		var remaining = totals[path]
+
+		while remaining > 0 and pointer < keys.size():
+
+			var stack_size = min(item.max_stack, remaining)
+
+			inventory[keys[pointer]] = [
+				path,
+				stack_size,
+				true
+			]
+
+			remaining -= stack_size
+			pointer += 1
+
+func collect_similar_from_container(container: GridContainer, inventory: Dictionary):
+
+	var totals := {}
+
+	# --- Determine which items exist in inventory ---
+	for slot in inventory.values():
+		var path = slot[0]
+		if path != null and not totals.has(path):
+			totals[path] = 0
+
+	# --- Pull matching items from chest ---
+	for slot in container.get_children():
+
+		if slot.slot.item == null:
+			continue
+
+		var path = slot.slot.item.resource_path
+
+		if totals.has(path):
+
+			var qty = int(slot.label.text)
+			totals[path] += qty
+
+			# Clear chest slot
+			slot.slot.item = null
+			slot.texture_rect.texture = null
+			slot.label.text = ""
+
+	# --- Fill existing stacks first ---
+	for key in inventory.keys():
+
+		var slot = inventory[key]
+		var path = slot[0]
+
+		if path == null:
+			continue
+
+		if totals.has(path) and totals[path] > 0:
+
+			var item = load(path)
+			var max_stack = item.max_stack
+
+			var current_qty = slot[1]
+			var space = int(max_stack) - int(current_qty)
+			var add = min(space, totals[path])
+
+			slot[1] = int(current_qty) + int(add)
+			totals[path] -= int(add)
+
+	# --- Place overflow into empty slots ---
+	var keys = inventory.keys()
+	keys.sort()
+
+	for path in totals.keys():
+
+		var remaining = totals[path]
+		if remaining <= 0:
+			continue
+
+		var item = load(path)
+
+		for key in keys:
+
+			if remaining <= 0:
+				break
+
+			var slot = inventory[key]
+
+			if slot[0] == null:
+
+				var stack_size = min(item.max_stack, remaining)
+
+				inventory[key] = [
+					path,
+					stack_size,
+					true
+				]
+
+				remaining -= stack_size
+
+		totals[path] = remaining
+
+
+
+func move_all_to_inventory(container: Array, inventory: Dictionary):
+
+	for slot in container:
+
+		if slot.slot.item == null:
+			continue
+
+		var item = slot.slot.item
+		var qty = slot.slot.quantity
+
+		var remaining = try_add_item_to_inventory(
+			inventory,
+			item.resource_path,
+			qty
+		)
+
+		if remaining == 0:
+			slot.slot.clear()
+		else:
+			slot.slot.set_quantity(remaining)
+
+func try_add_item_to_inventory(inventory: Dictionary, item_path: String, quantity: int) -> int:
+
+	var item = load(item_path)
+	var max_stack = item.max_stack
+
+	# --- Step 1: Fill existing stacks ---
+	for key in inventory.keys():
+
+		var slot = inventory[key]
+
+		if slot[0] == item_path:
+
+			var current_qty = int(slot[1])
+			var space = int(max_stack) - int(current_qty)
+
+			if space > 0:
+
+				var add = min(space, quantity)
+				slot[1] += int(add)
+				quantity -= int(add)
+
+				if quantity <= 0:
+					return 0
+
+	# --- Step 2: Use empty slots ---
+	var keys = inventory.keys()
+	keys.sort()
+
+	for key in keys:
+
+		if quantity <= 0:
+			break
+
+		var slot = inventory[key]
+
+		if slot[0] == null:
+
+			var stack_size = min(max_stack, quantity)
+
+			inventory[key] = [
+				item_path,
+				stack_size,
+				true
+			]
+
+			quantity -= stack_size
+
+	return quantity
+
+
+
+
 
 
 

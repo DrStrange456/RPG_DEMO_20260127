@@ -52,7 +52,9 @@ func _on_btn_sort_inv_pressed() -> void:
 
 
 func _on_btn_transfer_all_pressed() -> void:
-	pass # Replace with function body.
+	#StorageHandler.collect_all_from_container(test_container,Global.PLAYER_INVENTORY_TEST)
+	StorageHandler.move_all_to_inventory(test_container.get_children(),Global.PLAYER_INVENTORY_TEST)
+	_refresh_inventory_items()
 
 
 func _on_btn_transfer_like_pressed() -> void:
