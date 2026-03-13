@@ -111,3 +111,42 @@ indx = 4
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 indx = 5
+
+[node name="OptionButtons" type="Node2D" parent="." unique_id=1766532277]
+
+[node name="btnTransferAll" type="Button" parent="OptionButtons" unique_id=1130572704]
+offset_left = 456.0
+offset_top = 224.0
+offset_right = 524.0
+offset_bottom = 244.0
+theme_override_font_sizes/font_size = 8
+text = "Transfer All"
+
+[node name="btnTransferLike" type="Button" parent="OptionButtons" unique_id=1431429418]
+offset_left = 456.0
+offset_top = 200.0
+offset_right = 524.0
+offset_bottom = 220.0
+theme_override_font_sizes/font_size = 8
+text = "Transfer Like"
+
+[node name="btnSort_Inv" type="Button" parent="OptionButtons" unique_id=135522976]
+offset_left = 512.0
+offset_top = 40.0
+offset_right = 580.0
+offset_bottom = 60.0
+theme_override_font_sizes/font_size = 8
+text = "Sort Inv"
+
+[node name="btnSort_Chest" type="Button" parent="OptionButtons" unique_id=1249055402]
+offset_left = 512.0
+offset_top = 288.0
+offset_right = 580.0
+offset_bottom = 308.0
+theme_override_font_sizes/font_size = 8
+text = "Sort Chest"
+
+[connection signal="pressed" from="OptionButtons/btnTransferAll" to="." method="_on_btn_transfer_all_pressed"]
+[connection signal="pressed" from="OptionButtons/btnTransferLike" to="." method="_on_btn_transfer_like_pressed"]
+[connection signal="pressed" from="OptionButtons/btnSort_Inv" to="." method="_on_btn_sort_inv_pressed"]
+[connection signal="pressed" from="OptionButtons/btnSort_Chest" to="." method="_on_btn_sort_chest_pressed"]

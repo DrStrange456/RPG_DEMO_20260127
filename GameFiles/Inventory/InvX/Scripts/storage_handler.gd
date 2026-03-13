@@ -382,6 +382,98 @@ func _transfer_storage_to_inv_JustOne(SRC: InvSlotUI,gcGRID_DEST: GridContainer,
 
 
 
+func sort_and_combine_inventory_Inv(inventory: Dictionary):
+
+	var item_totals := {}
+
+	# --- Collect totals ---
+	for slot_index in inventory.keys():
+
+		var slot = inventory[slot_index]
+		var path = slot[0]
+		var qty = slot[1]
+
+		if path == null:
+			continue
+
+		var item = load(path)
+
+		if item_totals.has(item):
+			item_totals[item] += int(qty)
+		else:
+			item_totals[item] = int(qty)
+
+	# --- Clear all slots ---
+	for slot_index in inventory.keys():
+		inventory[slot_index] = [null, 0, true]
+
+	# --- Rebuild stacks ---
+	var slot_keys = inventory.keys()
+	slot_keys.sort()
+
+	var slot_pointer := 0
+
+	for item in item_totals.keys():
+
+		var remaining: int = item_totals[item]
+
+		while remaining > 0 and slot_pointer < slot_keys.size():
+
+			var stack_size: int = min(item.max_stack, remaining)
+			var slot_index = slot_keys[slot_pointer]
+
+			inventory[slot_index] = [
+				item.resource_path,
+				stack_size,
+				true
+			]
+
+			remaining -= stack_size
+			slot_pointer += 1
+	# NOTE: UI needs to be refreshed after this
+
+func sort_and_combine_inventory_Strg(grid: GridContainer):
+
+	var slots := grid.get_children()
+	var item_totals := {}
+
+	# Collect all quantities
+	for slot in slots:
+		if slot.slot.item != null:
+			var qty := int(slot.qty_label.text)
+
+			if item_totals.has(slot.slot.item):
+				item_totals[slot.slot.item] += qty
+			else:
+				item_totals[slot.slot.item] = qty
+
+	# Clear all slots
+	for slot in slots:
+		slot.slot.item = null
+		slot.icon.texture = null
+		slot.qty_label.text = ""
+
+	# Rebuild stacks
+	var slot_index := 0
+
+	for item in item_totals.keys():
+
+		var remaining: int = item_totals[item]
+
+		while remaining > 0 and slot_index < slots.size():
+
+			var stack_size: int = min(item.max_stack, remaining)
+			var slot = slots[slot_index]
+
+			slot.slot.item = item
+			slot.icon.texture = item.icon
+			slot.qty_label.text = str(stack_size)
+			slot.update_ui()
+
+			remaining -= stack_size
+			slot_index += 1
+
+
 
 
 # bottom

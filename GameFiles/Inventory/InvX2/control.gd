@@ -34,3 +34,26 @@ func _load_slots_from_save():
 			inventory[j].indx = j
 			inventory[j].set_item(load(Global.PLAYER_INVENTORY_TEST[j][0]))
 			inventory[j].set_quantity(Global.PLAYER_INVENTORY_TEST[j][1])
+
+
+func _refresh_inventory_items():
+	_load_slots_from_save()
+
+
+
+
+func _on_btn_sort_chest_pressed() -> void:
+	StorageHandler.sort_and_combine_inventory_Strg(test_container)
+
+
+func _on_btn_sort_inv_pressed() -> void:
+	StorageHandler.sort_and_combine_inventory_Inv(Global.PLAYER_INVENTORY_TEST)
+	_refresh_inventory_items()
+
+
+func _on_btn_transfer_all_pressed() -> void:
+	pass # Replace with function body.
+
+
+func _on_btn_transfer_like_pressed() -> void:
+	pass # Replace with function body.
