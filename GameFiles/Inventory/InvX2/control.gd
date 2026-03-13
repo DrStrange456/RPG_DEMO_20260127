@@ -58,4 +58,5 @@ func _on_btn_transfer_all_pressed() -> void:
 
 
 func _on_btn_transfer_like_pressed() -> void:
-	pass # Replace with function body.
+	StorageHandler.collect_similar_from_chest(test_container.get_children(),Global.PLAYER_INVENTORY_TEST)
+	_refresh_inventory_items()

@@ -475,69 +475,6 @@ func sort_and_combine_inventory_Strg(grid: GridContainer):
 			remaining -= stack_size
 			slot_index += 1
 
-func collect_all_from_container(container: GridContainer, inventory: Dictionary):
-
-	var totals := {}
-
-	# --- gather totals from inventory dictionary ---
-	for slot in inventory.values():
-		var path = slot[0]
-		var qty = slot[1]
-		if path == null:
-			continue
-		if totals.has(path):
-			totals[path] += int(qty)
-		else:
-			totals[path] = int(qty)
-
-	# --- gather totals from container slots ---
-	for slot in container.get_children():
-
-		if slot.slot.item == null:
-			continue
-
-		var path = slot.slot.item.resource_path
-		var qty = int(slot.qty_label.text)
-
-		if totals.has(path):
-			totals[path] += qty
-		else:
-			totals[path] = qty
-
-		# clear chest slot
-		slot.slot.item = null
-		slot.icon.texture = null
-		slot.qty_label.text = ""
-		slot.slot.quantity = int(0)
-
-	# --- clear inventory dictionary ---
-	for key in inventory.keys():
-		inventory[key] = [null, 0, true]
-
-	# --- rebuild stacks ---
-	var keys = inventory.keys()
-	keys.sort()
-
-	var pointer := 0
-
-	for path in totals.keys():
-
-		var item = load(path)
-		var remaining = totals[path]
-
-		while remaining > 0 and pointer < keys.size():
-
-			var stack_size = min(item.max_stack, remaining)
-
-			inventory[keys[pointer]] = [
-				path,
-				stack_size,
-				true
-			]
-
-			remaining -= stack_size
-			pointer += 1
-
 func collect_similar_from_container(container: GridContainer, inventory: Dictionary):
 
 	var totals := {}
@@ -620,6 +557,40 @@ func collect_similar_from_container(container: GridContainer, inventory: Diction
 
 		totals[path] = remaining
 
+func collect_similar_from_chest(container: Array, inventory: Dictionary):
+
+	for slot in container:
+
+		if slot.slot.item == null:
+			continue
+
+		var item = slot.slot.item
+		var item_path = item.resource_path
+		var qty = slot.slot.quantity
+
+		if not inventory_has_item(inventory, item_path):
+			continue
+
+		var remaining = try_add_item_to_inventory(inventory, item_path, qty)
+
+		if remaining == 0:
+			slot.slot.clear()
+		else:
+			slot.slot.set_quantity(remaining)
+
+func inventory_has_item(inventory: Dictionary, item_path: String) -> bool:
+
+	for slot in inventory.values():
+
+		if slot[0] == item_path and int(slot[1]) > int(0):
+			return true
+
+	return false
+
+
+
+
+
 
 
 func move_all_to_inventory(container: Array, inventory: Dictionary):
@@ -661,7 +632,7 @@ func try_add_item_to_inventory(inventory: Dictionary, item_path: String, quantit
 			if space > 0:
 
 				var add = min(space, quantity)
-				slot[1] += int(add)
+				slot[1] = str(int(slot[1]) + int(add))
 				quantity -= int(add)
 
 				if quantity <= 0:
@@ -693,6 +664,68 @@ func try_add_item_to_inventory(inventory: Dictionary, item_path: String, quantit
 	return quantity
 
 
+#func collect_all_from_container(container: GridContainer, inventory: Dictionary):
+#
+	#var totals := {}
+#
+	## --- gather totals from inventory dictionary ---
+	#for slot in inventory.values():
+		#var path = slot[0]
+		#var qty = slot[1]
+		#if path == null:
+			#continue
+		#if totals.has(path):
+			#totals[path] += int(qty)
+		#else:
+			#totals[path] = int(qty)
+#
+	## --- gather totals from container slots ---
+	#for slot in container.get_children():
+#
+		#if slot.slot.item == null:
+			#continue
+#
+		#var path = slot.slot.item.resource_path
+		#var qty = int(slot.qty_label.text)
+#
+		#if totals.has(path):
+			#totals[path] += qty
+		#else:
+			#totals[path] = qty
+#
+		## clear chest slot
+		#slot.slot.item = null
+		#slot.icon.texture = null
+		#slot.qty_label.text = ""
+		#slot.slot.quantity = int(0)
+#
+	## --- clear inventory dictionary ---
+	#for key in inventory.keys():
+		#inventory[key] = [null, 0, true]
+#
+	## --- rebuild stacks ---
+	#var keys = inventory.keys()
+	#keys.sort()
+#
+	#var pointer := 0
+#
+	#for path in totals.keys():
+#
+		#var item = load(path)
+		#var remaining = totals[path]
+#
+		#while remaining > 0 and pointer < keys.size():
+#
+			#var stack_size = min(item.max_stack, remaining)
+#
+			#inventory[keys[pointer]] = [
+				#path,
+				#stack_size,
+				#true
+			#]
+#
+			#remaining -= stack_size
+			#pointer += 1
 
 
 

@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Item" format=3 uid="uid://b08v6gpietsrg"]
 
 [ext_resource type="Texture2D" uid="uid://bj01v8llr6hne" path="res://assets/icons/turnip.png" id="1_i3tdl"]
-[ext_resource type="Script" uid="uid://dv3wqchqw7hvm" path="res://Inventory/InventoryResources/item.gd" id="2_m40dt"]
+[ext_resource type="Script" uid="uid://dv3wqchqw7hvm" path="res://TEST/InventoryResources/item.gd" id="2_m40dt"]
 
 [resource]
 script = ExtResource("2_m40dt")

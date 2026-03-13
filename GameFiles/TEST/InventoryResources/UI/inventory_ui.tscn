@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cegcevfs18fdh"]
 
-[ext_resource type="Script" uid="uid://b23a0u1xr5q6w" path="res://Inventory/InventoryResources/inv_controller.gd" id="1_cqcns"]
-[ext_resource type="PackedScene" uid="uid://dlfq4rm6e80dg" path="res://Inventory/InventoryResources/slot.tscn" id="2_jn33b"]
+[ext_resource type="Script" uid="uid://b23a0u1xr5q6w" path="res://TEST/InventoryResources/inv_controller.gd" id="1_cqcns"]
+[ext_resource type="PackedScene" uid="uid://dlfq4rm6e80dg" path="res://TEST/InventoryResources/slot.tscn" id="2_jn33b"]
 
 [node name="InventoryUI" type="Control" unique_id=448322636]
 layout_mode = 3
