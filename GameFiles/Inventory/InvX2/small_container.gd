@@ -16,6 +16,7 @@ func _load_slots_from_save():
 	bind_inventory(inventory)
 	
 	for k in Global.STORAGE_TEST.size():
+		_set_slot(k)
 		inventory[k].set_item(load(Global.STORAGE_TEST[k][0]) if Global.STORAGE_TEST[k][0] else null)
 		inventory[k].set_quantity(Global.STORAGE_TEST[k][1])
 
@@ -30,9 +31,9 @@ func _set_slot(indx):
 	var slot_for_update: InvSlotUI = ic_children[indx]
 	slot_for_update.connect("gui_input", _slot_gui_input.bind(slot_for_update))
 
-func _slot_gui_input(event: InputEvent, slot: InvSlot):
+func _slot_gui_input(event: InputEvent, slot: InvSlotUI):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT && event.pressed:
-			StorageHandler.handle_click_StrgToInv(slot,self,get_parent().inventory_container,slot.indx)
-		if event.button_index == MOUSE_BUTTON_RIGHT && event.pressed:
-			StorageHandler.handle_click_StrgToInv_single_item(slot,self,get_parent().inventory_container,slot.indx)
+			StorageHandler.handle_click_StrgToInv(slot,self,get_parent().inventory_container_ui,slot.indx)
+		#if event.button_index == MOUSE_BUTTON_RIGHT && event.pressed:
+			#StorageHandler.handle_click_StrgToInv_single_item(slot,self,get_parent().inventory_container,slot.indx)
