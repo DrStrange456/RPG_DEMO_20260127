@@ -627,6 +627,82 @@ func inventory_has_item(inventory: Dictionary, item_path: String) -> bool:
 
 
 
+func collect_similar_from_chest(container: Array, inventory: Dictionary):
+
+	var keys = inventory.keys()
+	keys.sort()
+
+	# --- build item type set already in inventory ---
+	var inventory_types := {}
+
+	for i in keys:
+		var item_path = inventory[i][0]
+		var qty = int(inventory[i][1])
+
+		if item_path != null and qty > 0:
+			inventory_types[item_path] = true
+
+
+	for chest_slot in container:
+
+		if chest_slot.slot.item == null:
+			continue
+
+		var item = chest_slot.slot.item
+		var item_path = item.resource_path
+		var max_stack = item.max_stack
+		var remaining = int(chest_slot.slot.quantity)
+
+
+		# skip if inventory does not already contain this type
+		if not inventory_types.has(item_path):
+			continue
+
+
+		# --- pass 1: fill existing stacks ---
+		for i in keys:
+
+			if remaining <= 0:
+				break
+
+			if inventory[i][0] != item_path:
+				continue
+
+			var slot_qty = int(inventory[i][1])
+
+			if slot_qty >= max_stack:
+				continue
+
+			var space = max_stack - slot_qty
+			var add = min(space, remaining)
+
+			inventory[i][1] = int(inventory[i][1]) + add
+			remaining -= add
+
+
+		# --- pass 2: overflow into empty slots ---
+		for i in keys:
+
+			if remaining <= 0:
+				break
+
+			if inventory[i][0] == null:
+
+				var stack = min(max_stack, remaining)
+
+				inventory[i][0] = item_path
+				inventory[i][1] = stack
+
+				remaining -= stack
+
+
+		# --- update chest slot ---
+		if remaining == 0:
+			chest_slot.slot.clear()
+		else:
+			chest_slot.slot.set_quantity(remaining)
+
+
 
 
 
