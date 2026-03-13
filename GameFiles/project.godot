@@ -26,7 +26,7 @@ Global="*uid://bjpbv8u11tfff"
 Data="*res://utilities/Singletons/data.gd"
 Enum="*res://utilities/Singletons/enum.gd"
 GlobalItemDB="*uid://d4k8f16k7igss"
-StorageHandler="*uid://dj7idqt3rem1m"
+StorageHandler="*uid://st11jtu58hme"
 
 [debug]
 
