@@ -9917,6 +9917,7 @@ tile_set = SubResource("TileSet_aj8wh")
 visible = false
 
 [node name="water_gentle" type="ColorRect" parent="Layers" unique_id=1772692829]
+visible = false
 z_index = -3
 material = SubResource("ShaderMaterial_02rlf")
 offset_left = 1724.0
