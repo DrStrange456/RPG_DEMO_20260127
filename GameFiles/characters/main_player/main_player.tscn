@@ -2147,6 +2147,7 @@ text = "debug text"
 target_position = Vector2(0, 20)
 
 [node name="FishingGame" parent="." unique_id=1444594131 instance=ExtResource("7_h2fcv")]
+visible = false
 position = Vector2(40, 0)
 
 [node name="weapon_hit_box" type="Area2D" parent="." unique_id=248704135]
