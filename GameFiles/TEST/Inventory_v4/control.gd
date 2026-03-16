@@ -14,27 +14,6 @@ func _ready() -> void:
 	_reset_inventory()
 	init_menu_button()
 
-func init_menu_button():
-	var popup = menu_button.get_popup()
-	popup.add_item("Add Carrots", 0)
-	popup.add_item("Save", 1)
-	popup.add_separator()
-	popup.add_item("Quit", 2)
-	popup.id_pressed.connect(_on_item_pressed)
-
-
-func _on_item_pressed(id):
-	match id:
-		0:
-			print("Add Carrots x5")
-			#var new_item: Item = load(Global.PLAYER_INVENTORY_TEST[j][0])
-			#inventory_container._set_slot(j,new_item,Global.PLAYER_INVENTORY_TEST[j][1])
-			inventory_container.try_add_item_to_inventory(Global.PLAYER_INVENTORY_TEST,res1,5)
-			_refresh_inventory_items()
-		1:
-			print("Save selected")
-		2:
-			print("Quit selected")
 
 
 func _reset_inventory():
@@ -91,3 +70,27 @@ func _on_btn_transfer_to_inv_pressed() -> void:
 func _on_btn_move_like_items_pressed() -> void:
 	StorageHandler.collect_similar_from_container(test_container,Global.PLAYER_INVENTORY_TEST)
 	_refresh_inventory_items()
+
+
+
+### - NOT USED
+func init_menu_button():
+	var popup = menu_button.get_popup()
+	popup.add_item("Add Carrots", 0)
+	popup.add_item("Save", 1)
+	popup.add_separator()
+	popup.add_item("Quit", 2)
+	popup.id_pressed.connect(_on_item_pressed)
+
+func _on_item_pressed(id):
+	match id:
+		0:
+			print("Add Carrots x5")
+			#var new_item: Item = load(Global.PLAYER_INVENTORY_TEST[j][0])
+			#inventory_container._set_slot(j,new_item,Global.PLAYER_INVENTORY_TEST[j][1])
+			inventory_container.try_add_item_to_inventory(Global.PLAYER_INVENTORY_TEST,res1,5)
+			_refresh_inventory_items()
+		1:
+			print("Save selected")
+		2:
+			print("Quit selected")
