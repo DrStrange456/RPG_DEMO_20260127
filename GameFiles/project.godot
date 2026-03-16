@@ -14,7 +14,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 [application]
 
-config/name="MyRPG_20260101"
+config/name="MyRPG_20260127"
 config/tags=PackedStringArray("most_recent", "v_4.6")
 run/main_scene="uid://ckohoujmbd77p"
 config/features=PackedStringArray("4.6", "GL Compatibility")
