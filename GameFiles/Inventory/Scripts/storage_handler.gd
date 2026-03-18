@@ -623,84 +623,241 @@ func inventory_has_item(inventory: Dictionary, item_path: String) -> bool:
 
 	return false
 
+var DEBUG_COLLECT := true
+
+func dbg(msg):
+	if DEBUG_COLLECT:
+		print("[COLLECT] ", msg)
 
 
 
-
-func collect_similar_from_chest(container: Array, inventory: Dictionary):
-
-	var keys = inventory.keys()
-	keys.sort()
-
-	# --- build item type set already in inventory ---
-	var inventory_types := {}
-
-	for i in keys:
-		var item_path = inventory[i][0]
-		var qty = int(inventory[i][1])
-
-		if item_path != null and qty > 0:
-			inventory_types[item_path] = true
-
-
-	for chest_slot in container:
-
+func collect_similar_from_chest(storage_slots: Array, inventory: Dictionary) -> void:
+	dbg("=== START COLLECT ===")
+	
+	# --- STEP 1: Build item type list ---
+	var item_types := []
+	
+	for chest_slot in storage_slots:
 		if chest_slot.slot.item == null:
 			continue
-
-		var item = chest_slot.slot.item
-		var item_path = item.resource_path
-		var max_stack = item.max_stack
-		var remaining = int(chest_slot.slot.quantity)
-
-
-		# skip if inventory does not already contain this type
-		if not inventory_types.has(item_path):
+		
+		var item_path = chest_slot.slot.item.resource_path
+		
+		if not item_types.has(item_path):
+			item_types.append(item_path)
+	
+	dbg("Item types found: %s" % item_types)
+	
+	
+	# --- STEP 2: Process each item type ---
+	for item_path in item_types:
+		dbg("--- Processing: %s ---" % item_path)
+		
+		# Check if exists in inventory
+		var exists := false
+		for i in inventory.keys():
+			var slot = inventory[i]
+			if slot[2] and slot[0] == item_path:
+				exists = true
+				break
+		
+		if not exists:
+			dbg("Skipped (not in inventory)")
 			continue
-
-
-		# --- pass 1: fill existing stacks ---
-		for i in keys:
-
-			if remaining <= 0:
-				break
-
-			if inventory[i][0] != item_path:
+		
+		var item_res = load(item_path)
+		var max_stack = item_res.max_stack
+		
+		# --- PASS 1: Fill existing stacks ---
+		dbg("PASS 1: Filling stacks")
+		
+		for i in inventory.keys():
+			var inv_slot = inventory[i]
+			
+			if not inv_slot[2]:
 				continue
-
-			var slot_qty = int(inventory[i][1])
-
-			if slot_qty >= max_stack:
+			if inv_slot[0] != item_path:
 				continue
-
-			var space = max_stack - slot_qty
-			var add = min(space, remaining)
-
-			inventory[i][1] = int(inventory[i][1]) + add
-			remaining -= add
-
-
-		# --- pass 2: overflow into empty slots ---
-		for i in keys:
-
-			if remaining <= 0:
+			
+			var space = max_stack - inv_slot[1]
+			if space <= 0:
+				continue
+			
+			dbg(" Inventory slot %d has %d space" % [i, space])
+			
+			for chest_index in range(storage_slots.size()):
+				var chest_slot = storage_slots[chest_index]
+				
+				if chest_slot.slot.item == null:
+					continue
+				if chest_slot.slot.item.resource_path != item_path:
+					continue
+				
+				if space <= 0:
+					break
+				
+				var chest_qty = int(chest_slot.qty_label.text)
+				if chest_qty <= 0:
+					continue
+				
+				var transfer = min(space, chest_qty)
+				
+				dbg("  Taking %d from chest slot %d (had %d)" % [transfer, chest_index, chest_qty])
+				
+				# Apply transfer
+				inv_slot[1] += transfer
+				inventory[i] = inv_slot
+				
+				chest_qty -= transfer
+				chest_slot.qty_label.text = str(chest_qty)
+				
+				if chest_qty <= 0:
+					dbg("   Chest slot %d emptied" % chest_index)
+					chest_slot.slot.item = null
+					chest_slot.icon.texture = null
+					chest_slot.qty_label.text = ""
+				
+				space -= transfer
+		
+		
+		# --- PASS 2: Fill empty slots ---
+		dbg("PASS 2: Using empty slots")
+		
+		for i in inventory.keys():
+			var inv_slot = inventory[i]
+			
+			if inv_slot[2]:
+				continue
+			
+			for chest_index in range(storage_slots.size()):
+				var chest_slot = storage_slots[chest_index]
+				
+				if chest_slot.slot.item == null:
+					continue
+				if chest_slot.slot.item.resource_path != item_path:
+					continue
+				
+				var chest_qty = int(chest_slot.qty_label.text)
+				if chest_qty <= 0:
+					continue
+				
+				var transfer = min(max_stack, chest_qty)
+				
+				dbg(" Filling empty slot %d with %d from chest slot %d" % [i, transfer, chest_index])
+				
+				inventory[i] = [item_path, transfer, true]
+				
+				chest_qty -= transfer
+				chest_slot.qty_label.text = str(chest_qty)
+				
+				if chest_qty <= 0:
+					dbg("   Chest slot %d emptied" % chest_index)
+					chest_slot.slot.item = null
+					chest_slot.icon.texture = null
+					chest_slot.qty_label.text = ""
+				
 				break
-
-			if inventory[i][0] == null:
-
-				var stack = min(max_stack, remaining)
-
-				inventory[i][0] = item_path
-				inventory[i][1] = stack
-
-				remaining -= stack
-
-
-		# --- update chest slot ---
-		if remaining == 0:
-			chest_slot.slot.clear()
+		
+	# --- FINAL STATE ---
+	dbg("=== FINAL STORAGE STATE ===")
+	for i in range(storage_slots.size()):
+		var s = storage_slots[i]
+		if s.slot.item == null:
+			dbg(" Slot %d: EMPTY" % i)
 		else:
-			chest_slot.slot.set_quantity(remaining)
+			dbg(" Slot %d: %s x%s" % [i, s.slot.item.resource_path, s.qty_label.text])
+	
+	dbg("=== FINAL INVENTORY STATE ===")
+	for i in inventory.keys():
+		var s = inventory[i]
+		if not s[2]:
+			dbg(" Slot %d: EMPTY" % i)
+		else:
+			dbg(" Slot %d: %s x%d" % [i, s[0], s[1]])
+	
+	dbg("=== END COLLECT ===")
+
+
+
+
+
+
+
+#
+#func collect_similar_from_chest(container: Array, inventory: Dictionary):
+#
+	#var keys = inventory.keys()
+	#keys.sort()
+#
+	## --- build item type set already in inventory ---
+	#var inventory_types := {}
+#
+	#for i in keys:
+		#var item_path = inventory[i][0]
+		#var qty = int(inventory[i][1])
+#
+		#if item_path != null and qty > 0:
+			#inventory_types[item_path] = true
+#
+#
+	#for chest_slot in container:
+#
+		#if chest_slot.slot.item == null:
+			#continue
+#
+		#var item = chest_slot.slot.item
+		#var item_path = item.resource_path
+		#var max_stack = item.max_stack
+		#var remaining = int(chest_slot.slot.quantity)
+#
+#
+		## skip if inventory does not already contain this type
+		#if not inventory_types.has(item_path):
+			#continue
+#
+#
+		## --- pass 1: fill existing stacks ---
+		#for i in keys:
+#
+			#if remaining <= 0:
+				#break
+#
+			#if inventory[i][0] != item_path:
+				#continue
+#
+			#var slot_qty = int(inventory[i][1])
+#
+			#if slot_qty >= max_stack:
+				#continue
+#
+			#var space = max_stack - slot_qty
+			#var add = min(space, remaining)
+#
+			#inventory[i][1] = int(inventory[i][1]) + add
+			#remaining -= add
+#
+#
+		## --- pass 2: overflow into empty slots ---
+		#for i in keys:
+#
+			#if remaining <= 0:
+				#break
+#
+			#if inventory[i][0] == null:
+#
+				#var stack = min(max_stack, remaining)
+#
+				#inventory[i][0] = item_path
+				#inventory[i][1] = stack
+#
+				#remaining -= stack
+#
+#
+		## --- update chest slot ---
+		#if remaining == 0:
+			#chest_slot.slot.clear()
+		#else:
+			#chest_slot.slot.set_quantity(remaining)
 
 
 
