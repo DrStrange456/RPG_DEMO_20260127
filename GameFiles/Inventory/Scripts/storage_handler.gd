@@ -11,12 +11,13 @@ var leftover_delta: int = 0
 
 ### - - LEFT CLICKS
 func handle_click_InvToStrg(gcGRID_INV: GridContainer,gcGRID_STRG: GridContainer, intSlotIndex: int):
-	if ptrINVENTORY[intSlotIndex][0] != null:
-		if transfer_inventory_slot_to_container(ptrINVENTORY,gcGRID_STRG.get_children(),intSlotIndex):
-			_remove_from_inventory(gcGRID_INV,intSlotIndex)  # All items successfully transferred
-		else:
-			_return_what_didnt_fit(gcGRID_INV,intSlotIndex)
-		leftover_delta = 0
+	#if ptrINVENTORY[intSlotIndex][0] != null:
+		#if transfer_inventory_slot_to_container(ptrINVENTORY,gcGRID_STRG.get_children(),intSlotIndex):
+			#_remove_from_inventory(gcGRID_INV,intSlotIndex)  # All items successfully transferred
+		#else:
+			#_return_what_didnt_fit(gcGRID_INV,intSlotIndex)
+		#leftover_delta = 0
+	pass
 
 func handle_click_StrgToInv(SRC: InvSlotUI,gcGRID_STRG: GridContainer,gcGRID_INV: GridContainer, intSlotIndex: int):
 	if SRC.slot.item != null:
