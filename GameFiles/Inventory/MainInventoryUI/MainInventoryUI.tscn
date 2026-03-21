@@ -92,28 +92,25 @@ offset_right = 458.0
 offset_bottom = 303.0
 alignment = 1
 
-[node name="btnMove" type="Button" parent="SlotActions/HBoxContainer" unique_id=1822848544]
+[node name="btnMove" type="Label" parent="SlotActions/HBoxContainer" unique_id=1601473091]
 custom_minimum_size = Vector2(55, 20)
 layout_mode = 2
 text = "Move"
 
-[node name="btnSwap" type="Button" parent="SlotActions/HBoxContainer" unique_id=199425634]
+[node name="btnSwap" type="Label" parent="SlotActions/HBoxContainer" unique_id=1881473945]
 custom_minimum_size = Vector2(55, 20)
 layout_mode = 2
 text = "Swap"
 
-[node name="btnCombine" type="Button" parent="SlotActions/HBoxContainer" unique_id=1486898032]
+[node name="btnCombine" type="Label" parent="SlotActions/HBoxContainer" unique_id=2127267808]
 custom_minimum_size = Vector2(55, 20)
 layout_mode = 2
 text = "Combine"
 
-[node name="btnSplit" type="Button" parent="SlotActions/HBoxContainer" unique_id=821565066]
+[node name="btnSplit" type="Label" parent="SlotActions/HBoxContainer" unique_id=1443444143]
 custom_minimum_size = Vector2(55, 20)
 layout_mode = 2
 text = "Split"
+horizontal_alignment = 1
 
 [connection signal="pressed" from="OptionButtons/btnSort_Inv" to="." method="_on_btn_sort_inv_pressed"]
-[connection signal="pressed" from="SlotActions/HBoxContainer/btnMove" to="." method="_on_btn_move_pressed"]
-[connection signal="pressed" from="SlotActions/HBoxContainer/btnSwap" to="." method="_on_btn_swap_pressed"]
-[connection signal="pressed" from="SlotActions/HBoxContainer/btnCombine" to="." method="_on_btn_combine_pressed"]
-[connection signal="pressed" from="SlotActions/HBoxContainer/btnSplit" to="." method="_on_btn_split_pressed"]
