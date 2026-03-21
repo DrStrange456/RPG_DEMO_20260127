@@ -716,6 +716,29 @@ func dbg(msg):
 	if DEBUG_COLLECT:
 		print("[COLLECT] ", msg)
 
+func find_anywhere(name1: String) -> Node:
+	var tree := get_tree()
+	
+	# 1. Try to get autoloads
+	var autoloads = ProjectSettings.get_setting("application/config/autoloads")
+	if autoloads != null:
+		for autoload_name in autoloads.keys():
+			var singleton = tree.get_first_node_in_group(autoload_name)
+			if singleton:
+				if singleton.name == name1:
+					return singleton
+				var found = singleton.find_child(name1, true)
+				if found:
+					return found
+
+	# 2. Try current scene
+	if tree.current_scene:
+		var found = tree.current_scene.find_child(name1, true)
+		if found:
+			return found
+
+	# 3. Try the root (includes autoloads + main viewport)
+	return tree.root.find_child(name1, true, false)
 
 
 
@@ -723,6 +746,7 @@ func dbg(msg):
 ### - Handling Standalone Inventory Actions
 
 func _handle_move_action():
+	var tmp = find_anywhere("MainInventory")
 	print("move action initiated")
 
 
