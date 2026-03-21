@@ -16,6 +16,8 @@ func _set_slot(indx):
 		slot_for_update.connect("gui_input", _slot_gui_input.bind(slot_for_update))
 
 func _slot_gui_input(event: InputEvent, slot: InvSlotUI):
+	if event is InputEventMouseMotion:
+		print("mouse hover")
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT && event.pressed:
 			StorageHandler._handle_move_action()
