@@ -1,74 +1,74 @@
 [gd_scene format=3 uid="uid://xxbrqpi5ntgu"]
 
-[ext_resource type="Script" uid="uid://dxcoagr7dng1l" path="res://Inventory/Scripts/control.gd" id="1_1fhqo"]
-[ext_resource type="Script" uid="uid://1m5aamday5qv" path="res://Inventory/Scripts/inventory_container_ui.gd" id="2_4q850"]
+[ext_resource type="Script" uid="uid://dodyglqii7ylq" path="res://Inventory/MainInventoryUI/main_inventory_ui.gd" id="1_nx688"]
+[ext_resource type="Script" uid="uid://culwm761ctewy" path="res://Inventory/MainInventoryUI/main_inventory_container_ui.gd" id="2_hnd7p"]
 [ext_resource type="PackedScene" uid="uid://lt04e7ajlebf" path="res://Inventory/StorageUI/inventory_slot_ui.tscn" id="3_7uawi"]
 
-[node name="Control" type="Control" unique_id=1355165246]
+[node name="MainInventory" type="Control" unique_id=1355165246]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-script = ExtResource("1_1fhqo")
+script = ExtResource("1_nx688")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=632474332]
 position = Vector2(321, 172)
 zoom = Vector2(3, 3)
 
-[node name="InventoryContainerUI" type="GridContainer" parent="." unique_id=932542009]
+[node name="MainInventoryContainerUI" type="GridContainer" parent="." unique_id=932542009]
 layout_mode = 0
 offset_left = 222.0
 offset_top = 65.0
 offset_right = 438.0
 offset_bottom = 149.0
 columns = 5
-script = ExtResource("2_4q850")
+script = ExtResource("2_hnd7p")
 
-[node name="InventorySlotUI" parent="InventoryContainerUI" unique_id=119770590 instance=ExtResource("3_7uawi")]
+[node name="InventorySlotUI" parent="MainInventoryContainerUI" unique_id=119770590 instance=ExtResource("3_7uawi")]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 
-[node name="InventorySlotUI2" parent="InventoryContainerUI" unique_id=1063310907 instance=ExtResource("3_7uawi")]
+[node name="InventorySlotUI2" parent="MainInventoryContainerUI" unique_id=1063310907 instance=ExtResource("3_7uawi")]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 indx = 1
 
-[node name="InventorySlotUI3" parent="InventoryContainerUI" unique_id=1606278055 instance=ExtResource("3_7uawi")]
+[node name="InventorySlotUI3" parent="MainInventoryContainerUI" unique_id=1606278055 instance=ExtResource("3_7uawi")]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 indx = 2
 
-[node name="InventorySlotUI4" parent="InventoryContainerUI" unique_id=1942417292 instance=ExtResource("3_7uawi")]
+[node name="InventorySlotUI4" parent="MainInventoryContainerUI" unique_id=1942417292 instance=ExtResource("3_7uawi")]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 indx = 3
 
-[node name="InventorySlotUI5" parent="InventoryContainerUI" unique_id=757594139 instance=ExtResource("3_7uawi")]
+[node name="InventorySlotUI5" parent="MainInventoryContainerUI" unique_id=757594139 instance=ExtResource("3_7uawi")]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 indx = 4
 
-[node name="InventorySlotUI6" parent="InventoryContainerUI" unique_id=952641919 instance=ExtResource("3_7uawi")]
+[node name="InventorySlotUI6" parent="MainInventoryContainerUI" unique_id=952641919 instance=ExtResource("3_7uawi")]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 indx = 5
 
-[node name="InventorySlotUI7" parent="InventoryContainerUI" unique_id=485646415 instance=ExtResource("3_7uawi")]
+[node name="InventorySlotUI7" parent="MainInventoryContainerUI" unique_id=485646415 instance=ExtResource("3_7uawi")]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 indx = 6
 
-[node name="InventorySlotUI8" parent="InventoryContainerUI" unique_id=851521994 instance=ExtResource("3_7uawi")]
+[node name="InventorySlotUI8" parent="MainInventoryContainerUI" unique_id=851521994 instance=ExtResource("3_7uawi")]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 indx = 7
 
-[node name="InventorySlotUI9" parent="InventoryContainerUI" unique_id=1401840983 instance=ExtResource("3_7uawi")]
+[node name="InventorySlotUI9" parent="MainInventoryContainerUI" unique_id=1401840983 instance=ExtResource("3_7uawi")]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 indx = 8
 
-[node name="InventorySlotUI10" parent="InventoryContainerUI" unique_id=1995275335 instance=ExtResource("3_7uawi")]
+[node name="InventorySlotUI10" parent="MainInventoryContainerUI" unique_id=1995275335 instance=ExtResource("3_7uawi")]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 indx = 9

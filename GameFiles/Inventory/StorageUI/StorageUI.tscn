@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://lt04e7ajlebf" path="res://Inventory/StorageUI/inventory_slot_ui.tscn" id="3_2lbub"]
 [ext_resource type="Script" uid="uid://cmjxv1rkven4y" path="res://Inventory/Scripts/small_container.gd" id="4_qyfit"]
 
-[node name="Control" type="Control" unique_id=1355165246]
+[node name="StorageUI_Small" type="Control" unique_id=1355165246]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
