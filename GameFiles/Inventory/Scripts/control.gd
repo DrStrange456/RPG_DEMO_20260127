@@ -1,7 +1,7 @@
 extends Control
 
 @onready var inventory_container_ui: GridContainer = $InventoryContainerUI
-#@onready var test_container: TestContainer = $SmallContainer
+@onready var test_container: TestContainer = $SmallContainer
 
 var inventory : Array[OptiInventorySlot] = []
 
@@ -44,8 +44,8 @@ func _refresh_inventory_items():
 
 
 func _on_btn_sort_chest_pressed() -> void:
-	#StorageHandler.sort_and_combine_inventory_Strg(test_container)
-	pass
+	StorageHandler.sort_and_combine_inventory_Strg(test_container)
+	#pass
 
 
 func _on_btn_sort_inv_pressed() -> void:
@@ -55,12 +55,12 @@ func _on_btn_sort_inv_pressed() -> void:
 
 func _on_btn_transfer_all_pressed() -> void:
 	#StorageHandler.collect_all_from_container(test_container,Global.PLAYER_INVENTORY_TEST)
-	#StorageHandler.move_all_to_inventory(test_container.get_children(),Global.PLAYER_INVENTORY_TEST)
+	StorageHandler.move_all_to_inventory(test_container.get_children(),Global.PLAYER_INVENTORY_TEST)
 	_refresh_inventory_items()
 
 
 func _on_btn_transfer_like_pressed() -> void:
-	#StorageHandler.collect_similar_from_chest(test_container.get_children(),Global.PLAYER_INVENTORY_TEST)
+	StorageHandler.collect_similar_from_chest(test_container.get_children(),Global.PLAYER_INVENTORY_TEST)
 	_refresh_inventory_items()
 
 
@@ -71,7 +71,7 @@ func _on_btn_transfer_like_pressed() -> void:
 
 
 func _on_btn_move_pressed() -> void:
-	pass # Replace with function body.
+	StorageHandler._handle_move_action()
 
 
 func _on_btn_swap_pressed() -> void:

@@ -1,6 +1,14 @@
 @icon("res://assets/icons/inv_Icons/InventoryContainer.svg")
 extends GridContainer
 
+var state
+
+func _ready() -> void:
+	state = Enum.InvActionStates.DEFAULT
+
+func _set_state(val):
+	state = val
+
 func _set_slot(indx):
 	var ic_children = get_children()
 	var slot_for_update: InvSlotUI = ic_children[indx]

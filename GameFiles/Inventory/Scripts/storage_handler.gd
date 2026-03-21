@@ -11,13 +11,13 @@ var leftover_delta: int = 0
 
 ### - - LEFT CLICKS
 func handle_click_InvToStrg(gcGRID_INV: GridContainer,gcGRID_STRG: GridContainer, intSlotIndex: int):
-	#if ptrINVENTORY[intSlotIndex][0] != null:
-		#if transfer_inventory_slot_to_container(ptrINVENTORY,gcGRID_STRG.get_children(),intSlotIndex):
-			#_remove_from_inventory(gcGRID_INV,intSlotIndex)  # All items successfully transferred
-		#else:
-			#_return_what_didnt_fit(gcGRID_INV,intSlotIndex)
-		#leftover_delta = 0
-	pass
+	if ptrINVENTORY[intSlotIndex][0] != null:
+		if transfer_inventory_slot_to_container(ptrINVENTORY,gcGRID_STRG.get_children(),intSlotIndex):
+			_remove_from_inventory(gcGRID_INV,intSlotIndex)  # All items successfully transferred
+		else:
+			_return_what_didnt_fit(gcGRID_INV,intSlotIndex)
+		leftover_delta = 0
+	#pass
 
 func handle_click_StrgToInv(SRC: InvSlotUI,gcGRID_STRG: GridContainer,gcGRID_INV: GridContainer, intSlotIndex: int):
 	if SRC.slot.item != null:
@@ -116,56 +116,6 @@ func _return_what_didnt_fit(gcGRID_INV: GridContainer,intSlotIndex: int):
 		handle_to_source_slot.slot.clear()
 	else:
 		handle_to_source_slot.slot.set_quantity(leftover_delta)
-
-
-
-#func transfer_slot_to_container(inventory: Array, container: Array, slot_index: int):
-	#var inv_slot = inventory[slot_index]
-#
-	#if inv_slot.item == null:
-		#return
-#
-	#var item = inv_slot.item
-	#var remaining = inv_slot.quantity
-	#var max_stack = item.max_stack
-#
-	## --- fill existing stacks first ---
-	#for slot in container:
-#
-		#if remaining <= 0:
-			#break
-#
-		#if slot.item == item:
-#
-			#var space = max_stack - slot.quantity
-			#if space <= 0:
-				#continue
-#
-			#var add = min(space, remaining)
-#
-			#slot.set_quantity(slot.quantity + add)
-			#remaining -= add
-#
-	## --- fill empty slots ---
-	#for slot in container:
-#
-		#if remaining <= 0:
-			#break
-#
-		#if slot.item == null:
-#
-			#var stack = min(max_stack, remaining)
-#
-			#slot.set_item(item)
-			#slot.set_quantity(stack)
-#
-			#remaining -= stack
-#
-	## --- update inventory slot ---
-	#if remaining <= 0:
-		#inv_slot.clear()
-	#else:
-		#inv_slot.set_quantity(remaining)
 
 func transfer_inventory_slot_to_container(inventory: Dictionary, container: Array, slot_index: int):
 
@@ -765,6 +715,17 @@ var DEBUG_COLLECT := false
 func dbg(msg):
 	if DEBUG_COLLECT:
 		print("[COLLECT] ", msg)
+
+
+
+
+
+### - Handling Standalone Inventory Actions
+
+func _handle_move_action():
+	print("move action initiated")
+
+
 
 
 # bottom
