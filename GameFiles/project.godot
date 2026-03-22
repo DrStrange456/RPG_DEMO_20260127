@@ -27,7 +27,6 @@ Data="*res://utilities/Singletons/data.gd"
 Enum="*res://utilities/Singletons/enum.gd"
 GlobalItemDB="*uid://d4k8f16k7igss"
 StorageHandler="*uid://st11jtu58hme"
-Debug="*uid://np03sxuohq70"
 
 [debug]
 
@@ -38,10 +37,6 @@ gdscript/warnings/confusable_identifier=0
 
 window/size/viewport_width=1600
 window/size/viewport_height=875
-
-[editor_plugins]
-
-enabled=PackedStringArray("res://addons/awesome_debug_log/plugin.cfg")
 
 [file_customization]
 

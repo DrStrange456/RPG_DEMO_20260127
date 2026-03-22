@@ -12,6 +12,8 @@ extends CanvasLayer
 
 func _ready():
 	self.add_tab("Logs")
+	visible = false
+	#pass
 
 func _process(delta):
 	self.log("FPS", "%.2f" % (1.0 / delta))

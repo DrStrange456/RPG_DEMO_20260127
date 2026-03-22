@@ -21,56 +21,67 @@ offset_left = 133.0
 offset_top = 61.0
 offset_right = 349.0
 offset_bottom = 145.0
+mouse_default_cursor_shape = 3
 columns = 5
 script = ExtResource("2_hnd7p")
 
 [node name="InventorySlotUI" parent="MainInventoryController" unique_id=119770590 instance=ExtResource("3_7uawi")]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
+mouse_default_cursor_shape = 2
 
 [node name="InventorySlotUI2" parent="MainInventoryController" unique_id=1063310907 instance=ExtResource("3_7uawi")]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
+mouse_default_cursor_shape = 2
 indx = 1
 
 [node name="InventorySlotUI3" parent="MainInventoryController" unique_id=1606278055 instance=ExtResource("3_7uawi")]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
+mouse_default_cursor_shape = 2
 indx = 2
 
 [node name="InventorySlotUI4" parent="MainInventoryController" unique_id=1942417292 instance=ExtResource("3_7uawi")]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
+mouse_default_cursor_shape = 2
 indx = 3
 
 [node name="InventorySlotUI5" parent="MainInventoryController" unique_id=757594139 instance=ExtResource("3_7uawi")]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
+mouse_default_cursor_shape = 2
 indx = 4
 
 [node name="InventorySlotUI6" parent="MainInventoryController" unique_id=952641919 instance=ExtResource("3_7uawi")]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
+mouse_default_cursor_shape = 2
 indx = 5
 
 [node name="InventorySlotUI7" parent="MainInventoryController" unique_id=485646415 instance=ExtResource("3_7uawi")]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
+mouse_default_cursor_shape = 2
 indx = 6
 
 [node name="InventorySlotUI8" parent="MainInventoryController" unique_id=851521994 instance=ExtResource("3_7uawi")]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
+mouse_default_cursor_shape = 2
 indx = 7
 
 [node name="InventorySlotUI9" parent="MainInventoryController" unique_id=1401840983 instance=ExtResource("3_7uawi")]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
+mouse_default_cursor_shape = 2
 indx = 8
 
 [node name="InventorySlotUI10" parent="MainInventoryController" unique_id=1995275335 instance=ExtResource("3_7uawi")]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
+mouse_default_cursor_shape = 2
 indx = 9
 
 [node name="OptionButtons" type="Node2D" parent="." unique_id=1766532277]
