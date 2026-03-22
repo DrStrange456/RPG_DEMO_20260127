@@ -6,7 +6,7 @@ extends Control
 @onready var btn_split: Label = $SlotActions/HBoxContainer/btnSplit
 
 
-@onready var main_inventory_container_ui: GridContainer = $MainInventorySlotContainer
+@onready var main_inventory_container_ui: GridContainer = $MainInventoryController
 var inventory : Array[OptiInventorySlot] = []
 
 

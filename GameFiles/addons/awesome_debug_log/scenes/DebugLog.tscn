@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://dlq6kcyvpsv14"]
+
+[ext_resource type="Script" uid="uid://bmvsyj4trjpmh" path="res://addons/awesome_debug_log/scenes/DebugLog.gd" id="1_sl8kr"]
+[ext_resource type="FontFile" uid="uid://b7s2fv2laugyl" path="res://assets/fonts/font_pixelmix.ttf" id="2_1xvl5"]
+
+[node name="DebugLog" type="HBoxContainer" unique_id=1801810494 node_paths=PackedStringArray("title_label", "value_label")]
+offset_right = 383.0
+offset_bottom = 8.0
+theme_override_constants/separation = 10
+script = ExtResource("1_sl8kr")
+title_label = NodePath("Title")
+value_label = NodePath("Value")
+
+[node name="Title" type="Label" parent="." unique_id=99007848]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("2_1xvl5")
+theme_override_font_sizes/font_size = 8
+text = "UNTITLED"
+
+[node name="Value" type="Label" parent="." unique_id=220302954]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_1xvl5")
+theme_override_font_sizes/font_size = 8
+autowrap_mode = 2

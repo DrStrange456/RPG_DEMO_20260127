@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://dtv8iykjtx641"]
 
 [ext_resource type="Texture2D" uid="uid://bf5ithibnesol" path="res://assets/tilesets/water.png" id="1_bovvr"]
-[ext_resource type="Script" uid="uid://bclvepcv7k83d" path="res://scenes/levels/level.gd" id="1_d4w6o"]
+[ext_resource type="Script" uid="uid://bclvepcv7k83d" path="res://TEST/level.gd" id="1_d4w6o"]
 [ext_resource type="Gradient" uid="uid://qurtk1nc7fic" path="res://utilities/daytime_color_gradient.tres" id="2_5mi6g"]
 [ext_resource type="Texture2D" uid="uid://cu6lixfge7rf8" path="res://assets/tilesets/grass.png" id="2_b2cq8"]
 [ext_resource type="Texture2D" uid="uid://dy0hpqr33rlol" path="res://assets/tilesets/soil.png" id="3_b2cq8"]

@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://7rw5mk1bevt8"]
 
 [ext_resource type="Texture2D" uid="uid://ctoudjoawko34" path="res://assets/tilesets/landscape_detailed1.PNG" id="1_4s6tb"]
-[ext_resource type="Script" uid="uid://bco2pp6pgoy44" path="res://scenes/levels/mockup.gd" id="1_wiwof"]
+[ext_resource type="Script" uid="uid://bco2pp6pgoy44" path="res://TEST/mockup.gd" id="1_wiwof"]
 [ext_resource type="Texture2D" uid="uid://d2e8b4407nua" path="res://assets/TESTING/template_v1.png" id="2_hapqm"]
 [ext_resource type="PackedScene" uid="uid://c2y4xe0rwk0va" path="res://characters/main_player/main_player.tscn" id="3_hapqm"]
 [ext_resource type="PackedScene" uid="uid://vem02mh7silc" path="res://scenes/objects/simple_object.tscn" id="4_gdbip"]

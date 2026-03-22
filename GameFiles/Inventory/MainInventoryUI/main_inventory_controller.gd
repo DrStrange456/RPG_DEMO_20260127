@@ -7,13 +7,18 @@ extends GridContainer
 var state
 var holding_item
 
+var holding_item_resource
+var holding_item_qty
+
 func _ready() -> void:
 	state = Enum.InvActionStates.DEFAULT
 
 func _process(_delta: float) -> void:
 	if holding_item != null:  # Set item holding to mouse pos
-		pass
+		_update_mouse_holding_item_position()
 
+func _update_mouse_holding_item_position():
+	holding_item.position = get_local_mouse_position() - Vector2(20,20)
 
 
 func _set_state(val):
@@ -53,7 +58,7 @@ func _init_mouse_left_click(_event: InputEvent, slot: InvSlotUI):
 
 func check_isSlot_Empty(slot: InvSlotUI)->bool:
 	var idx = slot.indx
-	var itm = Global.INVENTORY_TEST[idx][0]
+	var itm = Global.PLAYER_INVENTORY_TEST[idx][0]
 	return itm == null
 
 func is_SlotItem_diff(slot: InvSlotUI, holding)->bool:
@@ -80,25 +85,42 @@ func mouse_pick_from_slot(slot: InvSlotUI):
 
 
 func pin_to_mouse(obj):
-	# * Update Data
-	pass
-	# * Update UI
-	pass
+	holding_item_resource = obj.slot.item
+	holding_item_qty = int(obj.qty_label.text)
+	var slot_index = obj.indx
+	_remove_from_inventory(self, slot_index)
+	move_item_to_mouse_holding(obj)
 
 
 
 
 
 
+func move_item_to_mouse_holding(obj_Slot):
+	holding_item = _pin_item_to_mouse(obj_Slot)
+
+func _pin_item_to_mouse(slot):
+	if slot:
+		# unparent item obj and attach to mouse, 
+		# must add back to scene tree so added to current (InvController) node
+		#var itm = slot.find_child("Item",true,false)
+		#var itm = slot.duplicate()
+		#slot.queue_free()
+		##itm.get_parent().remove_child(itm)
+		#add_child(itm)
+		var itm_preview = slot.duplicate()
+		add_child(itm_preview)
+		return itm_preview
 
 func _remove_from_inventory(gcGRID: GridContainer, intSlotIndex: int):
 	# - - Remove from Data then remove from UI
-	# DATA
+	# * Update Data
 	ptrINVENTORY[intSlotIndex][0] = null
 	ptrINVENTORY[intSlotIndex][1] = 0
-	# UI
-	var slots = gcGRID.get_children()
-	slots[intSlotIndex]._update(null,0)
+	# * Update UI
+	#var slots = gcGRID.get_children()
+	#slots[intSlotIndex].slot.item = null
+	#slots[intSlotIndex].update_ui()
 
 
 
