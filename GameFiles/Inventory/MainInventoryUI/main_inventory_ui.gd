@@ -6,15 +6,15 @@ extends Control
 @onready var btn_split: Label = $SlotActions/HBoxContainer/btnSplit
 
 
-@onready var main_inventory_container_ui: GridContainer = $MainInventoryContainerUI
+@onready var main_inventory_container_ui: GridContainer = $MainInventorySlotContainer
 var inventory : Array[OptiInventorySlot] = []
 
 
 func _ready() -> void:
-	_lightup_move(false)
-	_lightup_swap(false)
-	_lightup_combine(false)
-	_lightup_split(false)
+	#_lightup_move(false)
+	#_lightup_swap(false)
+	#_lightup_combine(false)
+	#_lightup_split(false)
 	
 	inventory.resize(Global.PLAYER_INVENTORY_TEST.size())
 	for i in inventory.size():
@@ -37,15 +37,15 @@ func bind_inventory(inv):
 	for i in ui_slots.size():
 		ui_slots[i].bind_slot(inv[i])
 
-
-func _lightup_move(val):
-	btn_move.visible = val
-
-func _lightup_swap(val):
-	btn_swap.visible = val
-
-func _lightup_combine(val):
-	btn_combine.visible = val
-
-func _lightup_split(val):
-	btn_split.visible = val
+#
+#func _lightup_move(val):
+	#btn_move.visible = val
+#
+#func _lightup_swap(val):
+	#btn_swap.visible = val
+#
+#func _lightup_combine(val):
+	#btn_combine.visible = val
+#
+#func _lightup_split(val):
+	#btn_split.visible = val

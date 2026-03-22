@@ -10,7 +10,7 @@ func _ready():
 
 
 func bind_inventory(inv):
-	var ui_slots = $InventoryContainerUI.get_children()
+	var ui_slots = $InventorySlotContainer.get_children()
 	for i in ui_slots.size():
 		ui_slots[i].bind_slot(inv[i])
 	print("inventory binded")
@@ -28,7 +28,7 @@ func _load_slots_from_save():
 	bind_inventory(inventory)
 	
 	for j in Global.PLAYER_INVENTORY_TEST:
-		var ui = $InventoryContainerUI
+		var ui = $InventorySlotContainer
 		ui._set_slot(j)
 		if Global.PLAYER_INVENTORY_TEST[j][0] != null:
 			if int(Global.PLAYER_INVENTORY_TEST[j][1]) > 0:

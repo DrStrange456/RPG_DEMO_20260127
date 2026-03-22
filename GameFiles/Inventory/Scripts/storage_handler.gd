@@ -747,7 +747,7 @@ func find_anywhere(name1: String) -> Node:
 
 func _handle_move_action():
 	var tmp = find_anywhere("MainInventory")
-	tmp._lightup_move(true)
+	#tmp._lightup_move(true)
 	print("move action initiated")
 
 
