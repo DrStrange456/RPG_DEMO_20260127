@@ -4,6 +4,8 @@ extends GridContainer
 @onready var ptrINVENTORY = Global.PLAYER_INVENTORY_TEST # For Debugging
 
 
+var slotPreview = preload("res://scenes/objects/slot_preview.tscn")
+
 var state
 var holding_item
 
@@ -104,10 +106,8 @@ func _pin_item_to_mouse(slot):
 	if slot:
 		# unparent item obj and attach to mouse, 
 		# must add back to scene tree so added to current (InvController) node
-		var itm_preview = slot.duplicate()
-		itm_preview.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		var itm_preview = slotPreview.instantiate()
 		add_child(itm_preview)
-		#itm_preview.mouse_default_cursor_shape = Control.CURSOR_ARROW
 		return itm_preview
 
 func _remove_from_inventory(gcGRID: GridContainer, intSlotIndex: int):
