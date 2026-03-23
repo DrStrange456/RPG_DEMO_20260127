@@ -72,7 +72,7 @@ func Left_Click_Not_Holding(slot: InvSlotUI):
 	mouse_pick_from_slot(slot)
 
 func Left_Click_Empty_Slot(slot: InvSlotUI):
-	pass
+	mouse_drop_in_EmptySlot(slot)
 
 func Left_Click_Different_Item(slot: InvSlotUI):
 	pass
@@ -85,14 +85,46 @@ func Left_Click_Same_Item(slot: InvSlotUI):
 func mouse_pick_from_slot(slot: InvSlotUI):
 	pin_to_mouse(slot)
 
-
 func pin_to_mouse(obj):
 	holding_item_resource = obj.slot.item
 	holding_item_qty = int(obj.qty_label.text)
 	var slot_index = obj.indx
 	move_item_to_mouse_holding(obj)
 	_remove_from_inventory(self, slot_index)
-	#await get_tree().process_frame
+
+
+func mouse_drop_in_EmptySlot(slot: InvSlotUI):
+	mouse_drop_into_slot(slot)
+
+func mouse_drop_into_slot(slot: InvSlotUI):
+	# * Update Data
+	#Inventory.add_slot_item(obj_Slot.slot_index,holding_inv_snap_name,int(holding_item.qty.text))
+	ptrINVENTORY[slot.indx][0] = holding_item_resource
+	ptrINVENTORY[slot.indx][1] = int(holding_item_qty)
+	# * Update UI
+	move_item_from_mouse_to_slot(slot)
+
+func move_item_from_mouse_to_slot(obj_Slot):
+	# 1) Put obj into tmp var, Free slot
+	# 2) Unparent holding item and reparent to slot
+	# 3) Set slot variables accordingly
+	# - - - (1)
+	var tmp1 = holding_item
+	# - - - (2)
+	#_dispose_item_from_slot(obj_Slot)
+	remove_child(holding_item)
+	
+	#obj_Slot.icon = tmp1.texture_rect.texture
+	obj_Slot.slot.item = holding_item_resource
+	obj_Slot.qty_label = tmp1.label.text
+	obj_Slot.update_ui()
+	
+	#obj_Slot.add_child(tmp1)
+	# - - - (3)
+	#obj_Slot.item = Inventory.slots[obj_Slot.slot_index].item
+	#tmp1.global_position = obj_Slot.global_position
+	holding_item = null
+
 
 
 

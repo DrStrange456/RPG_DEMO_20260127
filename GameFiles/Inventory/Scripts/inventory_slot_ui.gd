@@ -16,7 +16,9 @@ func bind_slot(s: OptiInventorySlot):
 	update_ui()
 
 func update_ui():
-
+	icon = $CenterContainer/TextureRect
+	qty_label = $Label
+	
 	if slot.item == null:
 		icon.texture = null
 		qty_label.text = ""
