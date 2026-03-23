@@ -21,7 +21,6 @@ offset_left = 133.0
 offset_top = 61.0
 offset_right = 349.0
 offset_bottom = 145.0
-mouse_default_cursor_shape = 3
 columns = 5
 script = ExtResource("2_hnd7p")
 

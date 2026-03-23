@@ -90,9 +90,9 @@ func pin_to_mouse(obj):
 	holding_item_resource = obj.slot.item
 	holding_item_qty = int(obj.qty_label.text)
 	var slot_index = obj.indx
-	_remove_from_inventory(self, slot_index)
 	move_item_to_mouse_holding(obj)
-	await get_tree().process_frame
+	_remove_from_inventory(self, slot_index)
+	#await get_tree().process_frame
 
 
 
@@ -107,6 +107,8 @@ func _pin_item_to_mouse(slot):
 		# unparent item obj and attach to mouse, 
 		# must add back to scene tree so added to current (InvController) node
 		var itm_preview = slotPreview.instantiate()
+		itm_preview._set_texture(slot.slot.item.icon)
+		itm_preview._set_quantity(slot.qty_label.text)
 		add_child(itm_preview)
 		return itm_preview
 
@@ -116,9 +118,9 @@ func _remove_from_inventory(gcGRID: GridContainer, intSlotIndex: int):
 	ptrINVENTORY[intSlotIndex][0] = null
 	ptrINVENTORY[intSlotIndex][1] = 0
 	# * Update UI
-	#var slots = gcGRID.get_children()
-	#slots[intSlotIndex].slot.item = null
-	#slots[intSlotIndex].update_ui()
+	var slots = gcGRID.get_children()
+	slots[intSlotIndex].slot.item = null
+	slots[intSlotIndex].update_ui()
 
 
 
