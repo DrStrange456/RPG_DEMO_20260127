@@ -116,7 +116,8 @@ func move_item_from_mouse_to_slot(obj_Slot):
 	
 	#obj_Slot.icon = tmp1.texture_rect.texture
 	obj_Slot.slot.item = holding_item_resource
-	obj_Slot.qty_label = tmp1.label.text
+	obj_Slot.qty_label = holding_item_qty
+	obj_Slot.slot.quantity = holding_item_qty
 	obj_Slot.update_ui()
 	
 	#obj_Slot.add_child(tmp1)
@@ -152,6 +153,8 @@ func _remove_from_inventory(gcGRID: GridContainer, intSlotIndex: int):
 	# * Update UI
 	var slots = gcGRID.get_children()
 	slots[intSlotIndex].slot.item = null
+	slots[intSlotIndex].slot.quantity = ""
+	#slots[intSlotIndex].qty_label.text = ""
 	slots[intSlotIndex].update_ui()
 
 
