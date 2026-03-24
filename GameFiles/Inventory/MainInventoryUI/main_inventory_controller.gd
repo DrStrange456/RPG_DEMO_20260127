@@ -75,7 +75,7 @@ func Left_Click_Empty_Slot(slot: InvSlotUI):
 	mouse_drop_in_EmptySlot(slot)
 
 func Left_Click_Different_Item(slot: InvSlotUI):
-	pass
+	mouse_and_slot_swap(slot)
 
 func Left_Click_Same_Item(slot: InvSlotUI):
 	pass
@@ -86,11 +86,13 @@ func mouse_pick_from_slot(slot: InvSlotUI):
 	pin_to_mouse(slot)
 
 func pin_to_mouse(obj):
+	var slot_index = obj.indx
 	holding_item_resource = obj.slot.item
 	holding_item_qty = int(obj.qty_label.text)
-	var slot_index = obj.indx
 	move_item_to_mouse_holding(obj)
 	_remove_from_inventory(self, slot_index)
+
+
 
 
 func mouse_drop_in_EmptySlot(slot: InvSlotUI):
@@ -98,32 +100,21 @@ func mouse_drop_in_EmptySlot(slot: InvSlotUI):
 
 func mouse_drop_into_slot(slot: InvSlotUI):
 	# * Update Data
-	#Inventory.add_slot_item(obj_Slot.slot_index,holding_inv_snap_name,int(holding_item.qty.text))
 	ptrINVENTORY[slot.indx][0] = holding_item_resource
 	ptrINVENTORY[slot.indx][1] = int(holding_item_qty)
 	# * Update UI
 	move_item_from_mouse_to_slot(slot)
 
 func move_item_from_mouse_to_slot(obj_Slot):
-	# 1) Put obj into tmp var, Free slot
-	# 2) Unparent holding item and reparent to slot
-	# 3) Set slot variables accordingly
+	# 1) Unparent holding item and reparent to slot
+	# 2) Set slot variables accordingly
 	# - - - (1)
-	var tmp1 = holding_item
-	# - - - (2)
-	#_dispose_item_from_slot(obj_Slot)
 	remove_child(holding_item)
-	
-	#obj_Slot.icon = tmp1.texture_rect.texture
 	obj_Slot.slot.item = holding_item_resource
 	obj_Slot.qty_label = holding_item_qty
 	obj_Slot.slot.quantity = holding_item_qty
 	obj_Slot.update_ui()
-	
-	#obj_Slot.add_child(tmp1)
-	# - - - (3)
-	#obj_Slot.item = Inventory.slots[obj_Slot.slot_index].item
-	#tmp1.global_position = obj_Slot.global_position
+	# - - - (2)
 	holding_item = null
 
 
@@ -154,8 +145,35 @@ func _remove_from_inventory(gcGRID: GridContainer, intSlotIndex: int):
 	var slots = gcGRID.get_children()
 	slots[intSlotIndex].slot.item = null
 	slots[intSlotIndex].slot.quantity = ""
-	#slots[intSlotIndex].qty_label.text = ""
 	slots[intSlotIndex].update_ui()
+
+
+
+
+func mouse_and_slot_swap(obj_Slot: InvSlotUI):
+	var slot_idx = obj_Slot.indx
+	var itm_resource = obj_Slot.slot.item
+	var slot_qty = obj_Slot.slot.quantity
+	
+	var holding_item_resource_tmp = itm_resource
+	var holding_item_qty_tmp = slot_qty
+	
+	# * Update Data
+	ptrINVENTORY[slot_idx][0] = holding_item_resource
+	ptrINVENTORY[slot_idx][1] = int(holding_item_qty)
+	
+	holding_item_resource = itm_resource
+	holding_item_qty = slot_qty
+	
+	# * Update UI
+	move_item_from_mouse_to_slot(obj_Slot)
+	
+	holding_item = obj_Slot
+	add_child(obj_Slot)
+	
+	#_sfx_play_item_swap()
+	print("check")
+
 
 
 
