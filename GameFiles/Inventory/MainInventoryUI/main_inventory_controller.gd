@@ -63,9 +63,15 @@ func check_isSlot_Empty(slot: InvSlotUI)->bool:
 	var itm = Global.PLAYER_INVENTORY_TEST[idx][0]
 	return itm == null
 
-func is_SlotItem_diff(slot: InvSlotUI, holding)->bool:
-	return true  #for testing
-
+func is_SlotItem_diff(itm_Slot: InvSlotUI, holding)->bool:
+	#return true  #for testing
+	if itm_Slot and holding:
+		var itm_in_slot = itm_Slot.slot.item
+		var itm_in_mouse = holding
+		# Return true if the textures are different
+		return (itm_in_slot.icon != itm_in_mouse.texture_rect.texture)
+	else:
+		return true
 
 func Left_Click_Not_Holding(slot: InvSlotUI):
 	if check_isSlot_Empty(slot): return
@@ -78,7 +84,7 @@ func Left_Click_Different_Item(slot: InvSlotUI):
 	mouse_and_slot_swap(slot)
 
 func Left_Click_Same_Item(slot: InvSlotUI):
-	pass
+	mouse_attempt_combine_like_items(slot)
 
 
 
@@ -174,7 +180,65 @@ func mouse_and_slot_swap(obj_Slot: InvSlotUI):
 	holding_item = itm_preview
 	
 	#_sfx_play_item_swap()
+
+
+
+
+func mouse_attempt_combine_like_items(obj_Slot: InvSlotUI):
+	var slot_idx = obj_Slot.indx
+	var itm_resource = obj_Slot.slot.item
+	var slot_qty = obj_Slot.slot.quantity
+	var itm_max_stack = itm_resource.max_stack
+	
+	var qty1 = int(obj_Slot.slot.quantity)    # Qty from Slot
+	var qty2 = int(holding_item.label.text)  # Qty holding
+	var room_to_add = itm_max_stack - qty1
+	#
+	if qty1 == itm_max_stack: return  # slot full, cannot add
+	if room_to_add >= qty2:
+		# Set slot qty to combined amount
+		mouse_add_all_holding_to_slot(obj_Slot, qty1+qty2)
+	else:
+		# Add what will fit and update mouse holding
+		mouse_add_what_will_fit_to_slot(obj_Slot, qty2-room_to_add)
 	print("check")
+	
+	#_sfx_play_menu_drop()
+
+
+
+func mouse_add_all_holding_to_slot(obj_Slot: InvSlotUI, amt: int)->void:
+	var slot_idx = obj_Slot.indx
+	
+	# * Update Data
+	ptrINVENTORY[slot_idx][0] = holding_item_resource
+	ptrINVENTORY[slot_idx][1] = int(amt)
+	# * Update UI
+	remove_child(holding_item)
+	holding_item.free()
+	obj_Slot.qty_label.text = str(amt)
+	obj_Slot.slot.quantity = amt
+	
+	
+	
+
+func mouse_add_what_will_fit_to_slot(obj_Slot: InvSlotUI, leftover: int)->void:
+	var slot_idx = obj_Slot.indx
+	var itm_resource = obj_Slot.slot.item
+	var itm_max_stack = itm_resource.max_stack
+	
+	# * Update Data
+	ptrINVENTORY[slot_idx][0] = holding_item_resource
+	ptrINVENTORY[slot_idx][1] = int(itm_max_stack)
+	# * Update UI
+	obj_Slot.qty_label.text = str(itm_max_stack)
+	obj_Slot.slot.quantity = itm_max_stack
+	holding_item.label.text = str(leftover)
+	holding_item_qty = str(leftover)
+	#print("check")
+
+
+
 
 
 
