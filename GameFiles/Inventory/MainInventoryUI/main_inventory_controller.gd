@@ -35,9 +35,9 @@ func _set_slot(indx):
 func _slot_gui_input(event: InputEvent, slot: InvSlotUI):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT && event.pressed:
-			_init_mouse_left_click(event,slot)
+			_init_mouse_left_click(event,slot)  # HANDLE LEFT CLICKS
 		if event.button_index == MOUSE_BUTTON_RIGHT && event.pressed:
-			pass
+			pass  # HANDLE RIGHT CLICKS
 
 
 
@@ -160,6 +160,7 @@ func mouse_and_slot_swap(obj_Slot: InvSlotUI):
 	var slot_idx = obj_Slot.indx
 	var itm_resource = obj_Slot.slot.item
 	var slot_qty = obj_Slot.slot.quantity
+	
 	var holding_item_resource_tmp = itm_resource
 	var holding_item_qty_tmp = slot_qty
 	
@@ -185,9 +186,7 @@ func mouse_and_slot_swap(obj_Slot: InvSlotUI):
 
 
 func mouse_attempt_combine_like_items(obj_Slot: InvSlotUI):
-	var slot_idx = obj_Slot.indx
 	var itm_resource = obj_Slot.slot.item
-	var slot_qty = obj_Slot.slot.quantity
 	var itm_max_stack = itm_resource.max_stack
 	
 	var qty1 = int(obj_Slot.slot.quantity)    # Qty from Slot
@@ -201,7 +200,6 @@ func mouse_attempt_combine_like_items(obj_Slot: InvSlotUI):
 	else:
 		# Add what will fit and update mouse holding
 		mouse_add_what_will_fit_to_slot(obj_Slot, qty2-room_to_add)
-	print("check")
 	
 	#_sfx_play_menu_drop()
 
@@ -235,7 +233,6 @@ func mouse_add_what_will_fit_to_slot(obj_Slot: InvSlotUI, leftover: int)->void:
 	obj_Slot.slot.quantity = itm_max_stack
 	holding_item.label.text = str(leftover)
 	holding_item_qty = str(leftover)
-	#print("check")
 
 
 
