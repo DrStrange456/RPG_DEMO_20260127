@@ -154,7 +154,6 @@ func mouse_and_slot_swap(obj_Slot: InvSlotUI):
 	var slot_idx = obj_Slot.indx
 	var itm_resource = obj_Slot.slot.item
 	var slot_qty = obj_Slot.slot.quantity
-	
 	var holding_item_resource_tmp = itm_resource
 	var holding_item_qty_tmp = slot_qty
 	
@@ -162,14 +161,17 @@ func mouse_and_slot_swap(obj_Slot: InvSlotUI):
 	ptrINVENTORY[slot_idx][0] = holding_item_resource
 	ptrINVENTORY[slot_idx][1] = int(holding_item_qty)
 	
-	holding_item_resource = itm_resource
-	holding_item_qty = slot_qty
-	
 	# * Update UI
 	move_item_from_mouse_to_slot(obj_Slot)
 	
-	holding_item = obj_Slot
-	add_child(obj_Slot)
+	holding_item_resource = holding_item_resource_tmp
+	holding_item_qty = holding_item_qty_tmp
+	
+	var itm_preview = slotPreview.instantiate()
+	itm_preview._set_texture(holding_item_resource.icon)
+	itm_preview._set_quantity(str(holding_item_qty))
+	add_child(itm_preview)
+	holding_item = itm_preview
 	
 	#_sfx_play_item_swap()
 	print("check")
