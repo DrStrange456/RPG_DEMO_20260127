@@ -11,11 +11,16 @@ var inventory : Array[OptiInventorySlot] = []
 
 
 func _ready() -> void:
-	#_lightup_move(false)
-	#_lightup_swap(false)
-	#_lightup_combine(false)
-	#_lightup_split(false)
-	
+	_load_slots_from_save()
+
+
+func bind_inventory(inv):
+	var ui_slots = main_inventory_container_ui.get_children()
+	for i in ui_slots.size():
+		ui_slots[i].bind_slot(inv[i])
+
+
+func _load_slots_from_save():
 	inventory.resize(Global.PLAYER_INVENTORY_TEST.size())
 	for i in inventory.size():
 		inventory[i] = OptiInventorySlot.new()
@@ -32,20 +37,9 @@ func _ready() -> void:
 				inventory[j].set_quantity(Global.PLAYER_INVENTORY_TEST[j][1])
 
 
-func bind_inventory(inv):
-	var ui_slots = main_inventory_container_ui.get_children()
-	for i in ui_slots.size():
-		ui_slots[i].bind_slot(inv[i])
+func _on_btn_sort_inv_pressed() -> void:
+	StorageHandler.sort_and_combine_inventory_Inv(Global.PLAYER_INVENTORY_TEST)
+	_refresh_inventory_items()
 
-#
-#func _lightup_move(val):
-	#btn_move.visible = val
-#
-#func _lightup_swap(val):
-	#btn_swap.visible = val
-#
-#func _lightup_combine(val):
-	#btn_combine.visible = val
-#
-#func _lightup_split(val):
-	#btn_split.visible = val
+func _refresh_inventory_items():
+	_load_slots_from_save()
