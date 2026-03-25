@@ -37,7 +37,10 @@ func _slot_gui_input(event: InputEvent, slot: InvSlotUI):
 		if event.button_index == MOUSE_BUTTON_LEFT && event.pressed:
 			_init_mouse_left_click(event,slot)  # HANDLE LEFT CLICKS
 		if event.button_index == MOUSE_BUTTON_RIGHT && event.pressed:
-			pass  # HANDLE RIGHT CLICKS
+			_init_mouse_right_click(event,slot)  # HANDLE RIGHT CLICKS
+
+
+
 
 
 
@@ -53,9 +56,28 @@ func _init_mouse_left_click(_event: InputEvent, slot: InvSlotUI):
 	else:  
 		Left_Click_Not_Holding(slot)
 
+func _init_mouse_right_click(_event: InputEvent, slot: InvSlotUI):
+	if holding_item != null:  # Holding Item with Mouse
+		if !is_SlotItem_diff(slot, holding_item):
+			if _is_holding_stack_full(): return  # slot full, cannot add
+			Right_Click_Holding_Same_Item(slot)
+	else:
+		Right_Click_Not_Holding(slot)
 
 
+func Right_Click_Holding_Same_Item(slot: InvSlotUI):
+	pass
 
+
+func _is_holding_stack_full()->bool:
+	var itm_stack = int(holding_item.label.text)
+	var itm_max_stack = int(holding_item_resource.max_stack)
+	return itm_stack == itm_max_stack
+
+func _is_slot_stack_full(slot: InvSlotUI)->bool:
+	var itm_max_stack = slot.slot.item.max_stack
+	var amt_combined = slot.slot.quantity + int(holding_item.label.text)
+	return amt_combined > itm_max_stack
 
 
 func check_isSlot_Empty(slot: InvSlotUI)->bool:
@@ -203,8 +225,6 @@ func mouse_attempt_combine_like_items(obj_Slot: InvSlotUI):
 	
 	#_sfx_play_menu_drop()
 
-
-
 func mouse_add_all_holding_to_slot(obj_Slot: InvSlotUI, amt: int)->void:
 	var slot_idx = obj_Slot.indx
 	
@@ -216,9 +236,6 @@ func mouse_add_all_holding_to_slot(obj_Slot: InvSlotUI, amt: int)->void:
 	holding_item.free()
 	obj_Slot.qty_label.text = str(amt)
 	obj_Slot.slot.quantity = amt
-	
-	
-	
 
 func mouse_add_what_will_fit_to_slot(obj_Slot: InvSlotUI, leftover: int)->void:
 	var slot_idx = obj_Slot.indx
@@ -235,6 +252,17 @@ func mouse_add_what_will_fit_to_slot(obj_Slot: InvSlotUI, leftover: int)->void:
 	holding_item_qty = str(leftover)
 
 
+
+
+
+func Right_Click_Not_Holding(slot: InvSlotUI):
+	var itm_obj_idx = slot.indx
+	if slot.slot.quantity == 1:
+		#mouse_add_one_to_hand_clear_slot(btn)
+		pass
+	else:  # slot qty > 1
+		#mouse_pick_item_fromSlot(btn)
+		pass
 
 
 
