@@ -65,8 +65,12 @@ func _init_mouse_right_click(_event: InputEvent, slot: InvSlotUI):
 		Right_Click_Not_Holding(slot)
 
 
-func Right_Click_Holding_Same_Item(slot: InvSlotUI):
-	pass
+
+
+
+
+
+
 
 
 func _is_holding_stack_full()->bool:
@@ -164,6 +168,16 @@ func _pin_item_to_mouse(slot):
 		add_child(itm_preview)
 		return itm_preview
 
+func _pin_single_item_to_mouse(slot):
+	if slot:
+		# unparent item obj and attach to mouse, 
+		# must add back to scene tree so added to current (InvController) node
+		var itm_preview = slotPreview.instantiate()
+		itm_preview._set_texture(slot.slot.item.icon)
+		itm_preview._set_quantity(str(1))
+		add_child(itm_preview)
+		return itm_preview
+
 func _remove_from_inventory(gcGRID: GridContainer, intSlotIndex: int):
 	# - - Remove from Data then remove from UI
 	# * Update Data
@@ -253,17 +267,33 @@ func mouse_add_what_will_fit_to_slot(obj_Slot: InvSlotUI, leftover: int)->void:
 
 
 
-
+### - Handle Right Clicks
 
 func Right_Click_Not_Holding(slot: InvSlotUI):
-	var itm_obj_idx = slot.indx
 	if slot.slot.quantity == 1:
-		#mouse_add_one_to_hand_clear_slot(btn)
-		pass
+		Left_Click_Not_Holding(slot)
 	else:  # slot qty > 1
-		#mouse_pick_item_fromSlot(btn)
-		pass
+		mouse_pick_single_item_fromSlot(slot)
 
+func mouse_pick_single_item_fromSlot(slot: InvSlotUI):
+	var slot_idx = slot.indx
+	var itm_resource = slot.slot.item
+	
+	holding_item_resource = itm_resource
+	holding_item_qty = 1
+	
+	# * Update Data
+	ptrINVENTORY[slot_idx][1] -= 1
+	
+	## * Update UI
+	slot.qty_label.text = str(int(slot.qty_label.text) - 1)
+	slot.slot.quantity -= 1
+	holding_item = _pin_single_item_to_mouse(slot)
+
+
+
+func Right_Click_Holding_Same_Item(_slot: InvSlotUI):
+	pass
 
 
 
