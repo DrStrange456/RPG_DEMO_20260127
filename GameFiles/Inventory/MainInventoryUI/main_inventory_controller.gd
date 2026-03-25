@@ -293,8 +293,6 @@ func mouse_pick_single_item_fromSlot(slot: InvSlotUI):
 
 
 func Right_Click_Holding_Same_Item(slot: InvSlotUI):
-	#var slot_idx = slot.indx
-	
 	if !check_isSlot_Empty(slot):
 		if slot.slot.quantity == 1:
 			# - Mouse pick single item, add to holding -
@@ -302,8 +300,21 @@ func Right_Click_Holding_Same_Item(slot: InvSlotUI):
 		else:
 			# - Mouse pick from multiples  -
 			# decrement slot stack, and increment holding stack
-			#mouse_pick_item_fromSlot_holding(slot)
-			pass
+			mouse_pick_item_fromSlot_holding(slot)
+
+
+func mouse_pick_item_fromSlot_holding(obj_slot):
+	var slot_idx = obj_slot.indx
+	
+	# * Update Data
+	ptrINVENTORY[slot_idx][1] -= 1
+	# * Update UI (SLOT/MOUSE)
+	obj_slot.qty_label.text = str(int(obj_slot.qty_label.text) - 1)
+	obj_slot.slot.quantity -= 1
+	holding_item_qty = int(holding_item.label.text) + 1
+	holding_item.label.text = str(holding_item_qty)
+	
+	#_sfx_play_menu_rt_pick()
 
 
 func mouse_take_item_fromSlot_holding(obj_slot):
@@ -317,7 +328,6 @@ func mouse_take_item_fromSlot_holding(obj_slot):
 	holding_item.label.text = str(holding_item_qty)
 	
 	#_sfx_play_menu_rt_pick()
-
 
 
 
