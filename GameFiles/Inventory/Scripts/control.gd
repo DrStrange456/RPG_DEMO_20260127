@@ -45,7 +45,6 @@ func _refresh_inventory_items():
 
 func _on_btn_sort_chest_pressed() -> void:
 	StorageHandler.sort_and_combine_inventory_Strg(test_container)
-	#pass
 
 
 func _on_btn_sort_inv_pressed() -> void:
@@ -54,7 +53,6 @@ func _on_btn_sort_inv_pressed() -> void:
 
 
 func _on_btn_transfer_all_pressed() -> void:
-	#StorageHandler.collect_all_from_container(test_container,Global.PLAYER_INVENTORY_TEST)
 	StorageHandler.move_all_to_inventory(test_container.get_children(),Global.PLAYER_INVENTORY_TEST)
 	_refresh_inventory_items()
 

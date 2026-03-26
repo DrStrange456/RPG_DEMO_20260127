@@ -29,6 +29,15 @@ func handle_click_StrgToInv(SRC: InvSlotUI,gcGRID_STRG: GridContainer,gcGRID_INV
 
 
 ### - - RIGHT CLICKS
+
+## - TODO: Change right clicks such that the single item gets pinned
+# to the mouse.  This makes it easy to split stacks.
+
+# ***
+# Also, this is good practice to use the data instead of the UI 
+# for comparisons as thats the true source of record.
+# ***
+
 func handle_click_InvToStrg_single_item(gcGRID_INV: GridContainer,gcGRID_STRG: GridContainer, intSlotIndex: int):
 	ptrINVENTORY = Global.PLAYER_INVENTORY_TEST
 	if ptrINVENTORY[intSlotIndex][0] != null:
@@ -38,8 +47,6 @@ func handle_click_InvToStrg_single_item(gcGRID_INV: GridContainer,gcGRID_STRG: G
 		else:
 			# more than 1 in slot, just move 1 and update count
 			handle_click_InvToStrg_OnlyOne(gcGRID_INV,gcGRID_STRG,intSlotIndex)
-	else:
-		print("nothing to move")
 
 func handle_click_InvToStrg_OnlyOne(gcGRID_INV: GridContainer,gcGRID_STRG: GridContainer, intSlotIndex: int):
 	if ptrINVENTORY[intSlotIndex][0] != null:
