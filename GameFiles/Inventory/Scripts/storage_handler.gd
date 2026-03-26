@@ -170,6 +170,8 @@ func transfer_inventory_slot_to_container(inventory: Dictionary, container: Arra
 			remaining -= stack
 
 	# --- update inventory dictionary ---
+	if remaining == 0:
+		ptrINVENTORY[slot_index][0] = null
 	if remaining > 0:
 		leftover_delta = remaining
 
@@ -622,7 +624,7 @@ func collect_similar_from_chest(storage_slots: Array, inventory: Dictionary) -> 
 			if inv_slot[0] != item_path:
 				continue
 
-			var space = max_stack - inv_slot[1]
+			var space = max_stack - int(inv_slot[1])
 			if space <= 0:
 				continue
 			dbg(" Inventory slot " + str(i) + " has " + str(space) + " space")
@@ -646,7 +648,7 @@ func collect_similar_from_chest(storage_slots: Array, inventory: Dictionary) -> 
 				dbg("  Taking " + str(transfer) + " from chest slot " + str(chest_index) + " (had " + str(chest_qty) + ")")
 
 				# Apply transfer
-				inv_slot[1] += transfer
+				inv_slot[1] = int(inv_slot[1]) + transfer
 				inventory[i] = inv_slot
 
 				chest_qty -= transfer
