@@ -89,14 +89,13 @@ var TOOL_STATE_ANIMATIONS = {
 	}
 
 var AUDIO_TYPE = {
-	Enum.AudioType.MUSIC: {
-		'ambient': "res://audio/music/SoothingPiano.mp3",
-	},
-	Enum.AudioType.SFX: {
-		'slot_pick': "res://audio/sfx/slot_pick.ogg",
-		'slot_drop': "res://audio/sfx/slot_drop.ogg",
+	'music_ambient': "res://audio/music/SoothingPiano.mp3",
+	'sfx_slot_pick': "res://audio/sfx/slot_pick.ogg",
+	'sfx_slot_drop': "res://audio/sfx/slot_drop.ogg",
+	'sfx_slot_swap': "res://audio/sfx/slot_item_swap.wav",
+	'sfx_slot_combine': "res://audio/sfx/seed.ogg",
+	'sfx_slot_right_click': "res://audio/sfx/slot_right_click.ogg",
 	}
-}
 
 
 var unlocked_machines: Array = [Enum.Machine.DELETE, Enum.Machine.SPRINKLER, Enum.Machine.FISHER, Enum.Machine.SCARECROW]
@@ -106,3 +105,9 @@ var forecast_rain: bool
 func change_item(item: Enum.Item, amount: int = 1, auto_hide: bool = true):
 	items[item] += amount
 	get_tree().get_first_node_in_group("ResourceUI").reveal(auto_hide)
+
+func get_sfx_source_by_name(nm: String)->String:
+	for itm in AUDIO_TYPE.keys():
+		if itm == nm:
+			return AUDIO_TYPE[nm]
+	return ""

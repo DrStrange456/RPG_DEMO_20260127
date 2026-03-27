@@ -12,3 +12,5 @@ script = ExtResource("1_kidt0")
 stream = ExtResource("2_dliq0")
 
 [node name="SFX" type="Node2D" parent="." unique_id=1368983323]
+
+[node name="sfx_player" type="AudioStreamPlayer2D" parent="SFX" unique_id=1712745220]

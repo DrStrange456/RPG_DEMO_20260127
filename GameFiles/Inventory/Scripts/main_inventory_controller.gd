@@ -39,21 +39,28 @@ func pick_all_from_slot(_event: InputEvent, slot: InvSlotUI):
 	if holding_item != null:  # Holding Item with Mouse
 		if check_isSlot_Empty(slot):
 			Left_Click_Empty_Slot(slot)
+			AudioController.play_sound("sfx_slot_drop")
 		else:  # Putting item into occupied slot
 			if is_SlotItem_diff(slot, holding_item):
 				Left_Click_Different_Item(slot)
+				AudioController.play_sound("sfx_slot_swap")
 			else:
 				Left_Click_Same_Item(slot)
+				AudioController.play_sound("sfx_slot_combine")
 	else:  
 		Left_Click_Not_Holding(slot)
+		AudioController.play_sound("sfx_slot_pick")
 
 func pick_just_one_from_slot(_event: InputEvent, slot: InvSlotUI):
-	if holding_item != null:  # Holding Item with Mouse
-		if !is_SlotItem_diff(slot, holding_item):
-			if _is_holding_stack_full(): return  # slot full, cannot add
-			Right_Click_Holding_Same_Item(slot)
-	else:
-		Right_Click_Not_Holding(slot)
+	if !check_isSlot_Empty(slot):
+		if holding_item != null:  # Holding Item with Mouse
+			if !is_SlotItem_diff(slot, holding_item):
+				if _is_holding_stack_full(): return  # slot full, cannot add
+				Right_Click_Holding_Same_Item(slot)
+				AudioController.play_sound("sfx_slot_right_click")
+		else:
+			Right_Click_Not_Holding(slot)
+			AudioController.play_sound("sfx_slot_right_click")
 
 
 
@@ -86,7 +93,10 @@ func is_SlotItem_diff(itm_Slot: InvSlotUI, holding)->bool:
 		var itm_in_slot = itm_Slot.slot.item
 		var itm_in_mouse = holding
 		# Return true if the textures are different
-		return (itm_in_slot.icon != itm_in_mouse.texture_rect.texture)
+		if itm_in_slot:
+			return (itm_in_slot.icon != itm_in_mouse.texture_rect.texture)
+		else:
+			return false  # return false if item_in_slot is null
 	else:
 		return true
 
@@ -161,13 +171,14 @@ func _pin_item_to_mouse(slot):
 
 func _pin_single_item_to_mouse(slot):
 	if slot:
-		# unparent item obj and attach to mouse, 
-		# must add back to scene tree so added to current (InvController) node
-		var itm_preview = slotPreview.instantiate()
-		itm_preview._set_texture(slot.slot.item.icon)
-		itm_preview._set_quantity(str(1))
-		add_child(itm_preview)
-		return itm_preview
+		if !check_isSlot_Empty(slot):
+			# unparent item obj and attach to mouse, 
+			# must add back to scene tree so added to current (InvController) node
+			var itm_preview = slotPreview.instantiate()
+			itm_preview._set_texture(slot.slot.item.icon)
+			itm_preview._set_quantity(str(1))
+			add_child(itm_preview)
+			return itm_preview
 
 func _remove_from_inventory(gcGRID: GridContainer, intSlotIndex: int):
 	# - - Remove from Data then remove from UI
