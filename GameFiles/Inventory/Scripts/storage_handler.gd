@@ -9,15 +9,39 @@ extends Node
 var leftover_delta: int = 0
 
 
-### - - LEFT CLICKS
-func move_item_to_storage(gcGRID_INV: GridContainer,gcGRID_STRG: GridContainer, intSlotIndex: int):
+
+func move_item_to_storage(ctx):
+	var gcGRID_INV = ctx.source
+	var gcGRID_STRG = ctx.container
+	var intSlotIndex = ctx.slot_index
 	if ptrINVENTORY[intSlotIndex][0] != null:
 		if transfer_inventory_slot_to_container(ptrINVENTORY,gcGRID_STRG.get_children(),intSlotIndex):
 			_remove_from_inventory(gcGRID_INV,intSlotIndex)  # All items successfully transferred
 		else:
 			_return_what_didnt_fit(gcGRID_INV,intSlotIndex)
 		leftover_delta = 0
-	#pass
+
+func move_single_item_to_storage(ctx):
+	var gcGRID_INV = ctx.source
+	var gcGRID_STRG = ctx.container
+	var intSlotIndex = ctx.slot_index
+	
+	ptrINVENTORY = Global.PLAYER_INVENTORY_TEST
+	if ptrINVENTORY[intSlotIndex][0] != null:
+		if int(ptrINVENTORY[intSlotIndex][1]) == 1:
+			# only 1 left in slot
+			var context = {
+				"source": gcGRID_INV,
+				"container": gcGRID_STRG,
+				"slot_index": intSlotIndex
+			}
+			move_item_to_storage(context)
+		else:
+			# more than 1 in slot, just move 1 and update count
+			handle_click_InvToStrg_OnlyOne(gcGRID_INV,gcGRID_STRG,intSlotIndex)
+
+
+
 
 func handle_click_StrgToInv(SRC: InvSlotUI,gcGRID_STRG: GridContainer,gcGRID_INV: GridContainer, intSlotIndex: int):
 	if SRC.slot.item != null:
@@ -26,27 +50,6 @@ func handle_click_StrgToInv(SRC: InvSlotUI,gcGRID_STRG: GridContainer,gcGRID_INV
 		else:
 			_return_what_didnt_fit_strg(SRC,gcGRID_STRG,intSlotIndex)
 		leftover_delta = 0
-
-
-### - - RIGHT CLICKS
-
-## - TODO: Change right clicks such that the single item gets pinned
-# to the mouse.  This makes it easy to split stacks.
-
-# ***
-# Also, this is good practice to use the data instead of the UI 
-# for comparisons as thats the true source of record.
-# ***
-
-func handle_click_InvToStrg_single_item(gcGRID_INV: GridContainer,gcGRID_STRG: GridContainer, intSlotIndex: int):
-	ptrINVENTORY = Global.PLAYER_INVENTORY_TEST
-	if ptrINVENTORY[intSlotIndex][0] != null:
-		if int(ptrINVENTORY[intSlotIndex][1]) == 1:
-			# only 1 left in slot
-			handle_click_InvToStrg(gcGRID_INV,gcGRID_STRG,intSlotIndex)
-		else:
-			# more than 1 in slot, just move 1 and update count
-			handle_click_InvToStrg_OnlyOne(gcGRID_INV,gcGRID_STRG,intSlotIndex)
 
 func handle_click_InvToStrg_OnlyOne(gcGRID_INV: GridContainer,gcGRID_STRG: GridContainer, intSlotIndex: int):
 	if ptrINVENTORY[intSlotIndex][0] != null:
@@ -125,7 +128,6 @@ func _return_what_didnt_fit(gcGRID_INV: GridContainer,intSlotIndex: int):
 		handle_to_source_slot.slot.set_quantity(leftover_delta)
 
 func transfer_inventory_slot_to_container(inventory: Dictionary, container: Array, slot_index: int):
-
 	var slot_data = inventory[slot_index]
 	var item_path = slot_data[0]
 	var quantity = slot_data[1]
@@ -334,7 +336,6 @@ func _transfer_storage_to_inv_JustOne(SRC: InvSlotUI,gcGRID_DEST: GridContainer,
 		return false
 
 func sort_and_combine_inventory_Inv(inventory: Dictionary):
-
 	var item_totals := {}
 
 	# --- Collect totals ---
@@ -385,10 +386,8 @@ func sort_and_combine_inventory_Inv(inventory: Dictionary):
 
 			remaining -= stack_size
 			slot_pointer += 1
-	# NOTE: UI needs to be refreshed after this
 
 func sort_and_combine_inventory_Strg(grid: GridContainer):
-
 	var slots := grid.get_children()
 	var item_totals := {}
 
@@ -580,8 +579,6 @@ func move_all_to_inventory(container: Array, inventory: Dictionary):
 
 ### - Transfer Like Items to Inventory
 func collect_similar_from_chest(storage_slots: Array, inventory: Dictionary) -> void:
-	dbg("=== START COLLECT ===")
-
 	# --- STEP 1: Build list of unique item types from storage ---
 	var item_types := []
 	for chest_slot in storage_slots:
@@ -598,12 +595,8 @@ func collect_similar_from_chest(storage_slots: Array, inventory: Dictionary) -> 
 		if not already_in_list:
 			item_types.append(item_path)
 
-	dbg("Item types found in storage: " + str(item_types))
-
 	# --- STEP 2: Process each item type ---
 	for item_path in item_types:
-		dbg("--- Processing: " + str(item_path) + " ---")
-		
 
 		# Check if item exists anywhere in inventory
 		var exists := false
@@ -613,14 +606,12 @@ func collect_similar_from_chest(storage_slots: Array, inventory: Dictionary) -> 
 				exists = true
 				break
 		if not exists:
-			dbg("Skipped (not in inventory)")
 			continue
 
 		var item_res = load(item_path)
 		var max_stack = item_res.max_stack
 
 		# --- PASS 1: Fill existing stacks ---
-		dbg("PASS 1: Fill existing stacks")
 		for i in inventory.keys():
 			var inv_slot = inventory[i]
 			if not inv_slot[2]:
@@ -631,7 +622,6 @@ func collect_similar_from_chest(storage_slots: Array, inventory: Dictionary) -> 
 			var space = max_stack - int(inv_slot[1])
 			if space <= 0:
 				continue
-			dbg(" Inventory slot " + str(i) + " has " + str(space) + " space")
 
 			# Pull directly from storage slots
 			for chest_index in range(storage_slots.size()):
@@ -649,7 +639,6 @@ func collect_similar_from_chest(storage_slots: Array, inventory: Dictionary) -> 
 					continue
 
 				var transfer = min(space, chest_qty)
-				dbg("  Taking " + str(transfer) + " from chest slot " + str(chest_index) + " (had " + str(chest_qty) + ")")
 
 				# Apply transfer
 				inv_slot[1] = int(inv_slot[1]) + transfer
@@ -658,7 +647,6 @@ func collect_similar_from_chest(storage_slots: Array, inventory: Dictionary) -> 
 				chest_qty -= transfer
 				chest_slot.qty_label.text = str(chest_qty)
 				if chest_qty <= 0:
-					dbg("   Chest slot " + str(chest_index) + " emptied")
 					chest_slot.slot.item = null
 					chest_slot.icon.texture = null
 					chest_slot.qty_label.text = ""
@@ -666,7 +654,6 @@ func collect_similar_from_chest(storage_slots: Array, inventory: Dictionary) -> 
 				space -= transfer
 
 		# --- PASS 2: Fill empty inventory slots ---
-		dbg("PASS 2: Fill empty slots")
 		for i in inventory.keys():
 			var inv_slot = inventory[i]
 			
@@ -688,40 +675,17 @@ func collect_similar_from_chest(storage_slots: Array, inventory: Dictionary) -> 
 					continue
 
 				var transfer = min(max_stack, chest_qty)
-				dbg(" Filling empty inventory slot " + str(i) + " with " + str(transfer) + " from chest slot " + str(chest_index) + "")
 
 				inventory[i] = [item_path, transfer, true]
 
 				chest_qty -= transfer
 				chest_slot.qty_label.text = str(chest_qty)
 				if chest_qty <= 0:
-					dbg("   Chest slot " + str(chest_index) + " emptied")
 					chest_slot.slot.item = null
 					chest_slot.icon.texture = null
 					chest_slot.qty_label.text = ""
 
 				break  # move to next inventory slot
-
-	# --- STEP 3: Final state debug ---
-	dbg("=== FINAL STORAGE STATE ===")
-	for i in range(storage_slots.size()):
-		var s = storage_slots[i]
-		if s.slot.item == null:
-			dbg(" Slot " + str(i) + ": EMPTY" % i)
-		else:
-			dbg(" Slot " + str(i) + ": " + str(s.slot.item.resource_path) + " x" + str(s.qty_label.text) + "")
-
-	dbg("=== FINAL INVENTORY STATE ===")
-	for i in inventory.keys():
-		var s = inventory[i]
-		if not s[2]:
-			dbg(" Slot " + str(i) + " : EMPTY" % i)
-		else:
-			dbg(" Slot %" + str(i) + ": " + str(s[0]) + " x" + str(s[1]) + "")
-
-	dbg("=== END COLLECT ===")
-
-
 
 
 var DEBUG_COLLECT := false
@@ -752,16 +716,6 @@ func find_anywhere(name1: String) -> Node:
 
 	# 3. Try the root (includes autoloads + main viewport)
 	return tree.root.find_child(name1, true, false)
-
-
-
-
-### - Handling Standalone Inventory Actions
-
-func _handle_move_action():
-	var tmp = find_anywhere("MainInventory")
-	#tmp._lightup_move(true)
-	print("move action initiated")
 
 
 

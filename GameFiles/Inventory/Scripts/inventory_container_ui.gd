@@ -1,8 +1,6 @@
 @icon("res://assets/icons/inv_Icons/InventoryContainer.svg")
 extends GridContainer
 
-
-
 func _set_slot(indx):
 	var ic_children = get_children()
 	var slot_for_update: InvSlotUI = ic_children[indx]
@@ -12,6 +10,16 @@ func _set_slot(indx):
 func _slot_gui_input(event: InputEvent, slot: InvSlotUI):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT && event.pressed:
-			StorageHandler.handle_click_InvToStrg(self,get_parent().test_container,slot.indx)
+			var context = {
+				"source": self,
+				"container": get_parent().test_container,
+				"slot_index": slot.indx
+			}
+			StorageHandler.move_item_to_storage(context)
 		if event.button_index == MOUSE_BUTTON_RIGHT && event.pressed:
-			StorageHandler.handle_click_InvToStrg_single_item(self,get_parent().test_container,slot.indx)
+			var context = {
+				"source": self,
+				"container": get_parent().test_container,
+				"slot_index": slot.indx
+			}
+			StorageHandler.move_single_item_to_storage(context)
