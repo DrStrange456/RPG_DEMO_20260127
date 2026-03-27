@@ -9,7 +9,7 @@ extends Node
 var leftover_delta: int = 0
 
 
-
+### INV to STRG
 func move_item_to_storage(ctx):
 	var gcGRID_INV = ctx.source
 	var gcGRID_STRG = ctx.container
@@ -40,16 +40,39 @@ func move_single_item_to_storage(ctx):
 			# more than 1 in slot, just move 1 and update count
 			handle_click_InvToStrg_OnlyOne(gcGRID_INV,gcGRID_STRG,intSlotIndex)
 
-
-
-
-func handle_click_StrgToInv(SRC: InvSlotUI,gcGRID_STRG: GridContainer,gcGRID_INV: GridContainer, intSlotIndex: int):
+### STRG to INV
+func move_item_to_inventory(ctx):
+	var SRC = ctx.slot_clicked
+	var gcGRID_INV = ctx.source
+	var gcGRID_STRG = ctx.container
+	var intSlotIndex = ctx.slot_index
 	if SRC.slot.item != null:
 		if _transfer_storage_to_inv(SRC,gcGRID_INV,intSlotIndex):
 			_remove_from_storage(gcGRID_STRG,intSlotIndex)
 		else:
 			_return_what_didnt_fit_strg(SRC,gcGRID_STRG,intSlotIndex)
 		leftover_delta = 0
+
+#func move_single_item_to_inventory(ctx):
+	#var gcGRID_INV = ctx.source
+	#var gcGRID_STRG = ctx.container
+	#var intSlotIndex = ctx.slot_index
+	#if ptrINVENTORY[intSlotIndex][0] != null:
+		#_transfer_inv_to_storage_JustOne(gcGRID_STRG,intSlotIndex)
+		#_return_what_didnt_fit(gcGRID_INV,intSlotIndex)
+		#leftover_delta = 0
+
+func move_single_item_to_inventory(ctx):
+	var SRC = ctx.slot_clicked
+	var gcGRID_INV = ctx.container
+	var gcGRID_STRG = ctx.source
+	var intSlotIndex = ctx.slot_index
+	if SRC.slot.item != null:
+		handle_click_StrgToInv_single_item(SRC,gcGRID_INV,gcGRID_STRG,intSlotIndex)
+
+
+
+
 
 func handle_click_InvToStrg_OnlyOne(gcGRID_INV: GridContainer,gcGRID_STRG: GridContainer, intSlotIndex: int):
 	if ptrINVENTORY[intSlotIndex][0] != null:
@@ -62,7 +85,13 @@ func handle_click_StrgToInv_single_item(SRC: InvSlotUI,gcGRID_STRG: GridContaine
 		var amount = int(SRC.qty_label.text)
 		if amount == 1:
 			# only 1 left in slot
-			handle_click_StrgToInv(SRC,gcGRID_STRG,gcGRID_INV,intSlotIndex)
+			var context = {
+				"slot_clicked": SRC,
+				"source": self,
+				"container": get_parent().inventory_container_ui,
+				"slot_index": intSlotIndex
+			}
+			move_item_to_inventory(context)
 		else:
 			# more than 1 in slot, just move 1 and update count
 			handle_click_StrgToInv_OnlyOne(SRC,gcGRID_STRG,gcGRID_INV,intSlotIndex)

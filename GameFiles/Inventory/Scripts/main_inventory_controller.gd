@@ -3,17 +3,12 @@ extends GridContainer
 
 @onready var ptrINVENTORY = Global.PLAYER_INVENTORY_TEST # For Debugging
 
-
 var slotPreview = preload("res://scenes/objects/slot_preview.tscn")
 
-var state
 var holding_item
-
 var holding_item_resource
 var holding_item_qty
 
-func _ready() -> void:
-	state = Enum.InvActionStates.DEFAULT
 
 func _process(_delta: float) -> void:
 	if holding_item != null:  # Set item holding to mouse pos
@@ -21,10 +16,6 @@ func _process(_delta: float) -> void:
 
 func _update_mouse_holding_item_position():
 	holding_item.position = get_local_mouse_position() - Vector2(20,20)
-
-
-func _set_state(val):
-	state = val
 
 func _set_slot(indx):
 	var ic_children = get_children()
