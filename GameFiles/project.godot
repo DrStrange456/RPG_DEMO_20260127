@@ -27,6 +27,7 @@ Data="*res://utilities/Singletons/data.gd"
 Enum="*res://utilities/Singletons/enum.gd"
 GlobalItemDB="*uid://d4k8f16k7igss"
 StorageManager="*uid://st11jtu58hme"
+SfxController="*uid://deseaqrvtp54y"
 Debug="*uid://np03sxuohq70"
 
 [debug]

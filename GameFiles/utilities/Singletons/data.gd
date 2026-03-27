@@ -88,6 +88,17 @@ var TOOL_STATE_ANIMATIONS = {
 	Enum.Tool.HOE: 'hoe',
 	}
 
+var AUDIO_TYPE = {
+	Enum.AudioType.MUSIC: {
+		'ambient': "res://audio/music/SoothingPiano.mp3",
+	},
+	Enum.AudioType.SFX: {
+		'slot_pick': "res://audio/sfx/slot_pick.ogg",
+		'slot_drop': "res://audio/sfx/slot_drop.ogg",
+	}
+}
+
+
 var unlocked_machines: Array = [Enum.Machine.DELETE, Enum.Machine.SPRINKLER, Enum.Machine.FISHER, Enum.Machine.SCARECROW]
 
 var forecast_rain: bool
