@@ -10,7 +10,7 @@ var leftover_delta: int = 0
 
 
 ### - - LEFT CLICKS
-func handle_click_InvToStrg(gcGRID_INV: GridContainer,gcGRID_STRG: GridContainer, intSlotIndex: int):
+func move_item_to_storage(gcGRID_INV: GridContainer,gcGRID_STRG: GridContainer, intSlotIndex: int):
 	if ptrINVENTORY[intSlotIndex][0] != null:
 		if transfer_inventory_slot_to_container(ptrINVENTORY,gcGRID_STRG.get_children(),intSlotIndex):
 			_remove_from_inventory(gcGRID_INV,intSlotIndex)  # All items successfully transferred
@@ -347,7 +347,11 @@ func sort_and_combine_inventory_Inv(inventory: Dictionary):
 		if path == null:
 			continue
 
-		var item = load(path)
+		var item
+		if path is String:
+			item = load(path)
+		else:
+			item = load(path.resource_path)
 
 		if item_totals.has(item):
 			item_totals[item] += int(qty)
