@@ -1,9 +1,6 @@
 class_name storage_click_event_manager
 extends Node
 
-# I like Storage Manager better  :)
-# or Storage Event Manager
-
 
 @onready var ptrINVENTORY = Global.PLAYER_INVENTORY_TEST # For Debugging
 var leftover_delta: int = 0
