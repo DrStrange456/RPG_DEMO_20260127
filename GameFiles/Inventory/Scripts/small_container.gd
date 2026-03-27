@@ -42,6 +42,7 @@ func _slot_gui_input(event: InputEvent, slot: InvSlotUI):
 				"slot_index": slot.indx
 			}
 			StorageManager.move_item_to_inventory(context)
+			AudioController.play_sound("sfx_slot_pick")
 		if event.button_index == MOUSE_BUTTON_RIGHT && event.pressed:
 			var context = {
 				"slot_clicked": slot,
@@ -50,4 +51,4 @@ func _slot_gui_input(event: InputEvent, slot: InvSlotUI):
 				"slot_index": slot.indx
 			}
 			StorageManager.move_single_item_to_inventory(context)
-			#StorageManager.handle_click_StrgToInv_single_item(slot,self,get_parent().inventory_container_ui,slot.indx)
+			AudioController.play_sound("sfx_slot_right_click")

@@ -106,7 +106,7 @@ func change_item(item: Enum.Item, amount: int = 1, auto_hide: bool = true):
 	items[item] += amount
 	get_tree().get_first_node_in_group("ResourceUI").reveal(auto_hide)
 
-func get_sfx_source_by_name(nm: String)->String:
+func get_audio_source_by_name(nm: String)->String:
 	for itm in AUDIO_TYPE.keys():
 		if itm == nm:
 			return AUDIO_TYPE[nm]

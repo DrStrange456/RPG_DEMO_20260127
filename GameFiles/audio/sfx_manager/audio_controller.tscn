@@ -1,15 +1,13 @@
 [gd_scene format=3 uid="uid://deseaqrvtp54y"]
 
 [ext_resource type="Script" uid="uid://c73pkymot63ka" path="res://audio/sfx_manager/audio_manager.gd" id="1_kidt0"]
-[ext_resource type="AudioStream" uid="uid://cw256bn5gh804" path="res://audio/music/SoothingPiano.mp3" id="2_dliq0"]
 
 [node name="AudioManager" type="Node2D" unique_id=1359581966]
 script = ExtResource("1_kidt0")
 
 [node name="MUSIC" type="Node2D" parent="." unique_id=2012915152]
 
-[node name="ambient_soothing_piano" type="AudioStreamPlayer2D" parent="MUSIC" unique_id=1376644451]
-stream = ExtResource("2_dliq0")
+[node name="music_player" type="AudioStreamPlayer2D" parent="MUSIC" unique_id=1376644451]
 
 [node name="SFX" type="Node2D" parent="." unique_id=1368983323]
 
