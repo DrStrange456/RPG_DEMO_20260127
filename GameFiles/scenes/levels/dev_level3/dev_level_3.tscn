@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://lgomoskkxfxy" path="res://assets/full_tilesets/Craftland/Craftland Terrain/32x32/CL_MainLev_winter.png" id="2_boicw"]
 [ext_resource type="Texture2D" uid="uid://c2x0f1rq7tipk" path="res://assets/full_tilesets/Craftland/Craftland Terrain/32x32/CL_Buildings.png" id="3_boicw"]
 [ext_resource type="PackedScene" uid="uid://c2y4xe0rwk0va" path="res://characters/main_player/main_player.tscn" id="3_fbhme"]
+[ext_resource type="PackedScene" uid="uid://ck35balgwdaje" path="res://scenes/objects/merchant.tscn" id="4_fbhme"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mr4ve"]
 texture = ExtResource("1_ii80e")
@@ -68637,5 +68638,10 @@ tile_set = SubResource("TileSet_3tbl5")
 tile_map_data = PackedByteArray("AAAIAPr/AAAYABAAAAAJAPr/AAAZABAAAAAKAPr/AAAaABAAAAALAPr/AAAbABAAAAAIAPT/AAAYAAoAAAAIAPX/AAAYAAsAAAAIAPb/AAAYAAwAAAAIAPf/AAAYAA0AAAAIAPj/AAAYAA4AAAAIAPn/AAAYAA8AAAAJAPT/AAAZAAoAAAAJAPX/AAAZAAsAAAAJAPb/AAAZAAwAAAAJAPf/AAAZAA0AAAAJAPj/AAAZAA4AAAAJAPn/AAAZAA8AAAAKAPT/AAAaAAoAAAAKAPX/AAAaAAsAAAAKAPb/AAAaAAwAAAAKAPf/AAAaAA0AAAAKAPj/AAAaAA4AAAAKAPn/AAAaAA8AAAALAPT/AAAbAAoAAAALAPX/AAAbAAsAAAALAPb/AAAbAAwAAAALAPf/AAAbAA0AAAALAPj/AAAbAA4AAAALAPn/AAAbAA8AAAA=")
 tile_set = SubResource("TileSet_hocft")
 
+[node name="objects" type="Node2D" parent="." unique_id=1569157391]
+
+[node name="merchant" parent="objects" unique_id=1502846945 instance=ExtResource("4_fbhme")]
+position = Vector2(394, -234)
+
 [node name="MainPlayer" parent="." unique_id=746150671 instance=ExtResource("3_fbhme")]
-position = Vector2(357, 339)
+position = Vector2(396, -63)

@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://ck35balgwdaje"]
+
+[ext_resource type="Texture2D" uid="uid://bqpyyykh336n3" path="res://assets/misc/Letter_E.png" id="1_0as41"]
+[ext_resource type="Script" uid="uid://cifrfwu2h4cvo" path="res://scenes/objects/merchant.gd" id="1_utshp"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_lx2ae"]
+load_path = "res://.godot/imported/decorations-medieval.png-5b1dba1ab2211299b5c2449139d8bc0d.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ou26n"]
+load_path = "res://.godot/imported/decorations-medieval.png-5b1dba1ab2211299b5c2449139d8bc0d.ctex"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_utshp"]
+size = Vector2(109, 35)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pq5qs"]
+size = Vector2(52, 20)
+
+[node name="merchant" type="Node2D" unique_id=1502846945]
+script = ExtResource("1_utshp")
+
+[node name="interact_icon" type="Sprite2D" parent="." unique_id=972824927]
+visible = false
+position = Vector2(0, -75)
+texture = ExtResource("1_0as41")
+
+[node name="shop_main" type="Sprite2D" parent="." unique_id=1968578281]
+texture = SubResource("CompressedTexture2D_lx2ae")
+region_enabled = true
+region_rect = Rect2(192, 1280, 128, 104)
+
+[node name="shop_open" type="Sprite2D" parent="." unique_id=1421346443]
+position = Vector2(4, 12)
+texture = SubResource("CompressedTexture2D_ou26n")
+region_enabled = true
+region_rect = Rect2(200, 1400, 120, 80)
+
+[node name="cart_bounds" type="StaticBody2D" parent="." unique_id=942219212]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="cart_bounds" unique_id=409889528]
+position = Vector2(0, 18)
+shape = SubResource("RectangleShape2D_utshp")
+
+[node name="market_interactor" type="Area2D" parent="." unique_id=1404290414]
+position = Vector2(4, 9)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="market_interactor" unique_id=2009411296]
+position = Vector2(-4, 35)
+shape = SubResource("RectangleShape2D_pq5qs")
+
+[connection signal="body_entered" from="market_interactor" to="." method="_on_market_interactor_body_entered"]
+[connection signal="body_exited" from="market_interactor" to="." method="_on_market_interactor_body_exited"]
