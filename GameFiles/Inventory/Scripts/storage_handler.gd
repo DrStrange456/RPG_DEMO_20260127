@@ -1,4 +1,4 @@
-class_name storage_click_event_handler
+class_name storage_click_event_manager
 extends Node
 
 # I like Storage Manager better  :)

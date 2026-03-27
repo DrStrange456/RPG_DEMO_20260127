@@ -15,11 +15,11 @@ func _slot_gui_input(event: InputEvent, slot: InvSlotUI):
 				"container": get_parent().test_container,
 				"slot_index": slot.indx
 			}
-			StorageHandler.move_item_to_storage(context)
+			StorageManager.move_item_to_storage(context)
 		if event.button_index == MOUSE_BUTTON_RIGHT && event.pressed:
 			var context = {
 				"source": self,
 				"container": get_parent().test_container,
 				"slot_index": slot.indx
 			}
-			StorageHandler.move_single_item_to_storage(context)
+			StorageManager.move_single_item_to_storage(context)

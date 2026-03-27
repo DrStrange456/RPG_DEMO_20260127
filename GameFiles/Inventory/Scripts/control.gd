@@ -44,21 +44,21 @@ func _refresh_inventory_items():
 
 
 func _on_btn_sort_chest_pressed() -> void:
-	StorageHandler.sort_and_combine_inventory_Strg(test_container)
+	StorageManager.sort_and_combine_inventory_Strg(test_container)
 
 
 func _on_btn_sort_inv_pressed() -> void:
-	StorageHandler.sort_and_combine_inventory_Inv(Global.PLAYER_INVENTORY_TEST)
+	StorageManager.sort_and_combine_inventory_Inv(Global.PLAYER_INVENTORY_TEST)
 	_refresh_inventory_items()
 
 
 func _on_btn_transfer_all_pressed() -> void:
-	StorageHandler.move_all_to_inventory(test_container.get_children(),Global.PLAYER_INVENTORY_TEST)
+	StorageManager.move_all_to_inventory(test_container.get_children(),Global.PLAYER_INVENTORY_TEST)
 	_refresh_inventory_items()
 
 
 func _on_btn_transfer_like_pressed() -> void:
-	StorageHandler.collect_similar_from_chest(test_container.get_children(),Global.PLAYER_INVENTORY_TEST)
+	StorageManager.collect_similar_from_chest(test_container.get_children(),Global.PLAYER_INVENTORY_TEST)
 	_refresh_inventory_items()
 
 
@@ -69,7 +69,7 @@ func _on_btn_transfer_like_pressed() -> void:
 
 
 func _on_btn_move_pressed() -> void:
-	StorageHandler._handle_move_action()
+	StorageManager._handle_move_action()
 
 
 func _on_btn_swap_pressed() -> void:

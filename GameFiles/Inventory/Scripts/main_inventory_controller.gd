@@ -35,16 +35,16 @@ func _set_slot(indx):
 func _slot_gui_input(event: InputEvent, slot: InvSlotUI):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT && event.pressed:
-			_init_mouse_left_click(event,slot)  # HANDLE LEFT CLICKS
+			pick_all_from_slot(event,slot)  # HANDLE LEFT CLICKS
 		if event.button_index == MOUSE_BUTTON_RIGHT && event.pressed:
-			_init_mouse_right_click(event,slot)  # HANDLE RIGHT CLICKS
+			pick_just_one_from_slot(event,slot)  # HANDLE RIGHT CLICKS
 
 
 
 
 
 
-func _init_mouse_left_click(_event: InputEvent, slot: InvSlotUI):
+func pick_all_from_slot(_event: InputEvent, slot: InvSlotUI):
 	if holding_item != null:  # Holding Item with Mouse
 		if check_isSlot_Empty(slot):
 			Left_Click_Empty_Slot(slot)
@@ -56,7 +56,7 @@ func _init_mouse_left_click(_event: InputEvent, slot: InvSlotUI):
 	else:  
 		Left_Click_Not_Holding(slot)
 
-func _init_mouse_right_click(_event: InputEvent, slot: InvSlotUI):
+func pick_just_one_from_slot(_event: InputEvent, slot: InvSlotUI):
 	if holding_item != null:  # Holding Item with Mouse
 		if !is_SlotItem_diff(slot, holding_item):
 			if _is_holding_stack_full(): return  # slot full, cannot add

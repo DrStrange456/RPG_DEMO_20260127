@@ -38,7 +38,7 @@ func _load_slots_from_save():
 
 
 func _on_btn_sort_inv_pressed() -> void:
-	StorageHandler.sort_and_combine_inventory_Inv(Global.PLAYER_INVENTORY_TEST)
+	StorageManager.sort_and_combine_inventory_Inv(Global.PLAYER_INVENTORY_TEST)
 	_refresh_inventory_items()
 
 func _refresh_inventory_items():

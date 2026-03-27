@@ -35,6 +35,6 @@ func _set_slot(indx):
 func _slot_gui_input(event: InputEvent, slot: InvSlotUI):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT && event.pressed:
-			StorageHandler.handle_click_StrgToInv(slot,self,get_parent().inventory_container_ui,slot.indx)
+			StorageManager.handle_click_StrgToInv(slot,self,get_parent().inventory_container_ui,slot.indx)
 		if event.button_index == MOUSE_BUTTON_RIGHT && event.pressed:
-			StorageHandler.handle_click_StrgToInv_single_item(slot,self,get_parent().inventory_container_ui,slot.indx)
+			StorageManager.handle_click_StrgToInv_single_item(slot,self,get_parent().inventory_container_ui,slot.indx)
