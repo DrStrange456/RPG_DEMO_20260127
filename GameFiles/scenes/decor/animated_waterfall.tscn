@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://dkfae0s1sckmw"]
+
+[ext_resource type="Texture2D" uid="uid://d3p4m5ch3sonw" path="res://assets/AAA-TileSets/Craftland/Craftland Terrain/32x32/CL_MainLev.png" id="1_47c47"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3yopm"]
+atlas = ExtResource("1_47c47")
+region = Rect2(512, 1824, 32, 152)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8lp8s"]
+atlas = ExtResource("1_47c47")
+region = Rect2(544, 1824, 32, 152)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6x6pf"]
+atlas = ExtResource("1_47c47")
+region = Rect2(576, 1824, 32, 152)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o5dli"]
+atlas = ExtResource("1_47c47")
+region = Rect2(608, 1824, 32, 152)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7r8d3"]
+atlas = ExtResource("1_47c47")
+region = Rect2(640, 1824, 32, 152)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7hrie"]
+atlas = ExtResource("1_47c47")
+region = Rect2(672, 1824, 32, 152)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4bhgt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3yopm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8lp8s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6x6pf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o5dli")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7r8d3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7hrie")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="animated_waterfall" type="AnimatedSprite2D" unique_id=1600830007]
+sprite_frames = SubResource("SpriteFrames_4bhgt")
+autoplay = "default"
+frame_progress = 0.78003263
