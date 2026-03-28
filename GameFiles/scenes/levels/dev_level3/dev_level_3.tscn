@@ -1,10 +1,35 @@
 [gd_scene format=4 uid="uid://cy5a4nyfbklfn"]
 
 [ext_resource type="Texture2D" uid="uid://chxd2t6l18j7c" path="res://assets/full_tilesets/Craftland/Craftland Terrain/32x32/CL_MainLev.png" id="1_ii80e"]
+[ext_resource type="Shader" uid="uid://bs2q2cj20ygg2" path="res://shaders/circle_transition.gdshader" id="1_johns"]
+[ext_resource type="PackedScene" uid="uid://xxbrqpi5ntgu" path="res://Inventory/MainInventoryUI/MainInventoryUI.tscn" id="2_1gdbw"]
+[ext_resource type="Texture2D" uid="uid://da1u0rhfjt8a3" path="res://assets/weather/drops.png" id="2_551ww"]
 [ext_resource type="Texture2D" uid="uid://lgomoskkxfxy" path="res://assets/full_tilesets/Craftland/Craftland Terrain/32x32/CL_MainLev_winter.png" id="2_boicw"]
 [ext_resource type="Texture2D" uid="uid://c2x0f1rq7tipk" path="res://assets/full_tilesets/Craftland/Craftland Terrain/32x32/CL_Buildings.png" id="3_boicw"]
 [ext_resource type="PackedScene" uid="uid://c2y4xe0rwk0va" path="res://characters/main_player/main_player.tscn" id="3_fbhme"]
-[ext_resource type="PackedScene" uid="uid://ck35balgwdaje" path="res://scenes/objects/merchant.tscn" id="4_fbhme"]
+[ext_resource type="PackedScene" path="res://scenes/objects/merchant.tscn" id="4_fbhme"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1gdbw"]
+shader = ExtResource("1_johns")
+shader_parameter/progress = 0.0
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_7hbl7"]
+particles_animation = true
+particles_anim_h_frames = 3
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_4n2b7"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(700, 600, 1)
+direction = Vector3(-1, 1, 0)
+spread = 5.0
+initial_velocity_min = 40.0
+initial_velocity_max = 50.0
+gravity = Vector3(0, 0, 0)
+anim_speed_min = 0.39999998
+anim_speed_max = 2.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mr4ve"]
 texture = ExtResource("1_ii80e")
@@ -68596,6 +68621,27 @@ sources/0 = SubResource("TileSetAtlasSource_q20ig")
 
 [node name="dev_level_3" type="Node2D" unique_id=2010045347]
 
+[node name="Overlay" type="Node2D" parent="." unique_id=1112398334]
+
+[node name="DayTimeColor" type="CanvasModulate" parent="Overlay" unique_id=615929570]
+color = Color(0.99607843, 0.99215686, 1, 1)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Overlay" unique_id=1003095274]
+
+[node name="DayTransitionLayer" type="ColorRect" parent="Overlay/CanvasLayer" unique_id=1856908823]
+visible = false
+material = SubResource("ShaderMaterial_1gdbw")
+custom_minimum_size = Vector2(1920, 1080)
+color = Color(0.023529412, 0.023529412, 0.023529412, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="RainDropsParticles" type="GPUParticles2D" parent="Overlay" unique_id=701665213]
+z_index = 1
+material = SubResource("CanvasItemMaterial_7hbl7")
+amount = 100
+texture = ExtResource("2_551ww")
+process_material = SubResource("ParticleProcessMaterial_4n2b7")
+
 [node name="base_layers" type="Node2D" parent="." unique_id=1550898091]
 
 [node name="base_layer" type="TileMapLayer" parent="base_layers" unique_id=126806906]
@@ -68645,3 +68691,34 @@ position = Vector2(394, -234)
 
 [node name="MainPlayer" parent="." unique_id=746150671 instance=ExtResource("3_fbhme")]
 position = Vector2(396, -63)
+
+[node name="Camera2D2" type="Camera2D" parent="MainPlayer" unique_id=1915039258]
+position = Vector2(0, -19)
+zoom = Vector2(2, 2)
+limit_left = -348
+limit_top = -253
+limit_right = 1885
+limit_bottom = 912
+
+[node name="txtDebug1" type="Label" parent="MainPlayer/Camera2D2" unique_id=192791520]
+offset_left = 229.0
+offset_top = -178.0
+offset_right = 312.0
+offset_bottom = -155.0
+theme_override_font_sizes/font_size = 8
+text = "debug text"
+
+[node name="txtDebug2" type="Label" parent="MainPlayer/Camera2D2" unique_id=297485886]
+offset_left = 230.0
+offset_top = -163.0
+offset_right = 313.0
+offset_bottom = -140.0
+theme_override_font_sizes/font_size = 8
+text = "debug text"
+
+[node name="MainInventory" parent="MainPlayer" unique_id=1355165246 instance=ExtResource("2_1gdbw")]
+visible = false
+offset_left = -245.0
+offset_top = -132.0
+offset_right = -205.00003
+offset_bottom = -92.0

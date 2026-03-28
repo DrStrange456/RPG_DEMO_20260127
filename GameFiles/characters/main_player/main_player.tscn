@@ -2122,25 +2122,6 @@ hframes = 13
 vframes = 54
 frame = 131
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=990472297]
-zoom = Vector2(3, 3)
-
-[node name="txtDebug1" type="Label" parent="Camera2D" unique_id=1252924023]
-offset_left = 229.0
-offset_top = -178.0
-offset_right = 312.0
-offset_bottom = -155.0
-theme_override_font_sizes/font_size = 8
-text = "debug text"
-
-[node name="txtDebug2" type="Label" parent="Camera2D" unique_id=1772115722]
-offset_left = 230.0
-offset_top = -163.0
-offset_right = 313.0
-offset_bottom = -140.0
-theme_override_font_sizes/font_size = 8
-text = "debug text"
-
 [node name="ToolUI" parent="." unique_id=15125695 instance=ExtResource("6_0xo3i")]
 
 [node name="RayCast2D" type="RayCast2D" parent="." unique_id=1999211887]
