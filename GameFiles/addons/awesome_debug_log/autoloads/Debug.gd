@@ -10,6 +10,9 @@ extends CanvasLayer
 @export var log_scene: PackedScene
 @export var tab_scene: PackedScene
 
+@onready var player = get_tree().get_first_node_in_group('Player')
+
+
 func _ready():
 	self.add_tab("Logs")
 	visible = false

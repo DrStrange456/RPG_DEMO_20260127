@@ -5,8 +5,8 @@ signal build(current_machine: Enum.Machine)
 signal machine_change(current_machine: Enum.Machine)
 signal day_change
 
-@onready var txt_debug_1: Label = $Camera2D/txtDebug1
-@onready var txt_debug_2: Label = $Camera2D/txtDebug2
+@onready var txt_debug_1: Label = $Camera2D2/txtDebug1
+@onready var txt_debug_2: Label = $Camera2D2/txtDebug2
 
 
 
@@ -67,6 +67,9 @@ func _physics_process(delta: float) -> void:
 
 
 func get_basic_input(_delta):
+	if Input.is_action_just_pressed("ui_cancel"):
+		GameManager.show_inventory()
+	
 	if Input.is_action_just_pressed("day_change"):
 		day_change_emit()
 	
