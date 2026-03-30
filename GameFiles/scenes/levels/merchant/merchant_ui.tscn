@@ -37,9 +37,9 @@ offset_bottom = 654.0
 [node name="ItemList" type="VBoxContainer" parent="ShopPanel" unique_id=15450331]
 layout_mode = 0
 offset_left = 27.0
-offset_top = 19.0
+offset_top = 25.0
 offset_right = 792.0
-offset_bottom = 365.0
+offset_bottom = 371.0
 
 [node name="ItemDetails" type="Panel" parent="ShopPanel" unique_id=779422061]
 layout_mode = 0
