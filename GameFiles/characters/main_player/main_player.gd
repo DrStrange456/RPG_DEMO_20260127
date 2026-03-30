@@ -68,7 +68,10 @@ func _physics_process(delta: float) -> void:
 
 func get_basic_input(_delta):
 	if Input.is_action_just_pressed("ui_cancel"):
-		GameManager.show_inventory()
+		if Global.ACTIVE_MENU == Enum.MenuStates.DEFAULT:
+			GameManager.show_inventory()
+		else:
+			GameManager.hide_inventory()
 	
 	if Input.is_action_just_pressed("day_change"):
 		day_change_emit()

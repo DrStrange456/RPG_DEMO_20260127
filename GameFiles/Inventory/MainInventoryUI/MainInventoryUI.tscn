@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://xxbrqpi5ntgu"]
 
-[ext_resource type="Script" path="res://Inventory/Scripts/main_inventory_ui.gd" id="1_nx688"]
-[ext_resource type="Script" path="res://Inventory/Scripts/main_inventory_controller.gd" id="2_hnd7p"]
-[ext_resource type="PackedScene" path="res://Inventory/inventory_slot_ui.tscn" id="3_7uawi"]
+[ext_resource type="Script" uid="uid://dodyglqii7ylq" path="res://Inventory/Scripts/main_inventory_ui.gd" id="1_nx688"]
+[ext_resource type="Script" uid="uid://culwm761ctewy" path="res://Inventory/Scripts/main_inventory_controller.gd" id="2_hnd7p"]
+[ext_resource type="PackedScene" uid="uid://lt04e7ajlebf" path="res://Inventory/inventory_slot_ui.tscn" id="3_7uawi"]
 
 [node name="MainInventory" type="Control" unique_id=1355165246]
 layout_mode = 3
@@ -10,6 +10,13 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_nx688")
+
+[node name="Panel" type="Panel" parent="." unique_id=250055435]
+layout_mode = 0
+offset_left = -574.0
+offset_top = -463.0
+offset_right = 1713.0
+offset_bottom = 956.0
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=632474332]
 position = Vector2(266, 145)

@@ -9,9 +9,11 @@ extends Node
 
 func show_inventory():
 	main_inventory.visible = true
+	Global.ACTIVE_MENU = Enum.MenuStates.MAIN_INVENTORY
 
 func hide_inventory():
 	main_inventory.visible = false
+	Global.ACTIVE_MENU = Enum.MenuStates.DEFAULT
 
 
 func find_anywhere(name1: String) -> Node:

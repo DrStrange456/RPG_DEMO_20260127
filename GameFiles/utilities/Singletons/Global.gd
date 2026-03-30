@@ -3,6 +3,8 @@ extends Node
 var PLAYER_INV_SLOTS_ENABLED: int = 18
 var NUMBER_ACTIVE_INVENTORY_SLOTS: int = PLAYER_INV_SLOTS_ENABLED
 
+var ACTIVE_MENU
+
 
 # item must Be define as a resource
 # AND in function get_item_from_name in api_inventory
@@ -67,21 +69,6 @@ var STORAGE_TEST: Dictionary = {
 		4: ["res://Inventory/ItemResources/seeds_strawberry.tres", 90, true],
 		5: ["res://Inventory/ItemResources/crop_tomato.tres", 97, true],
 }
-
-
-#var PLAYER_INVENTORY_T2: Dictionary = {
-	#0: OptiInventorySlot.new(),
-	#1: OptiInventorySlot.new(),
-	#2: OptiInventorySlot.new(),
-	#3: OptiInventorySlot.new(),
-	#4: OptiInventorySlot.new(),
-	#5: OptiInventorySlot.new(),
-	#6: OptiInventorySlot.new(),
-	#7: OptiInventorySlot.new(),
-	#8: OptiInventorySlot.new(),
-	#9: OptiInventorySlot.new(),
-#}
-
 
 var INVENTORY_TEST: Dictionary = {
 		0: ["res://Inventory/ItemResources/crop_carrot.tres", 10, true],
