@@ -11,17 +11,12 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_nx688")
 
-[node name="Panel" type="Panel" parent="." unique_id=250055435]
+[node name="Panel" type="Panel" parent="." unique_id=437226229]
 layout_mode = 0
-offset_left = -574.0
-offset_top = -463.0
-offset_right = 1713.0
-offset_bottom = 956.0
-
-[node name="Camera2D" type="Camera2D" parent="." unique_id=632474332]
-position = Vector2(266, 145)
-enabled = false
-zoom = Vector2(3, 3)
+offset_left = -1382.0
+offset_top = -1468.0
+offset_right = 3991.0
+offset_bottom = 2610.0
 
 [node name="MainInventoryController" type="GridContainer" parent="." unique_id=932542009]
 layout_mode = 0

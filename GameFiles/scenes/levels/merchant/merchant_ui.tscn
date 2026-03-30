@@ -1,15 +1,27 @@
 [gd_scene format=3 uid="uid://c774rwkph1imi"]
 
+[ext_resource type="PackedScene" uid="uid://xxbrqpi5ntgu" path="res://Inventory/MainInventoryUI/MainInventoryUI.tscn" id="1_7v5ev"]
+
 [node name="MerchantUI" type="Control" unique_id=1821903133]
 layout_mode = 3
 anchors_preset = 0
 
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1691956772]
+position = Vector2(795, 437)
+
+[node name="Panel" type="Panel" parent="." unique_id=1065814841]
+layout_mode = 0
+offset_left = -88.0
+offset_top = -83.0
+offset_right = 1679.0
+offset_bottom = 949.0
+
 [node name="ModeSelectPanel" type="Panel" parent="." unique_id=188730624]
 layout_mode = 0
-offset_left = 70.0
-offset_top = 349.0
-offset_right = 228.0
-offset_bottom = 472.0
+offset_left = 67.0
+offset_top = 280.0
+offset_right = 225.0
+offset_bottom = 403.0
 
 [node name="btnBUY" type="Button" parent="ModeSelectPanel" unique_id=222567504]
 layout_mode = 0
@@ -29,44 +41,58 @@ text = "SELL"
 
 [node name="ShopPanel" type="Panel" parent="." unique_id=2127516723]
 layout_mode = 0
-offset_left = 345.0
-offset_top = 267.0
-offset_right = 1418.0
-offset_bottom = 654.0
+offset_left = 254.0
+offset_top = 150.0
+offset_right = 1327.0
+offset_bottom = 462.0
 
 [node name="ItemList" type="VBoxContainer" parent="ShopPanel" unique_id=15450331]
 layout_mode = 0
 offset_left = 27.0
 offset_top = 25.0
 offset_right = 792.0
-offset_bottom = 371.0
+offset_bottom = 284.0
 
 [node name="ItemDetails" type="Panel" parent="ShopPanel" unique_id=779422061]
 layout_mode = 0
 offset_left = 807.0
 offset_top = 33.0
 offset_right = 1040.0
-offset_bottom = 367.0
+offset_bottom = 286.0
 
 [node name="ActionButtons" type="Node2D" parent="ShopPanel" unique_id=1934224149]
 
 [node name="Buy" type="Button" parent="ShopPanel/ActionButtons" unique_id=1730516097]
-offset_left = 305.0
-offset_top = 414.0
-offset_right = 408.0
-offset_bottom = 450.0
+offset_left = 292.0
+offset_top = 326.0
+offset_right = 411.0
+offset_bottom = 362.0
 text = "BUY"
 
 [node name="Sell" type="Button" parent="ShopPanel/ActionButtons" unique_id=1822663204]
-offset_left = 428.0
-offset_top = 415.0
-offset_right = 531.0
-offset_bottom = 451.0
+offset_left = 431.0
+offset_top = 327.0
+offset_right = 546.0
+offset_bottom = 363.0
 text = "SELL"
 
 [node name="BACK" type="Button" parent="ShopPanel/ActionButtons" unique_id=400423271]
-offset_left = 967.0
-offset_top = 418.0
-offset_right = 1070.0
-offset_bottom = 454.0
+offset_left = 1181.0
+offset_top = 661.0
+offset_right = 1284.0
+offset_bottom = 697.0
 text = "BACK"
+
+[node name="PlayerInventoryPanel" type="Control" parent="." unique_id=517459416]
+anchors_preset = 0
+offset_left = 253.0
+offset_top = 530.0
+offset_right = 1328.0
+offset_bottom = 826.0
+
+[node name="MainInventory" parent="PlayerInventoryPanel" unique_id=1355165246 instance=ExtResource("1_7v5ev")]
+layout_mode = 0
+offset_left = 180.0
+offset_top = -3.0
+offset_right = 220.0
+offset_bottom = 37.0
