@@ -95,6 +95,7 @@ var AUDIO_TYPE = {
 	'sfx_slot_swap': "res://audio/sfx/slot_item_swap.wav",
 	'sfx_slot_combine': "res://audio/sfx/seed.ogg",
 	'sfx_slot_right_click': "res://audio/sfx/slot_right_click.ogg",
+	'sfx_slots_reorder': "res://audio/sfx/inventory_reorder.ogg",
 	}
 
 

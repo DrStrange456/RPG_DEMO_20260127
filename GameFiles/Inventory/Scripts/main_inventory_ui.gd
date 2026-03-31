@@ -39,6 +39,7 @@ func _load_slots_from_save():
 
 func _on_btn_sort_inv_pressed() -> void:
 	StorageManager.sort_and_combine_inventory_Inv(Global.PLAYER_INVENTORY_TEST)
+	AudioController.play_sound("sfx_slots_reorder")
 	_refresh_inventory_items()
 
 func _refresh_inventory_items():
