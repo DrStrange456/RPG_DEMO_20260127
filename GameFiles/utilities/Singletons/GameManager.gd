@@ -8,14 +8,21 @@ extends Node
 
 
 
+
 ### - Shop Manager
-func buy_item(item: InvSlotUI,qty: int) -> bool:
+func buy_item(item: InvSlotUI,qty: int):
 	if Global.PLAYER_MONEY < item.slot.item.cost:
 		return false
+	
+	attempt_purchase(item.slot.item.resource_path,qty)
 
-	Global.PLAYER_MONEY -= (item.slot.item.cost * qty)
+	#Global.PLAYER_MONEY -= (item.slot.item.cost * qty)
 	#player_inventory.append(item)
-	return true
+	#return true
+	#if attempt_purchase(item.slot.item.resource_path,qty):
+		#print("Success")
+	#else:
+		#print("Fail")
 
 func _remove_from_inventory(intSlotIndex: int):
 	# - - Remove from Data
@@ -58,3 +65,61 @@ func find_anywhere(name1: String) -> Node:
 
 	# 3. Try the root (includes autoloads + main viewport)
 	return tree.root.find_child(name1, true, false)
+
+
+
+
+
+
+
+func attempt_purchase(item_path: String, amount: int) -> bool:
+	var item_res = load(item_path)
+	var total_cost = item_res.cost * amount
+
+	if Global.PLAYER_MONEY < total_cost:
+		return false
+
+	var remaining = amount
+
+	# PASS 1: Fill existing stacks
+	for slot in ptrINVENTORY.keys():
+		var data = ptrINVENTORY[slot]
+
+		if not data[2]: # inactive
+			continue
+
+		if data[0] == item_path:
+			var space = item_res.max_stack - data[1]
+			if space > 0:
+				var to_add = min(space, remaining)
+				data[1] += to_add
+				remaining -= to_add
+
+				if remaining <= 0:
+					break
+
+	# PASS 2: Fill empty slots
+	if remaining > 0:
+		for slot in ptrINVENTORY.keys():
+			var data = ptrINVENTORY[slot]
+
+			if not data[2]:
+				continue
+
+			if data[0] == null:
+				var to_add = min(item_res.max_stack, remaining)
+
+				data[0] = item_path
+				data[1] = to_add
+
+				remaining -= to_add
+
+				if remaining <= 0:
+					break
+
+	# FAIL if no space
+	if remaining > 0:
+		return false
+
+	Global.PLAYER_MONEY -= total_cost
+	return true
