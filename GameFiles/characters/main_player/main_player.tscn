@@ -2066,7 +2066,7 @@ graph_offset = Vector2(104, -113)
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_lslqb"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_o1a05"]
-graph_offset = Vector2(-643.5442, 219.27402)
+graph_offset = Vector2(-514.83105, 58.22632)
 nodes/output/position = Vector2(700, 220)
 nodes/MoveStateMachine/node = SubResource("AnimationNodeStateMachine_lslqb")
 nodes/MoveStateMachine/position = Vector2(-460, 120)
@@ -2087,6 +2087,7 @@ collision_layer = 3
 script = ExtResource("1_y60d1")
 
 [node name="world-collider" type="CollisionShape2D" parent="." unique_id=12465434]
+visible = false
 shape = SubResource("CircleShape2D_ausrs")
 
 [node name="Skins" type="Node2D" parent="." unique_id=658191374]
@@ -2123,8 +2124,10 @@ vframes = 54
 frame = 131
 
 [node name="ToolUI" parent="." unique_id=15125695 instance=ExtResource("6_0xo3i")]
+visible = false
 
 [node name="RayCast2D" type="RayCast2D" parent="." unique_id=1999211887]
+visible = false
 target_position = Vector2(0, 20)
 
 [node name="FishingGame" parent="." unique_id=1444594131 instance=ExtResource("7_h2fcv")]
@@ -2151,7 +2154,7 @@ libraries/ = SubResource("AnimationLibrary_y61a8")
 tree_root = SubResource("AnimationNodeBlendTree_o1a05")
 anim_player = NodePath("../anim_player")
 parameters/MoveStateMachine/idle/blend_position = Vector2(0, 0)
-parameters/MoveStateMachine/walk/blend_position = Vector2(0, 0)
+parameters/MoveStateMachine/walk/blend_position = Vector2(-0.980786, -0.042904258)
 parameters/ToolOneShot/active = false
 parameters/ToolOneShot/internal_active = false
 parameters/ToolOneShot/request = 0
