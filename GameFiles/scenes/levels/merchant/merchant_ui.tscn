@@ -1,13 +1,23 @@
 [gd_scene format=3 uid="uid://c774rwkph1imi"]
 
 [ext_resource type="PackedScene" uid="uid://xxbrqpi5ntgu" path="res://Inventory/MainInventoryUI/MainInventoryUI.tscn" id="1_7v5ev"]
+[ext_resource type="Script" uid="uid://dm4h6s5vm4lex" path="res://scenes/levels/merchant/merchant_ui.gd" id="1_hu2ss"]
 
 [node name="MerchantUI" type="Control" unique_id=1821903133]
 layout_mode = 3
 anchors_preset = 0
+script = ExtResource("1_hu2ss")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1691956772]
 position = Vector2(795, 437)
+
+[node name="lblPLAYER_MONEY" type="Label" parent="." unique_id=759016892]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Timer" type="Timer" parent="." unique_id=808910180]
+autostart = true
 
 [node name="Panel" type="Panel" parent="." unique_id=1065814841]
 layout_mode = 0
@@ -92,7 +102,10 @@ offset_bottom = 826.0
 
 [node name="MainInventory" parent="PlayerInventoryPanel" unique_id=1355165246 instance=ExtResource("1_7v5ev")]
 layout_mode = 0
-offset_left = 180.0
-offset_top = -3.0
-offset_right = 220.0
-offset_bottom = 37.0
+offset_left = 285.0
+offset_top = 30.0
+offset_right = 325.0
+offset_bottom = 70.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="ShopPanel/ActionButtons/Buy" to="." method="_on_buy_pressed"]

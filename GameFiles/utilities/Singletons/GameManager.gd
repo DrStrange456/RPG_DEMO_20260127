@@ -4,6 +4,25 @@ extends Node
 #@onready var player = get_tree().get_first_node_in_group('Player')
 @onready var main_player: CharacterBody2D = find_anywhere("MainPlayer")
 @onready var main_inventory: Control = find_anywhere("MainInventory")
+@onready var ptrINVENTORY = Global.PLAYER_INVENTORY_TEST # For Debugging
+
+
+
+### - Shop Manager
+func buy_item(item: InvSlotUI,qty: int) -> bool:
+	if Global.PLAYER_MONEY < item.slot.item.cost:
+		return false
+
+	Global.PLAYER_MONEY -= (item.slot.item.cost * qty)
+	#player_inventory.append(item)
+	return true
+
+func _remove_from_inventory(intSlotIndex: int):
+	# - - Remove from Data
+	# DATA
+	ptrINVENTORY[intSlotIndex][0] = null
+	ptrINVENTORY[intSlotIndex][1] = 0
+
 
 
 
