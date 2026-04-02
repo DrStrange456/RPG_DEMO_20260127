@@ -96,6 +96,8 @@ var AUDIO_TYPE = {
 	'sfx_slot_combine': "res://audio/sfx/seed.ogg",
 	'sfx_slot_right_click': "res://audio/sfx/slot_right_click.ogg",
 	'sfx_slots_reorder': "res://audio/sfx/inventory_reorder.ogg",
+	'sfx_buy_success': "res://audio/sfx/sell_buy_item.wav",
+	'sfx_buy_fail': "res://audio/sfx/slot_drop_fail.ogg",
 	}
 
 

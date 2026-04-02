@@ -12,17 +12,14 @@ extends Node
 ### - Shop Manager
 func buy_item(item: InvSlotUI,qty: int):
 	if Global.PLAYER_MONEY < item.slot.item.cost:
+		AudioController.play_sound("sfx_buy_fail")
 		return false
 	
-	attempt_purchase(item.slot.item.resource_path,qty)
-
-	#Global.PLAYER_MONEY -= (item.slot.item.cost * qty)
-	#player_inventory.append(item)
-	#return true
-	#if attempt_purchase(item.slot.item.resource_path,qty):
-		#print("Success")
-	#else:
-		#print("Fail")
+	if attempt_purchase(item.slot.item.resource_path,qty):
+		AudioController.play_sound("sfx_buy_success")
+	else:
+		# No Room
+		AudioController.play_sound("sfx_buy_fail")
 
 func _remove_from_inventory(intSlotIndex: int):
 	# - - Remove from Data

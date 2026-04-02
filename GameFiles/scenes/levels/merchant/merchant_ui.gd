@@ -16,7 +16,7 @@ func _on_buy_pressed() -> void:
 	var slt = tmpSlot.instantiate()
 	slt.slot = os
 	slt.slot.item = tmpRes 
-	GameManager.buy_item(slt,3)
+	GameManager.buy_item(slt,20)
 	_refresh_inventory_items()
 
 func _on_timer_timeout() -> void:
