@@ -85,7 +85,14 @@ func attempt_purchase(item_path: String, amount: int) -> bool:
 		if not data[2]: # inactive
 			continue
 
-		if data[0] == item_path:
+		var tmp_path
+		if typeof(data[0]) == TYPE_OBJECT:
+			tmp_path = data[0].resource_path
+			ptrINVENTORY[slot][0] = tmp_path  # Should be string, not object here
+		if typeof(data[0]) == TYPE_STRING:
+			tmp_path = data[0]
+		
+		if tmp_path == item_path:
 			var space = item_res.max_stack - data[1]
 			if space > 0:
 				var to_add = min(space, remaining)
