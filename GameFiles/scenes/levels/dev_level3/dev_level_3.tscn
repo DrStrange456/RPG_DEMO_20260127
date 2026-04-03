@@ -68708,7 +68708,7 @@ color = Color(0.4984, 0.89, 0.86389333, 1)
 position = Vector2(394, -234)
 
 [node name="MainPlayer" parent="." unique_id=746150671 instance=ExtResource("3_fbhme")]
-position = Vector2(1157, 167)
+position = Vector2(396, -98)
 
 [node name="Camera2D2" type="Camera2D" parent="MainPlayer" unique_id=1915039258]
 position = Vector2(0, -19)
